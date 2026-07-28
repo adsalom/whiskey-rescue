@@ -1,0 +1,2687 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whisky Rescue — The Art of Whisky, Rescued</title>
+    <meta name="description" content="Whisky Rescue offers exclusive whisky experiences, curated tastings, and bespoke events worldwide. Discover the art of whisky, rescued.">
+
+    <!-- reemplazar con tipografías reales del brandbook cuando estén disponibles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- 
+        reemplazar con colores HEX exactos del brandbook:
+        --color-black: #0A0A0A;
+        --color-gold: #C8A96E;
+        --color-gold-light: #D4B87A;
+        --color-amber: #8B6914;
+        --color-cream: #F5F0E8;
+        --color-bone: #EDE6D8;
+        --color-charcoal: #1A1A1A;
+        --color-dark-brown: #2C1810;
+    -->
+    <style>
+        /* ========================================
+           CSS CUSTOM PROPERTIES
+           reemplazar con valores del brandbook
+        ======================================== */
+        :root {
+            --color-black: #0A0A0A;
+            --color-charcoal: #1A1A1A;
+            --color-dark-brown: #2C1810;
+            --color-gold: #C8A96E;
+            --color-gold-light: #D4B87A;
+            --color-gold-dark: #8B6914;
+            --color-amber: #A67C52;
+            --color-cream: #F5F0E8;
+            --color-bone: #EDE6D8;
+            --color-white: #FEFCF9;
+            --color-text: #E8E0D4;
+            --color-text-muted: #9B9080;
+            --color-text-dark: #2C2420;
+
+            --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+            --space-3xl: 8rem;
+
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --max-width: 1200px;
+            --header-height: 80px;
+        }
+
+        /* ========================================
+           RESET & BASE
+        ======================================== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-black);
+            color: var(--color-text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body.no-scroll {
+            overflow: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        /* ========================================
+           TYPOGRAPHY
+        ======================================== */
+        h1, h2, h3, h4, h5 {
+            font-family: var(--font-serif);
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); }
+        h2 { font-size: clamp(2rem, 4vw, 3rem); }
+        h3 { font-size: clamp(1.4rem, 2.5vw, 1.8rem); }
+        h4 { font-size: clamp(1.1rem, 2vw, 1.3rem); }
+
+        .section-label {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-gold);
+            margin-bottom: var(--space-sm);
+            display: block;
+        }
+
+        .section-title {
+            margin-bottom: var(--space-md);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            max-width: 600px;
+        }
+
+        .gold-text { color: var(--color-gold); }
+        .cream-text { color: var(--color-cream); }
+
+        /* ========================================
+           LAYOUT UTILITIES
+        ======================================== */
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .section-padding {
+            padding: var(--space-3xl) 0;
+        }
+
+        .text-center { text-align: center; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+
+        /* ========================================
+           AGE GATE
+        ======================================== */
+        .age-gate {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            background: var(--color-black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .age-gate.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .age-gate__backdrop {
+            position: absolute;
+            inset: 0;
+            /* reemplazar con imagen de textura de madera oscura profesional */
+            background: 
+                radial-gradient(ellipse at center, rgba(44, 24, 16, 0.4) 0%, rgba(10, 10, 10, 0.95) 70%),
+                linear-gradient(135deg, var(--color-dark-brown) 0%, var(--color-black) 100%);
+        }
+
+        .age-gate__content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: var(--space-xl);
+            max-width: 480px;
+        }
+
+        .age-gate__logo {
+            font-family: var(--font-serif);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--color-gold);
+            margin-bottom: var(--space-lg);
+            letter-spacing: 0.05em;
+        }
+
+        .age-gate__question {
+            font-family: var(--font-serif);
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--color-cream);
+            margin-bottom: var(--space-lg);
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .age-gate__buttons {
+            display: flex;
+            gap: var(--space-sm);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .age-gate__lang {
+            position: absolute;
+            top: var(--space-md);
+            right: var(--space-md);
+            display: flex;
+            gap: var(--space-xs);
+            z-index: 2;
+        }
+
+        .age-gate__lang button {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            padding: 0.3rem 0.6rem;
+            border: 1px solid transparent;
+            border-radius: 2px;
+            transition: var(--transition);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .age-gate__lang button.active,
+        .age-gate__lang button:hover {
+            color: var(--color-gold);
+            border-color: var(--color-gold);
+        }
+
+        .age-gate__disclaimer {
+            margin-top: var(--space-lg);
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           BUTTONS
+        ======================================== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.9rem 2.2rem;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            border-radius: 2px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn--primary {
+            background: var(--color-gold);
+            color: var(--color-black);
+        }
+
+        .btn--primary:hover {
+            background: var(--color-gold-light);
+            transform: translateY(-1px);
+        }
+
+        .btn--outline {
+            background: transparent;
+            color: var(--color-gold);
+            border: 1px solid var(--color-gold);
+        }
+
+        .btn--outline:hover {
+            background: var(--color-gold);
+            color: var(--color-black);
+        }
+
+        .btn--ghost {
+            background: transparent;
+            color: var(--color-cream);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .btn--ghost:hover {
+            border-color: var(--color-gold);
+            color: var(--color-gold);
+        }
+
+        .btn--whatsapp {
+            background: #25D366;
+            color: #fff;
+            border: none;
+        }
+
+        .btn--whatsapp:hover {
+            background: #20BA5A;
+            transform: translateY(-1px);
+        }
+
+        /* ========================================
+           HEADER
+        ======================================== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+            background: transparent;
+        }
+
+        .header.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 1px 0 rgba(200, 169, 110, 0.1);
+        }
+
+        .header__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .header__logo {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: var(--color-gold);
+            letter-spacing: 0.05em;
+            font-weight: 500;
+            /* reemplazar con SVG del logo cuando esté disponible */
+        }
+
+        .header__nav {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+        }
+
+        .header__nav a {
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--color-text);
+            position: relative;
+        }
+
+        .header__nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--color-gold);
+            transition: var(--transition);
+        }
+
+        .header__nav a:hover::after,
+        .header__nav a.active::after {
+            width: 100%;
+        }
+
+        .header__nav a:hover {
+            color: var(--color-gold);
+        }
+
+        .header__lang-toggle {
+            display: flex;
+            gap: 0.3rem;
+            padding-left: var(--space-md);
+            border-left: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .header__lang-toggle button {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-text-muted);
+            padding: 0.3rem 0.5rem;
+            transition: var(--transition);
+        }
+
+        .header__lang-toggle button.active {
+            color: var(--color-gold);
+        }
+
+        .header__lang-toggle button:hover {
+            color: var(--color-cream);
+        }
+
+        /* Mobile menu */
+        .header__menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 8px;
+        }
+
+        .header__menu-btn span {
+            width: 24px;
+            height: 1.5px;
+            background: var(--color-cream);
+            transition: var(--transition);
+        }
+
+        .header__menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(4px, 5px);
+        }
+        .header__menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .header__menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(4px, -5px);
+        }
+
+        .mobile-nav {
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            background: rgba(10, 10, 10, 0.98);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-lg);
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .mobile-nav.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .mobile-nav a {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            color: var(--color-cream);
+            letter-spacing: 0.05em;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--color-gold);
+        }
+
+        .mobile-nav__lang {
+            display: flex;
+            gap: var(--space-sm);
+            margin-top: var(--space-md);
+        }
+
+        .mobile-nav__lang button {
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-text-muted);
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .mobile-nav__lang button.active {
+            color: var(--color-gold);
+            border-color: var(--color-gold);
+        }
+
+        /* ========================================
+           HERO
+        ======================================== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero__bg {
+            position: absolute;
+            inset: 0;
+            /* reemplazar con fotografía profesional de atmósfera de whisky — sin hielo */
+            background: 
+                linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.6) 50%, var(--color-black) 100%),
+                linear-gradient(135deg, var(--color-dark-brown) 0%, var(--color-charcoal) 50%, var(--color-black) 100%);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero__overlay {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 30% 50%, rgba(200, 169, 110, 0.06) 0%, transparent 60%);
+        }
+
+        .hero__content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            padding: var(--space-xl) var(--space-md);
+        }
+
+        .hero__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--color-gold);
+            margin-bottom: var(--space-lg);
+            padding: 0.5rem 1.2rem;
+            border: 1px solid rgba(200, 169, 110, 0.3);
+        }
+
+        .hero__title {
+            font-size: clamp(3rem, 7vw, 6rem);
+            font-weight: 400;
+            color: var(--color-cream);
+            margin-bottom: var(--space-md);
+            line-height: 1.05;
+        }
+
+        .hero__title em {
+            font-style: italic;
+            color: var(--color-gold);
+        }
+
+        .hero__subtitle {
+            font-family: var(--font-serif);
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--color-text-muted);
+            margin-bottom: var(--space-xl);
+            font-style: italic;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero__cta {
+            display: flex;
+            gap: var(--space-sm);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero__scroll {
+            position: absolute;
+            bottom: var(--space-lg);
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-text-muted);
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero__scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--color-gold), transparent);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* ========================================
+           INTRO SECTION
+        ======================================== */
+        .intro {
+            position: relative;
+            background: var(--color-black);
+        }
+
+        .intro__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-3xl);
+            align-items: center;
+        }
+
+        .intro__image {
+            position: relative;
+            aspect-ratio: 4/5;
+            overflow: hidden;
+            /* reemplazar con fotografía profesional */
+            background: linear-gradient(135deg, var(--color-dark-brown) 0%, var(--color-charcoal) 100%);
+        }
+
+        .intro__image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid rgba(200, 169, 110, 0.15);
+        }
+
+        .intro__content {
+            padding: var(--space-xl) 0;
+        }
+
+        .intro__text {
+            font-size: 1.05rem;
+            color: var(--color-text);
+            margin-bottom: var(--space-md);
+            line-height: 1.8;
+        }
+
+        .intro__divider {
+            width: 60px;
+            height: 1px;
+            background: var(--color-gold);
+            margin: var(--space-lg) 0;
+        }
+
+        .intro__stats {
+            display: flex;
+            gap: var(--space-xl);
+            margin-top: var(--space-lg);
+        }
+
+        .intro__stat-number {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            color: var(--color-gold);
+            line-height: 1;
+        }
+
+        .intro__stat-label {
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 0.3rem;
+        }
+
+        /* ========================================
+           ULTRA BESPOKE
+        ======================================== */
+        .ultra {
+            position: relative;
+            background: var(--color-charcoal);
+            overflow: hidden;
+        }
+
+        .ultra__bg-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.03;
+            /* reemplazar con textura sutil de madera o patrón geométrico */
+            background-image: 
+                repeating-linear-gradient(
+                    45deg,
+                    var(--color-gold) 0px,
+                    var(--color-gold) 1px,
+                    transparent 1px,
+                    transparent 40px
+                );
+        }
+
+        .ultra__border {
+            position: relative;
+            border: 1px solid rgba(200, 169, 110, 0.2);
+            padding: var(--space-3xl);
+            text-align: center;
+        }
+
+        .ultra__icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto var(--space-md);
+            border: 1px solid var(--color-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--color-gold);
+        }
+
+        .ultra__title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            color: var(--color-cream);
+            margin-bottom: var(--space-md);
+        }
+
+        .ultra__description {
+            font-size: 1.1rem;
+            color: var(--color-text);
+            max-width: 700px;
+            margin: 0 auto var(--space-md);
+            line-height: 1.8;
+        }
+
+        .ultra__features {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-xl);
+            flex-wrap: wrap;
+            margin: var(--space-lg) 0;
+        }
+
+        .ultra__feature {
+            text-align: center;
+            max-width: 200px;
+        }
+
+        .ultra__feature-title {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            color: var(--color-gold);
+            margin-bottom: 0.3rem;
+        }
+
+        .ultra__feature-text {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+
+        .ultra__cta {
+            margin-top: var(--space-lg);
+        }
+
+        /* ========================================
+           EXPERIENCES PREVIEW
+        ======================================== */
+        .experiences-preview {
+            background: var(--color-black);
+        }
+
+        .experiences-preview__header {
+            text-align: center;
+            margin-bottom: var(--space-3xl);
+        }
+
+        .experiences-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+        }
+
+        .experience-card {
+            position: relative;
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            cursor: pointer;
+            group: true;
+        }
+
+        .experience-card__image {
+            position: absolute;
+            inset: 0;
+            /* reemplazar con fotografías profesionales de cada experiencia — sin hielo */
+            background: linear-gradient(135deg, var(--color-dark-brown) 0%, var(--color-charcoal) 100%);
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .experience-card:hover .experience-card__image {
+            transform: scale(1.05);
+        }
+
+        .experience-card__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.2) 50%, transparent 100%);
+            transition: var(--transition);
+        }
+
+        .experience-card:hover .experience-card__overlay {
+            background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.4) 60%, rgba(10,10,10,0.2) 100%);
+        }
+
+        .experience-card__content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: var(--space-lg);
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .experience-card:hover .experience-card__content {
+            transform: translateY(0);
+        }
+
+        .experience-card__number {
+            font-family: var(--font-serif);
+            font-size: 0.8rem;
+            color: var(--color-gold);
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-card__title {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            color: var(--color-cream);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-card__desc {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .experience-card:hover .experience-card__desc {
+            opacity: 1;
+        }
+
+        .experience-card__price {
+            font-size: 0.75rem;
+            color: var(--color-gold);
+            margin-top: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+
+        /* ========================================
+           TESTIMONIALS
+        ======================================== */
+        .testimonials {
+            background: var(--color-charcoal);
+            position: relative;
+        }
+
+        .testimonials__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-lg);
+        }
+
+        .testimonial {
+            padding: var(--space-lg);
+            border: 1px solid rgba(200, 169, 110, 0.1);
+            position: relative;
+        }
+
+        .testimonial__quote {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            font-style: italic;
+            color: var(--color-cream);
+            line-height: 1.7;
+            margin-bottom: var(--space-md);
+        }
+
+        .testimonial__quote::before {
+            content: '\201C';
+            font-size: 3rem;
+            color: var(--color-gold);
+            line-height: 0;
+            position: relative;
+            top: 0.5rem;
+            margin-right: 0.3rem;
+        }
+
+        .testimonial__author {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            letter-spacing: 0.05em;
+        }
+
+        .testimonial__author strong {
+            color: var(--color-gold);
+            font-weight: 500;
+        }
+
+        /* ========================================
+           ABOUT / HISTORY
+        ======================================== */
+        .about {
+            background: var(--color-black);
+            position: relative;
+        }
+
+        .about__hero {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--space-3xl);
+        }
+
+        .about__hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--color-cream);
+            margin-bottom: var(--space-md);
+        }
+
+        .about__hero-text {
+            font-size: 1.1rem;
+            color: var(--color-text);
+            line-height: 1.8;
+        }
+
+        .about__story {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-3xl);
+            align-items: start;
+        }
+
+        .about__story-block {
+            padding: var(--space-lg) 0;
+        }
+
+        .about__story-block + .about__story-block {
+            border-top: 1px solid rgba(200, 169, 110, 0.1);
+        }
+
+        .about__story-title {
+            font-size: 1.5rem;
+            color: var(--color-gold);
+            margin-bottom: var(--space-sm);
+        }
+
+        .about__story-text {
+            font-size: 1rem;
+            color: var(--color-text);
+            line-height: 1.8;
+        }
+
+        .about__values {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-lg);
+            margin-top: var(--space-3xl);
+        }
+
+        .about__value {
+            text-align: center;
+            padding: var(--space-lg);
+            border: 1px solid rgba(200, 169, 110, 0.1);
+        }
+
+        .about__value-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto var(--space-sm);
+            border: 1px solid var(--color-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--color-gold);
+        }
+
+        .about__value-title {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: var(--color-cream);
+            margin-bottom: 0.5rem;
+        }
+
+        .about__value-text {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           EXPERIENCES FULL
+        ======================================== */
+        .experiences-full {
+            background: var(--color-charcoal);
+        }
+
+        .experience-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-3xl);
+            align-items: center;
+            padding: var(--space-3xl) 0;
+        }
+
+        .experience-row + .experience-row {
+            border-top: 1px solid rgba(200, 169, 110, 0.08);
+        }
+
+        .experience-row:nth-child(even) .experience-row__image {
+            order: 2;
+        }
+
+        .experience-row:nth-child(even) .experience-row__content {
+            order: 1;
+        }
+
+        .experience-row__image {
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            /* reemplazar con fotografía profesional por experiencia */
+            background: linear-gradient(135deg, var(--color-dark-brown) 0%, var(--color-black) 100%);
+            position: relative;
+        }
+
+        .experience-row__image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid rgba(200, 169, 110, 0.1);
+        }
+
+        .experience-row__number {
+            font-family: var(--font-serif);
+            font-size: 4rem;
+            color: rgba(200, 169, 110, 0.1);
+            line-height: 1;
+            margin-bottom: var(--space-sm);
+        }
+
+        .experience-row__title {
+            font-size: 1.8rem;
+            color: var(--color-cream);
+            margin-bottom: var(--space-sm);
+        }
+
+        .experience-row__text {
+            font-size: 1rem;
+            color: var(--color-text);
+            line-height: 1.8;
+            margin-bottom: var(--space-md);
+        }
+
+        .experience-row__includes {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            font-style: italic;
+            margin-bottom: var(--space-md);
+        }
+
+        .experience-row__price {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: var(--color-gold);
+            margin-bottom: var(--space-md);
+        }
+
+        /* Ultra Bespoke - Final section */
+        .ultra-detail {
+            background: var(--color-black);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ultra-detail__inner {
+            position: relative;
+            border: 1px solid rgba(200, 169, 110, 0.15);
+            padding: var(--space-3xl);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .ultra-detail__crown {
+            font-size: 2rem;
+            color: var(--color-gold);
+            margin-bottom: var(--space-md);
+        }
+
+        .ultra-detail__title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--color-cream);
+            margin-bottom: var(--space-md);
+        }
+
+        .ultra-detail__text {
+            font-size: 1.05rem;
+            color: var(--color-text);
+            max-width: 650px;
+            margin: 0 auto var(--space-md);
+            line-height: 1.8;
+        }
+
+        .ultra-detail__note {
+            font-family: var(--font-serif);
+            font-style: italic;
+            color: var(--color-gold);
+            font-size: 1.1rem;
+            margin-bottom: var(--space-lg);
+        }
+
+        /* ========================================
+           CONTACT
+        ======================================== */
+        .contact {
+            background: var(--color-black);
+        }
+
+        .contact__grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: var(--space-3xl);
+        }
+
+        .contact__form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-group label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--color-text-muted);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            padding: 0.9rem 1rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(200, 169, 110, 0.15);
+            color: var(--color-cream);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--color-text-muted);
+            opacity: 0.5;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-gold);
+            background: rgba(200, 169, 110, 0.03);
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23C8A96E' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+
+        .form-group select option {
+            background: var(--color-charcoal);
+            color: var(--color-cream);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-md);
+        }
+
+        .contact__info {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+            padding-top: var(--space-md);
+        }
+
+        .contact__info-block {
+            padding: var(--space-md);
+            border: 1px solid rgba(200, 169, 110, 0.1);
+        }
+
+        .contact__info-title {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            color: var(--color-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact__info-text {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+
+        .contact__social {
+            display: flex;
+            gap: var(--space-sm);
+        }
+
+        .contact__social a {
+            width: 44px;
+            height: 44px;
+            border: 1px solid rgba(200, 169, 110, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-muted);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            transition: var(--transition);
+        }
+
+        .contact__social a:hover {
+            border-color: var(--color-gold);
+            color: var(--color-gold);
+        }
+
+        /* ========================================
+           FOOTER
+        ======================================== */
+        .footer {
+            background: var(--color-charcoal);
+            border-top: 1px solid rgba(200, 169, 110, 0.08);
+        }
+
+        .footer__main {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+            gap: var(--space-xl);
+            padding: var(--space-3xl) 0;
+        }
+
+        .footer__brand-desc {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            line-height: 1.7;
+            margin-top: var(--space-sm);
+            max-width: 280px;
+        }
+
+        .footer__heading {
+            font-family: var(--font-serif);
+            font-size: 0.9rem;
+            color: var(--color-gold);
+            margin-bottom: var(--space-md);
+            letter-spacing: 0.05em;
+        }
+
+        .footer__links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .footer__links a {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            transition: var(--transition);
+        }
+
+        .footer__links a:hover {
+            color: var(--color-gold);
+        }
+
+        .footer__newsletter-text {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            margin-bottom: var(--space-sm);
+            line-height: 1.6;
+        }
+
+        .footer__newsletter-form {
+            display: flex;
+            gap: 0;
+        }
+
+        .footer__newsletter-form input {
+            flex: 1;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            padding: 0.7rem 1rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(200, 169, 110, 0.15);
+            border-right: none;
+            color: var(--color-cream);
+        }
+
+        .footer__newsletter-form input::placeholder {
+            color: var(--color-text-muted);
+            opacity: 0.5;
+        }
+
+        .footer__newsletter-form input:focus {
+            outline: none;
+            border-color: var(--color-gold);
+        }
+
+        .footer__newsletter-form button {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 0.7rem 1.2rem;
+            background: var(--color-gold);
+            color: var(--color-black);
+            border: 1px solid var(--color-gold);
+            transition: var(--transition);
+        }
+
+        .footer__newsletter-form button:hover {
+            background: var(--color-gold-light);
+        }
+
+        .footer__bottom {
+            border-top: 1px solid rgba(200, 169, 110, 0.08);
+            padding: var(--space-md) 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer__copyright {
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+        }
+
+        .footer__legal {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .footer__legal a {
+            font-size: 0.7rem;
+            color: var(--color-text-muted);
+            letter-spacing: 0.05em;
+        }
+
+        .footer__legal a:hover {
+            color: var(--color-gold);
+        }
+
+        .footer__age-note {
+            width: 100%;
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--color-text-muted);
+            opacity: 0.6;
+            margin-top: var(--space-sm);
+            padding-top: var(--space-sm);
+            border-top: 1px solid rgba(200, 169, 110, 0.05);
+        }
+
+        /* ========================================
+           RESPONSIVE
+        ======================================== */
+        @media (max-width: 1024px) {
+            .experiences-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer__main {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header__nav {
+                display: none;
+            }
+
+            .header__menu-btn {
+                display: flex;
+            }
+
+            .intro__grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-xl);
+            }
+
+            .intro__image {
+                aspect-ratio: 16/9;
+            }
+
+            .intro__stats {
+                gap: var(--space-lg);
+            }
+
+            .ultra__border {
+                padding: var(--space-xl) var(--space-md);
+            }
+
+            .ultra__features {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .experiences-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .testimonials__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about__story {
+                grid-template-columns: 1fr;
+            }
+
+            .about__values {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-row {
+                grid-template-columns: 1fr;
+                gap: var(--space-xl);
+            }
+
+            .experience-row:nth-child(even) .experience-row__image,
+            .experience-row:nth-child(even) .experience-row__content {
+                order: unset;
+            }
+
+            .contact__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer__main {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+
+            .footer__bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer__legal {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero__cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .intro__stats {
+                flex-direction: column;
+                gap: var(--space-md);
+            }
+
+            .ultra-detail__inner {
+                padding: var(--space-xl) var(--space-md);
+            }
+        }
+
+        /* ========================================
+           ANIMATIONS
+        ======================================== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========================================
+           LANGUAGE SYSTEM
+        ======================================== */
+        [data-lang="es"] .lang-en { display: none !important; }
+        [data-lang="en"] .lang-es { display: none !important; }
+    </style>
+
+    <!-- 
+        ANALYTICS PLACEHOLDERS
+        reemplazar los IDs con los valores reales del cliente
+    -->
+    <!-- Google Analytics (GA4) -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script> -->
+
+    <!-- Meta Pixel -->
+    <!-- <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', 'XXXXXXXXXX');
+        fbq('track', 'PageView');
+    </script> -->
+
+    <!-- TikTok Pixel -->
+    <!-- <script>
+        !function (w, d, t) {
+            w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e+""]=+new Date,ttq._o=ttq._o||{},ttq._o[e+""]=n||{};var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=r+"?sdkid="+e+"&lib="+t;var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(a,s)};
+            ttq.load('TIKTOK_PIXEL_ID');
+            ttq.page();
+        }(window, document, 'ttq');
+    </script> -->
+
+    <!-- Meta Conversions API -->
+    <!-- Reemplazar con el token real del servidor -->
+    <!-- Server-side tracking configurado en el backend -->
+</head>
+<body>
+    <!-- ==========================================
+         AGE GATE
+    =========================================== -->
+    <div class="age-gate" id="ageGate">
+        <div class="age-gate__backdrop"></div>
+        <div class="age-gate__lang">
+            <button class="active" onclick="setLang('en')">EN</button>
+            <button onclick="setLang('es')">ES</button>
+        </div>
+        <div class="age-gate__content">
+            <div class="age-gate__logo">
+                <!-- reemplazar con logo SVG del brandbook -->
+                Whisky Rescue
+            </div>
+            <p class="age-gate__question">
+                <span class="lang-en">Please confirm you are of legal drinking age in your country to access this site.</span>
+                <span class="lang-es">Por favor confirma que tienes la edad legal para consumir bebidas alcohólicas en tu país para acceder a este sitio.</span>
+            </p>
+            <div class="age-gate__buttons">
+                <button class="btn btn--primary" onclick="confirmAge()">
+                    <span class="lang-en">Yes, I confirm</span>
+                    <span class="lang-es">Sí, confirmo</span>
+                </button>
+                <button class="btn btn--ghost" onclick="denyAge()">
+                    <span class="lang-en">No</span>
+                    <span class="lang-es">No</span>
+                </button>
+            </div>
+            <p class="age-gate__disclaimer">
+                <span class="lang-en">By entering this site you agree to our terms. Please drink responsibly.</span>
+                <span class="lang-es">Al ingresar a este sitio aceptas nuestros términos. Por favor bebe con responsabilidad.</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         HEADER
+    =========================================== -->
+    <header class="header" id="header">
+        <div class="header__inner">
+            <a href="#" class="header__logo">
+                <!-- reemplazar con SVG del logo cuando el cliente lo entregue -->
+                Whisky Rescue
+            </a>
+            <nav class="header__nav">
+                <a href="#experiences">
+                    <span class="lang-en">Experiences</span>
+                    <span class="lang-es">Experiencias</span>
+                </a>
+                <a href="#about">
+                    <span class="lang-en">Our Story</span>
+                    <span class="lang-es">Sobre Nosotros</span>
+                </a>
+                <a href="#contact">
+                    <span class="lang-en">Contact</span>
+                    <span class="lang-es">Contacto</span>
+                </a>
+                <div class="header__lang-toggle">
+                    <button class="active" onclick="setLang('en')">EN</button>
+                    <button onclick="setLang('es')">ES</button>
+                </div>
+            </nav>
+            <button class="header__menu-btn" id="menuBtn" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="#experiences" onclick="closeMobileMenu()">
+            <span class="lang-en">Experiences</span>
+            <span class="lang-es">Experiencias</span>
+        </a>
+        <a href="#about" onclick="closeMobileMenu()">
+            <span class="lang-en">Our Story</span>
+            <span class="lang-es">Sobre Nosotros</span>
+        </a>
+        <a href="#contact" onclick="closeMobileMenu()">
+            <span class="lang-en">Contact</span>
+            <span class="lang-es">Contacto</span>
+        </a>
+        <div class="mobile-nav__lang">
+            <button class="active" onclick="setLang('en')">EN</button>
+            <button onclick="setLang('es')">ES</button>
+        </div>
+    </nav>
+
+    <main id="mainContent" style="opacity: 0; transition: opacity 0.8s ease;">
+        <!-- ==========================================
+             HERO
+        =========================================== -->
+        <section class="hero">
+            <div class="hero__bg">
+                <!-- reemplazar con fotografía profesional de atmósfera de whisky — sin hielo en ninguna imagen -->
+            </div>
+            <div class="hero__overlay"></div>
+            <div class="hero__content">
+                <div class="hero__badge">
+                    <span class="lang-en">Exclusive Whisky Experiences Worldwide</span>
+                    <span class="lang-es">Experiencias exclusivas de whisky</span>
+                </div>
+                <h1 class="hero__title">
+                    <span class="lang-en">The Art of Whisky,<br><em>Rescued</em></span>
+                    <span class="lang-es">El whisky, como nunca<br><em>lo probaste</em></span>
+                </h1>
+                <p class="hero__subtitle">
+                    <span class="lang-en">Curated experiences that transform how you discover and enjoy whisky.</span>
+                    <span class="lang-es">Experiencias únicas que transforman la forma en que descubres y disfrutas del whisky.</span>
+                </p>
+                <div class="hero__cta">
+                    <a href="#contact" class="btn btn--primary">
+                        <span class="lang-en">Request an Experience</span>
+                        <span class="lang-es">Solicitar una Experiencia</span>
+                    </a>
+                    <a href="#experiences-preview" class="btn btn--outline">
+                        <span class="lang-en">Discover Our Experiences</span>
+                        <span class="lang-es">Descubrir Nuestras Experiencias</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero__scroll">
+                <span class="lang-en">Scroll</span>
+                <span class="lang-es">Descubre</span>
+                <div class="hero__scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             INTRO
+        =========================================== -->
+        <section class="intro section-padding">
+            <div class="container">
+                <div class="intro__grid">
+                    <div class="intro__image fade-in">
+                        <!-- reemplazar con fotografía profesional — ambiente de bar/madera/accesorios de whisky, sin hielo -->
+                    </div>
+                    <div class="intro__content fade-in">
+                        <span class="section-label">
+                            <span class="lang-en">Who We Are</span>
+                            <span class="lang-es">Quiénes Somos</span>
+                        </span>
+                        <h2 class="section-title">
+                            <span class="lang-en">Rescuing the Art of Taking Whisky</span>
+                            <span class="lang-es">Rescatando el Arte de Tomar Whisky</span>
+                        </h2>
+                        <p class="intro__text">
+                            <span class="lang-en">Born during the pandemic as a whisky gift box experience, Whisky Rescue evolved into Bogotá's first exclusive fixed whisky bar, and today offers curated experiences and academic sessions with world-renowned specialists.</span>
+                            <span class="lang-es">Nacida durante la pandemia como una propuesta de cajas de regalo con whisky, Whisky Rescue evolucionó hasta convertirse en la primera barra fija exclusiva de whisky en Bogotá, y hoy ofrece experiencias curadas y sesiones académicas con especialistas reconocidos a nivel mundial.</span>
+                        </p>
+                        <p class="intro__text">
+                            <span class="lang-en">We respect the liquid. Every expression we serve has a story, and every experience we create is designed to deepen your connection with the world of whisky.</span>
+                            <span class="lang-es">Respetamos el líquido. Cada expresión que servimos tiene una historia, y cada experiencia que creamos está diseñada para profundizar tu conexión con el mundo del whisky.</span>
+                        </p>
+                        <div class="intro__divider"></div>
+                        <div class="intro__stats">
+                            <div>
+                                <div class="intro__stat-number">6</div>
+                                <div class="intro__stat-label">
+                                    <span class="lang-en">Unique Experiences</span>
+                                    <span class="lang-es">Experiencias Únicas</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="intro__stat-number">∞</div>
+                                <div class="intro__stat-label">
+                                    <span class="lang-en">Destinations</span>
+                                    <span class="lang-es">Lugares</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="intro__stat-number">1</div>
+                                <div class="intro__stat-label">
+                                    <span class="lang-en">Mission</span>
+                                    <span class="lang-es">Misión</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             ULTRA BESPOKE EXPERIENCE (Destaque)
+        =========================================== -->
+        <section class="ultra section-padding">
+            <div class="ultra__bg-pattern"></div>
+            <div class="container">
+                <div class="ultra__border fade-in">
+                    <div class="ultra__icon">UB</div>
+                    <span class="section-label">
+                        <span class="lang-en">Flagship Service</span>
+                        <span class="lang-es">Servicio Insignia</span>
+                    </span>
+                    <h2 class="ultra__title">Ultra Bespoke Experience</h2>
+                    <p class="ultra__description">
+                        <span class="lang-en">Our pinnacle offering. A fully personalized whisky experience designed exclusively for you — wherever in the world you desire. From private collections to rare expressions, every detail is curated to your vision.</span>
+                        <span class="lang-es">Nuestra oferta más exclusiva. Una experiencia de whisky totalmente personalizada diseñada exclusivamente para ti — dondequiera que lo desees en el mundo. Desde colecciones privadas hasta expresiones raras, cada detalle está curado a tu medida.</span>
+                    </p>
+                    <div class="ultra__features">
+                        <div class="ultra__feature">
+                            <div class="ultra__feature-title">
+                                <span class="lang-en">Global Reach</span>
+                                <span class="lang-es">Alcance Global</span>
+                            </div>
+                            <div class="ultra__feature-text">
+                                <span class="lang-en">We travel to you.</span>
+                                <span class="lang-es">Llegamos a ti.</span>
+                            </div>
+                        </div>
+                        <div class="ultra__feature">
+                            <div class="ultra__feature-title">
+                                <span class="lang-en">Rare Expressions</span>
+                                <span class="lang-es">Expresiones Raras</span>
+                            </div>
+                            <div class="ultra__feature-text">
+                                <span class="lang-en">Access to exclusive bottles.</span>
+                                <span class="lang-es">Acceso a botellas exclusivas.</span>
+                            </div>
+                        </div>
+                        <div class="ultra__feature">
+                            <div class="ultra__feature-title">
+                                <span class="lang-en">Tailored Curaduría</span>
+                                <span class="lang-es">Curaduría a Medida</span>
+                            </div>
+                            <div class="ultra__feature-text">
+                                <span class="lang-en">Every detail, yours to decide.</span>
+                                <span class="lang-es">Cada detalle, tuyo para decidir.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ultra__cta">
+                        <a href="#contact" class="btn btn--primary">
+                            <span class="lang-en">Inquire About This Service</span>
+                            <span class="lang-es">Consultar por Este Servicio</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             EXPERIENCES PREVIEW
+        =========================================== -->
+        <section class="experiences-preview section-padding" id="experiences-preview">
+            <div class="container">
+                <div class="experiences-preview__header fade-in">
+                    <span class="section-label">
+                        <span class="lang-en">Our Experiences</span>
+                        <span class="lang-es">Nuestras Experiencias</span>
+                    </span>
+                    <h2 class="section-title">
+                        <span class="lang-en">Six Curated Paths, Infinite Expressions</span>
+                        <span class="lang-se">Seis Caminos Curados, Expresiones Infinitas</span>
+                    </h2>
+                    <p class="section-subtitle mx-auto">
+                        <span class="lang-en">Each experience is a unique journey through the world of whisky. No two are ever the same.</span>
+                        <span class="lang-es">Cada experiencia es un viaje único por el mundo del whisky. Ninguna se repite igual.</span>
+                    </p>
+                </div>
+                <div class="experiences-grid">
+                    <!-- reemplazar con nombres reales de las 6 experiencias cuando el cliente los defina -->
+                    <div class="experience-card fade-in">
+                        <div class="experience-card__image">
+                            <!-- reemplazar con fotografía profesional -->
+                        </div>
+                        <div class="experience-card__overlay"></div>
+                        <div class="experience-card__content">
+                            <div class="experience-card__number">I</div>
+                            <h3 class="experience-card__title">
+                                <span class="lang-en">The Introduction</span>
+                                <span class="lang-es">La Introducción</span>
+                            </h3>
+                            <p class="experience-card__desc">
+                                <span class="lang-en">Your first step into the world of whisky, guided with care.</span>
+                                <span class="lang-es">Tu primer paso en el mundo del whisky, guiado con cuidado.</span>
+                            </p>
+                            <div class="experience-card__price">
+                                <span class="lang-en">From €100 per person</span>
+                                <span class="lang-es">Desde €100 por persona</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience-card fade-in">
+                        <div class="experience-card__image"></div>
+                        <div class="experience-card__overlay"></div>
+                        <div class="experience-card__content">
+                            <div class="experience-card__number">II</div>
+                            <h3 class="experience-card__title">
+                                <span class="lang-en">The Journey</span>
+                                <span class="lang-es">El Viaje</span>
+                            </h3>
+                            <p class="experience-card__desc">
+                                <span class="lang-en">Explore the diversity of regions and flavour profiles.</span>
+                                <span class="lang-es">Explora la diversidad de regiones y perfiles de sabor.</span>
+                            </p>
+                            <div class="experience-card__price">
+                                <span class="lang-en">From €150 per person</span>
+                                <span class="lang-es">Desde €150 por persona</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience-card fade-in">
+                        <div class="experience-card__image"></div>
+                        <div class="experience-card__overlay"></div>
+                        <div class="experience-card__content">
+                            <div class="experience-card__number">III</div>
+                            <h3 class="experience-card__title">
+                                <span class="lang-en">The Deep Dive</span>
+                                <span class="lang-es">La Inmersión</span>
+                            </h3>
+                            <p class="experience-card__desc">
+                                <span class="lang-en">A deeper exploration for those who want to know more.</span>
+                                <span class="lang-es">Para quienes quieren ir más allá de lo básico.</span>
+                            </p>
+                            <div class="experience-card__price">
+                                <span class="lang-en">From €200 per person</span>
+                                <span class="lang-es">Desde €200 por persona</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience-card fade-in">
+                        <div class="experience-card__image"></div>
+                        <div class="experience-card__overlay"></div>
+                        <div class="experience-card__content">
+                            <div class="experience-card__number">IV</div>
+                            <h3 class="experience-card__title">
+                                <span class="lang-en">The Collection</span>
+                                <span class="lang-es">La Colección</span>
+                            </h3>
+                            <p class="experience-card__desc">
+                                <span class="lang-en">Discover rare and exceptional expressions.</span>
+                                <span class="lang-es">Descubre expresiones raras y excepcionales.</span>
+                            </p>
+                            <div class="experience-card__price">
+                                <span class="lang-en">From €250 per person</span>
+                                <span class="lang-es">Desde €250 por persona</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience-card fade-in">
+                        <div class="experience-card__image"></div>
+                        <div class="experience-card__overlay"></div>
+                        <div class="experience-card__content">
+                            <div class="experience-card__number">V</div>
+                            <h3 class="experience-card__title">
+                                <span class="lang-en">The Masterclass</span>
+                                <span class="lang-es">La Magistral</span>
+                            </h3>
+                            <p class="experience-card__desc">
+                                <span class="lang-en">Academic sessions with recognised specialists.</span>
+                                <span class="lang-es">Sesiones académicas con especialistas reconocidos.</span>
+                            </p>
+                            <div class="experience-card__price">
+                                <span class="lang-en">From €300 per person</span>
+                                <span class="lang-es">Desde €300 por persona</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience-card fade-in">
+                        <div class="experience-card__image"></div>
+                        <div class="experience-card__overlay"></div>
+                        <div class="experience-card__content">
+                            <div class="experience-card__number">VI</div>
+                            <h3 class="experience-card__title">
+                                <span class="lang-en">The Celebration</span>
+                                <span class="lang-es">La Celebración</span>
+                            </h3>
+                            <p class="experience-card__desc">
+                                <span class="lang-en">Exclusive events for milestone moments.</span>
+                                <span class="lang-es">Eventos exclusivos para momentos especiales.</span>
+                            </p>
+                            <div class="experience-card__price">
+                                <span class="lang-en">From €350 per person</span>
+                                <span class="lang-es">Desde €350 por persona</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             TESTIMONIALS
+        =========================================== -->
+        <section class="testimonials section-padding">
+            <div class="container">
+                <div class="text-center fade-in" style="margin-bottom: var(--space-3xl);">
+                    <span class="section-label">
+                        <span class="lang-en">What Our Guests Say</span>
+                        <span class="lang-es">Lo Que Dicen Quienes Nos Eligen</span>
+                    </span>
+                    <h2 class="section-title">
+                        <span class="lang-en">Experiences That Speak for Themselves</span>
+                        <span class="lang-es">Experiencias que hablan por sí solas</span>
+                    </h2>
+                </div>
+                <div class="testimonials__grid">
+                    <div class="testimonial fade-in">
+                        <p class="testimonial__quote">
+                            <span class="lang-en">An experience that transformed our team meeting. The level of curation and attention to detail was outstanding.</span>
+                            <span class="lang-es">Una experiencia que transformó nuestra reunión de equipo. El nivel de curaduría y atención al detalle fue excepcional.</span>
+                        </p>
+                        <div class="testimonial__author">
+                            <span class="lang-en"><strong>Corporate Client</strong> — Bogotá</span>
+                            <span class="lang-es"><strong>Cliente Corporativo</strong> — Bogotá</span>
+                        </div>
+                    </div>
+                    <div class="testimonial fade-in">
+                        <p class="testimonial__quote">
+                            <span class="lang-en">Without a doubt the best whisky tasting I have ever attended. Every expression was chosen with purpose.</span>
+                            <span class="lang-es">Sin duda la mejor degustación de whisky a la que he asistido. Cada expresión fue elegida con propósito.</span>
+                        </p>
+                        <div class="testimonial__author">
+                            <span class="lang-en"><strong>Private Event Host</strong> — Medellín</span>
+                            <span class="lang-es"><strong>Anfitrión de Evento Privado</strong> — Medellín</span>
+                        </div>
+                    </div>
+                    <div class="testimonial fade-in">
+                        <p class="testimonial__quote">
+                            <span class="lang-en">The Ultra Bespoke Experience exceeded every expectation. They brought the entire world of whisky to our venue.</span>
+                            <span class="lang-es">La Ultra Bespoke Experience superó todas las expectativas. Trajeron todo el mundo del whisky a nuestro espacio.</span>
+                        </p>
+                        <div class="testimonial__author">
+                            <span class="lang-en"><strong>Private Client</strong> — International</span>
+                            <span class="lang-es"><strong>Cliente Privado</strong> — Internacional</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             ABOUT / HISTORY
+        =========================================== -->
+        <section class="about section-padding" id="about">
+            <div class="container">
+                <div class="about__hero fade-in">
+                    <span class="section-label">
+                        <span class="lang-en">Our Story</span>
+                        <span class="lang-es">Nuestra Historia</span>
+                    </span>
+                    <h2 class="about__hero-title">
+                        <span class="lang-en">Born from Passion,<br>Driven by Purpose</span>
+                        <span class="lang-es">Nacimos de la pasión,<br>movidos por un propósito</span>
+                    </h2>
+                    <p class="about__hero-text">
+                        <span class="lang-en">What started as whisky gift boxes during the pandemic became a movement — a commitment to rescuing the art of taking whisky and building a community around it.</span>
+                        <span class="lang-es">Lo que empezó como cajas de regalo con whisky durante la pandemia se convirtió en un movimiento — un compromiso de rescatar el arte de tomar whisky y construir una comunidad alrededor de él.</span>
+                    </p>
+                </div>
+
+                <div class="about__story">
+                    <div class="about__story-block fade-in">
+                        <h3 class="about__story-title">
+                            <span class="lang-en">The Origin</span>
+                            <span class="lang-es">El Origen</span>
+                        </h3>
+                        <p class="about__story-text">
+                            <span class="lang-en">During the pandemic, when gathering was impossible, we found a way to bring people together through carefully curated whisky gift boxes and accessories. It was our first act of rescue — keeping the ritual alive when the world stood still.</span>
+                            <span class="lang-es">Durante la pandemia, cuando no era posible encontrarnos, encontramos una manera de unir a las personas a través de cajas de regalo con whisky y accesorios cuidadosamente curados. Fue nuestro primer acto de rescate — mantener el ritual vivo cuando el mundo se detuvo.</span>
+                        </p>
+                    </div>
+                    <div class="about__story-block fade-in">
+                        <h3 class="about__story-title">
+                            <span class="lang-en">The Evolution</span>
+                            <span class="lang-es">La Evolución</span>
+                        </h3>
+                        <p class="about__story-text">
+                            <span class="lang-en">From gift boxes to Bogotá's first exclusive fixed whisky bar, and now to curated experiences and academic sessions with world-renowned specialists. Every step has been a deeper commitment to our craft.</span>
+                            <span class="lang-es">Pasamos de las cajas de regalo a la primera barra fija exclusiva de whisky en Bogotá, y de ahí a experiencias curadas y sesiones académicas con especialistas reconocidos a nivel mundial. Cada paso ha sido un compromiso más profundo con nuestro oficio.</span>
+                        </p>
+                    </div>
+                    <div class="about__story-block fade-in">
+                        <h3 class="about__story-title">
+                            <span class="lang-en">Why "Rescue"?</span>
+                            <span class="lang-es">¿Por Qué "Rescue"?</span>
+                        </h3>
+                        <p class="about__story-text">
+                            <span class="lang-en">We rescue the art of taking whisky — not as a trend, but as a ritual worth preserving. We respect the liquid, the craft, and the centuries of tradition behind every expression.</span>
+                            <span class="lang-es">Rescatamos el arte de tomar whisky — no como una tendencia, sino como un ritual que merece ser preservado. Respetamos el líquido, el oficio y los siglos de tradición detrás de cada expresión.</span>
+                        </p>
+                    </div>
+                    <div class="about__story-block fade-in">
+                        <h3 class="about__story-title">
+                            <span class="lang-en">The Community</span>
+                            <span class="lang-es">La Comunidad</span>
+                        </h3>
+                        <p class="about__story-text">
+                            <span class="lang-en">Whisky Rescue is more than experiences — it's a community of enthusiasts connected by a shared appreciation for exceptional whisky and the moments it creates.</span>
+                            <span class="lang-es">Whisky Rescue es más que experiencias — es una comunidad de aficionados unidos por la pasión por el whisky excepcional y los momentos que crea.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="about__values">
+                    <div class="about__value fade-in">
+                        <div class="about__value-icon">M</div>
+                        <h4 class="about__value-title">
+                            <span class="lang-en">Mission</span>
+                            <span class="lang-es">Misión</span>
+                        </h4>
+                        <p class="about__value-text">
+                            <span class="lang-en">Enrich lives by discovering the culture of whisky and strengthening bonds with a community of enthusiasts.</span>
+                            <span class="lang-es">Enriquecer la vida de las personas descubriendo la cultura del whisky y fortaleciendo lazos con una comunidad de aficionados.</span>
+                        </p>
+                    </div>
+                    <div class="about__value fade-in">
+                        <div class="about__value-icon">V</div>
+                        <h4 class="about__value-title">
+                            <span class="lang-en">Vision</span>
+                            <span class="lang-es">Visión</span>
+                        </h4>
+                        <p class="about__value-text">
+                            <span class="lang-en">To be a global reference for high-level whisky experiences.</span>
+                            <span class="lang-es">Ser el referente global en experiencias de whisky de alto nivel.</span>
+                        </p>
+                    </div>
+                    <div class="about__value fade-in">
+                        <div class="about__value-icon">E</div>
+                        <h4 class="about__value-title">
+                            <span class="lang-en">Exclusivity</span>
+                            <span class="lang-es">Exclusividad</span>
+                        </h4>
+                        <p class="about__value-text">
+                            <span class="lang-en">Every experience is curated with intention. No two are ever the same. This is our promise.</span>
+                            <span class="lang-es">Cada experiencia está pensada con cuidado. Ninguna se repite igual. Esa es nuestra promesa.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             EXPERIENCES FULL
+        =========================================== -->
+        <section class="experiences-full section-padding" id="experiences">
+            <div class="container">
+                <div class="text-center fade-in" style="margin-bottom: var(--space-3xl);">
+                    <span class="section-label">
+                        <span class="lang-en">Full Collection</span>
+                        <span class="lang-es">Colección Completa</span>
+                    </span>
+                    <h2 class="section-title">
+                        <span class="lang-en">Our Six Experiences</span>
+                        <span class="lang-es">Nuestras Seis Experiencias</span>
+                    </h2>
+                    <p class="section-subtitle mx-auto">
+                        <span class="lang-en">Each one is a carefully curated journey. Select the one that speaks to you.</span>
+                        <span class="lang-es">Cada una es un viaje cuidadosamente curado. Selecciona la que más te atraiga.</span>
+                    </p>
+                </div>
+
+                <!-- 
+                    reemplazar con los nombres, descripciones e imágenes reales de las 6 experiencias
+                    cuando el cliente los defina. Los nombres actuales son provisionales.
+                -->
+                <div class="experience-row fade-in">
+                    <div class="experience-row__image"></div>
+                    <div class="experience-row__content">
+                        <div class="experience-row__number">I</div>
+                        <h3 class="experience-row__title">
+                            <span class="lang-en">The Introduction</span>
+                            <span class="lang-es">La Introducción</span>
+                        </h3>
+                        <p class="experience-row__text">
+                            <span class="lang-en">Your gateway into the world of whisky. A guided tasting of carefully selected expressions, designed to open your palate and your curiosity. No prior knowledge needed — just an open mind.</span>
+                            <span class="lang-es">Tu primer acercamiento al mundo del whisky. Una degustación guiada de expresiones cuidadosamente seleccionadas, diseñada para abrir tu paladar y tu curiosidad. No necesitas saber nada previo — solo venir con mente abierta.</span>
+                        </p>
+                        <p class="experience-row__includes">
+                            <span class="lang-en">Includes: 4–6 curated expressions · Guided session · Tasting notes</span>
+                            <span class="lang-es">Incluye: 4–6 expresiones curadas · Sesión guiada · Notas de degustación</span>
+                        </p>
+                        <div class="experience-row__price">
+                            <span class="lang-en">From €100 per person</span>
+                            <span class="lang-es">Desde €100 por persona</span>
+                        </div>
+                        <a href="#contact" class="btn btn--outline">
+                            <span class="lang-en">Request This Experience</span>
+                            <span class="lang-es">Solicitar Esta Experiencia</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="experience-row fade-in">
+                    <div class="experience-row__image"></div>
+                    <div class="experience-row__content">
+                        <div class="experience-row__number">II</div>
+                        <h3 class="experience-row__title">
+                            <span class="lang-en">The Journey</span>
+                            <span class="lang-es">El Viaje</span>
+                        </h3>
+                        <p class="experience-row__text">
+                            <span class="lang-en">Travel through the whisky regions of the world without leaving the room. From the Scottish Highlands to Japanese distilleries, each expression tells the story of its origin.</span>
+                            <span class="lang-es">Viaja por las regiones productoras de whisky del mundo sin salir de la sala. Desde las Tierras Altas de Escocia hasta las destilerías japonesas, cada expresión cuenta la historia de su origen.</span>
+                        </p>
+                        <p class="experience-row__includes">
+                            <span class="lang-en">Includes: 5–7 expressions from different regions · Geographic tasting map · Expert guidance</span>
+                            <span class="lang-es">Incluye: 5–7 expresiones de diferentes regiones · Recorrido geográfico de sabores · Guía experta</span>
+                        </p>
+                        <div class="experience-row__price">
+                            <span class="lang-en">From €150 per person</span>
+                            <span class="lang-es">Desde €150 por persona</span>
+                        </div>
+                        <a href="#contact" class="btn btn--outline">
+                            <span class="lang-en">Request This Experience</span>
+                            <span class="lang-es">Solicitar Esta Experiencia</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="experience-row fade-in">
+                    <div class="experience-row__image"></div>
+                    <div class="experience-row__content">
+                        <div class="experience-row__number">III</div>
+                        <h3 class="experience-row__title">
+                            <span class="lang-en">The Deep Dive</span>
+                            <span class="lang-es">La Inmersión</span>
+                        </h3>
+                        <p class="experience-row__text">
+                            <span class="lang-en">For those who want to understand whisky beyond the glass. An immersive session exploring distillation, maturation, and the art behind every bottle.</span>
+                            <span class="lang-es">Para quienes quieren entender el whisky a fondo. Una sesión inmersiva que explora la destilación, la maduración y el arte detrás de cada botella.</span>
+                        </p>
+                        <p class="experience-row__includes">
+                            <span class="lang-en">Includes: 6–8 expressions · Deep-dive presentation · Comparative tasting · Takeaway notes</span>
+                            <span class="lang-es">Incluye: 6–8 expresiones · Charla profunda · Degustación comparativa · Notas para llevar</span>
+                        </p>
+                        <div class="experience-row__price">
+                            <span class="lang-en">From €200 per person</span>
+                            <span class="lang-es">Desde €200 por persona</span>
+                        </div>
+                        <a href="#contact" class="btn btn--outline">
+                            <span class="lang-en">Request This Experience</span>
+                            <span class="lang-es">Solicitar Esta Experiencia</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="experience-row fade-in">
+                    <div class="experience-row__image"></div>
+                    <div class="experience-row__content">
+                        <div class="experience-row__number">IV</div>
+                        <h3 class="experience-row__title">
+                            <span class="lang-en">The Collection</span>
+                            <span class="lang-es">La Colección</span>
+                        </h3>
+                        <p class="experience-row__text">
+                            <span class="lang-en">A curated selection of rare and exceptional expressions. For the collector, the connoisseur, and the curious who seek something extraordinary.</span>
+                            <span class="lang-es">Una selección pensada de expresiones raras y excepcionales. Para el coleccionista, el conocedor y el curioso que busca algo extraordinario.</span>
+                        </p>
+                        <p class="experience-row__includes">
+                            <span class="lang-en">Includes: 5–7 rare expressions · Exclusive access · Detailed provenance notes</span>
+                            <span class="lang-es">Incluye: 5–7 expresiones raras · Acceso exclusivo · Información detallada de cada expresión</span>
+                        </p>
+                        <div class="experience-row__price">
+                            <span class="lang-en">From €250 per person</span>
+                            <span class="lang-es">Desde €250 por persona</span>
+                        </div>
+                        <a href="#contact" class="btn btn--outline">
+                            <span class="lang-en">Request This Experience</span>
+                            <span class="lang-es">Solicitar Esta Experiencia</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="experience-row fade-in">
+                    <div class="experience-row__image"></div>
+                    <div class="experience-row__content">
+                        <div class="experience-row__number">V</div>
+                        <h3 class="experience-row__title">
+                            <span class="lang-en">The Masterclass</span>
+                            <span class="lang-es">La Magistral</span>
+                        </h3>
+                        <p class="experience-row__text">
+                            <span class="lang-en">Academic sessions led by recognised whisky specialists. A deep, structured exploration of themes that matter — from cask types to the future of single malts.</span>
+                            <span class="lang-es">Sesiones académicas lideradas por expertos de whisky reconocidos. Una exploración profunda y estructurada de temas que importan — desde tipos de barril hasta el futuro de los single malts.</span>
+                        </p>
+                        <p class="experience-row__includes">
+                            <span class="lang-en">Includes: 7–10 expressions · Specialist-led session · Academic materials · Certificate</span>
+                            <span class="lang-es">Incluye: 7–10 expresiones · Sesión con especialista · Material académico · Certificado</span>
+                        </p>
+                        <div class="experience-row__price">
+                            <span class="lang-en">From €300 per person</span>
+                            <span class="lang-es">Desde €300 por persona</span>
+                        </div>
+                        <a href="#contact" class="btn btn--outline">
+                            <span class="lang-en">Request This Experience</span>
+                            <span class="lang-es">Solicitar Esta Experiencia</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="experience-row fade-in">
+                    <div class="experience-row__image"></div>
+                    <div class="experience-row__content">
+                        <div class="experience-row__number">VI</div>
+                        <h3 class="experience-row__title">
+                            <span class="lang-en">The Celebration</span>
+                            <span class="lang-es">La Celebración</span>
+                        </h3>
+                        <p class="experience-row__text">
+                            <span class="lang-en">Exclusive whisky events for milestone moments — corporate gatherings, private celebrations, and gatherings that deserve something extraordinary.</span>
+                            <span class="lang-es">Eventos exclusivos de whisky para ocasiones especiales — reuniones corporativas, celebraciones privadas y reuniones que merecen algo extraordinario.</span>
+                        </p>
+                        <p class="experience-row__includes">
+                            <span class="lang-en">Includes: Custom expression selection · Full event curation · On-site coordination</span>
+                            <span class="lang-es">Incluye: Selección de expresiones a medida · Curaduría completa del evento · Coordinación en el lugar</span>
+                        </p>
+                        <div class="experience-row__price">
+                            <span class="lang-en">From €350 per person</span>
+                            <span class="lang-es">Desde €350 por persona</span>
+                        </div>
+                        <a href="#contact" class="btn btn--outline">
+                            <span class="lang-en">Request This Experience</span>
+                            <span class="lang-es">Solicitar Esta Experiencia</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Ultra Bespoke Detail -->
+                <div class="ultra-detail fade-in" style="margin-top: var(--space-3xl);">
+                    <div class="ultra-detail__inner">
+                        <div class="ultra-detail__crown">★</div>
+                        <span class="section-label">
+                            <span class="lang-en">Flagship Service</span>
+                            <span class="lang-es">Servicio Insignia</span>
+                        </span>
+                        <h2 class="ultra-detail__title">Ultra Bespoke Experience</h2>
+                        <p class="ultra-detail__text">
+                            <span class="lang-en">Our most exclusive offering. A completely customised whisky experience designed from scratch for your occasion, your guests, and your vision. We travel anywhere in the world to bring this to life. Access to private collections, rare expressions, and a level of curation that knows no limits.</span>
+                            <span class="lang-es">Nuestra oferta más exclusiva. Una experiencia de whisky completamente personalizada, pensada desde cero para tu ocasión, tus huéspedes y tu visión. Llegamos a cualquier lugar del mundo para hacerlo realidad. Acceso a colecciones privadas, expresiones raras y un nivel de curaduría sin límites.</span>
+                        </p>
+                        <p class="ultra-detail__note">
+                            <span class="lang-en">Price upon consultation · High-value service</span>
+                            <span class="lang-es">Precio a consultar · Servicio de alto valor</span>
+                        </p>
+                        <a href="#contact" class="btn btn--primary">
+                            <span class="lang-en">Inquire Now</span>
+                            <span class="lang-es">Consulta Ahora</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             CONTACT
+        =========================================== -->
+        <section class="contact section-padding" id="contact">
+            <div class="container">
+                <div class="text-center fade-in" style="margin-bottom: var(--space-3xl);">
+                    <span class="section-label">
+                        <span class="lang-en">Get in Touch</span>
+                        <span class="lang-es">Contáctanos</span>
+                    </span>
+                    <h2 class="section-title">
+                        <span class="lang-en">Begin Your Experience</span>
+                        <span class="lang-es">Empieza Tu Experiencia</span>
+                    </h2>
+                    <p class="section-subtitle mx-auto">
+                        <span class="lang-en">Tell us what you're looking for and we'll craft something extraordinary for you.</span>
+                        <span class="lang-es">Cuéntanos qué tienes en mente y haremos algo extraordinario para ti.</span>
+                    </p>
+                </div>
+
+                <div class="contact__grid">
+                    <form class="contact__form fade-in" onsubmit="handleSubmit(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">
+                                    <span class="lang-en">Full Name</span>
+                                    <span class="lang-es">Nombre Completo</span>
+                                </label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">
+                                    <span class="lang-en">Phone / WhatsApp</span>
+                                    <span class="lang-es">Teléfono / WhatsApp</span>
+                                </label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="experience">
+                                    <span class="lang-en">Experience of Interest</span>
+                                    <span class="lang-es">Experiencia de Interés</span>
+                                </label>
+                                <select id="experience" name="experience" required>
+                                    <option value="" disabled selected>
+                                        <span class="lang-en">Select an experience</span>
+                                        <span class="lang-es">Selecciona una experiencia</span>
+                                    </option>
+                                    <option value="introduction">I — The Introduction</option>
+                                    <option value="journey">II — The Journey</option>
+                                    <option value="deep-dive">III — The Deep Dive</option>
+                                    <option value="collection">IV — The Collection</option>
+                                    <option value="masterclass">V — The Masterclass</option>
+                                    <option value="celebration">VI — The Celebration</option>
+                                    <option value="ultra-bespoke">Ultra Bespoke Experience</option>
+                                    <option value="other">
+                                        <span class="lang-en">Other / Not sure yet</span>
+                                        <span class="lang-es">Otro / Aún no decidido</span>
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">
+                                <span class="lang-en">Message / Tell Us About Your Event</span>
+                                <span class="lang-es">Mensaje / Cuéntanos qué tienes en mente</span>
+                            </label>
+                            <textarea id="message" name="message" rows="5"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn--primary">
+                                <span class="lang-en">Send Request</span>
+                                <span class="lang-es">Enviar Solicitud</span>
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="contact__info fade-in">
+                        <div class="contact__info-block">
+                            <h4 class="contact__info-title">
+                                <span class="lang-en">Prefer WhatsApp?</span>
+                                <span class="lang-es">¿Prefieres WhatsApp?</span>
+                            </h4>
+                            <p class="contact__info-text">
+                                <span class="lang-en">Skip the form and message us directly. We respond within 24 hours.</span>
+                                <span class="lang-es">Olvídate del formulario y escríbenos directamente. Respondemos en menos de 24 horas.</span>
+                            </p>
+                            <a href="https://wa.me/XXXXXXXXXXX" target="_blank" class="btn btn--whatsapp" style="margin-top: var(--space-sm);">
+                                <span class="lang-en">Chat on WhatsApp</span>
+                                <span class="lang-es">Escribir por WhatsApp</span>
+                            </a>
+                        </div>
+
+                        <div class="contact__info-block">
+                            <h4 class="contact__info-title">
+                                <span class="lang-en">Follow Us</span>
+                                <span class="lang-es">Síguenos</span>
+                            </h4>
+                            <div class="contact__social">
+                                <a href="https://instagram.com/whiskyrescue" target="_blank" rel="noopener">IG</a>
+                                <a href="https://tiktok.com/@whisky.rescue" target="_blank" rel="noopener">TT</a>
+                            </div>
+                        </div>
+
+                        <div class="contact__info-block">
+                            <h4 class="contact__info-title">
+                                <span class="lang-en">Global Reach</span>
+                                <span class="lang-es">Alcance Global</span>
+                            </h4>
+                            <p class="contact__info-text">
+                                <span class="lang-en">We travel wherever the experience requires. Bogotá, Monaco, Seoul, or anywhere in between.</span>
+                                <span class="lang-es">Llegamos donde la experiencia lo pida. Bogotá, Mónaco, Seúl, o cualquier lugar del mundo.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==========================================
+         FOOTER
+    =========================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__main">
+                <div>
+                    <div class="header__logo" style="font-size: 1.2rem; margin-bottom: var(--space-sm);">
+                        <!-- reemplazar con SVG del logo -->
+                        Whisky Rescue
+                    </div>
+                    <p class="footer__brand-desc">
+                        <span class="lang-en">Exclusive whisky experiences. Curated with intention, delivered with passion.</span>
+                        <span class="lang-es">Experiencias exclusivas de whisky. Pensadas con cuidado, vividas con pasión.</span>
+                    </p>
+                </div>
+
+                <div>
+                        <h4 class="footer__heading">
+                            <span class="lang-en">Navigate</span>
+                            <span class="lang-es">Menú</span>
+                        </h4>
+                    <ul class="footer__links">
+                        <li><a href="#experiences">
+                            <span class="lang-en">Experiences</span>
+                            <span class="lang-es">Experiencias</span>
+                        </a></li>
+                        <li><a href="#about">
+                            <span class="lang-en">Our Story</span>
+                            <span class="lang-es">Sobre Nosotros</span>
+                        </a></li>
+                        <li><a href="#contact">
+                            <span class="lang-en">Contact</span>
+                            <span class="lang-es">Contacto</span>
+                        </a></li>
+                    </ul>
+                </div>
+
+                <div>
+                        <h4 class="footer__heading">
+                            <span class="lang-en">Connect</span>
+                            <span class="lang-es">Síguenos</span>
+                        </h4>
+                    <ul class="footer__links">
+                        <li><a href="https://instagram.com/whiskyrescue" target="_blank" rel="noopener">Instagram</a></li>
+                        <li><a href="https://tiktok.com/@whisky.rescue" target="_blank" rel="noopener">TikTok</a></li>
+                        <li><a href="https://wa.me/XXXXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                        <h4 class="footer__heading">
+                            <span class="lang-en">Newsletter</span>
+                            <span class="lang-es">Newsletter</span>
+                        </h4>
+                    <p class="footer__newsletter-text">
+                        <span class="lang-en">Receive updates on new experiences and exclusive events.</span>
+                        <span class="lang-es">Entérate de nuevas experiencias y eventos exclusivos.</span>
+                    </p>
+                    <form class="footer__newsletter-form" onsubmit="handleNewsletter(event)">
+                        <input type="email" placeholder="Email" required>
+                        <button type="submit">
+                            <span class="lang-en">Subscribe</span>
+                            <span class="lang-es">Suscribir</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <div class="footer__copyright">
+                    © 2024 Whisky Rescue. 
+                    <span class="lang-en">All rights reserved.</span>
+                    <span class="lang-es">Todos los derechos reservados.</span>
+                </div>
+                <div class="footer__legal">
+                    <!-- reemplazar con enlaces reales cuando las políticas estén creadas -->
+                    <a href="#">
+                        <span class="lang-en">Privacy Policy</span>
+                        <span class="lang-es">Política de Privacidad</span>
+                        <span style="opacity: 0.5; font-size: 0.6rem;"> (Coming soon)</span>
+                    </a>
+                    <a href="#">
+                        <span class="lang-en">Legal Notice</span>
+                        <span class="lang-es">Aviso Legal</span>
+                        <span style="opacity: 0.5; font-size: 0.6rem;"> (Coming soon)</span>
+                    </a>
+                    <a href="#">
+                        <span class="lang-en">Cookie Policy</span>
+                        <span class="lang-es">Política de Cookies</span>
+                        <span style="opacity: 0.5; font-size: 0.6rem;"> (Coming soon)</span>
+                    </a>
+                </div>
+                <div class="footer__age-note">
+                    <span class="lang-en">This site contains information about alcoholic beverages. Please confirm you are of legal drinking age in your country.</span>
+                    <span class="lang-es">Este sitio contiene información sobre bebidas alcohólicas. Por favor confirma que tienes la edad legal para acceder.</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+         JAVASCRIPT
+    =========================================== -->
+    <script>
+        // ========================================
+        // AGE GATE
+        // ========================================
+        function confirmAge() {
+            const gate = document.getElementById('ageGate');
+            const main = document.getElementById('mainContent');
+            gate.classList.add('hidden');
+            main.style.opacity = '1';
+            document.body.classList.remove('no-scroll');
+            sessionStorage.setItem('ageVerified', 'true');
+        }
+
+        function denyAge() {
+            window.location.href = 'https://www.google.com';
+        }
+
+        // Check if already verified this session
+        if (sessionStorage.getItem('ageVerified') === 'true') {
+            document.getElementById('ageGate').style.display = 'none';
+            document.getElementById('mainContent').style.opacity = '1';
+        } else {
+            document.body.classList.add('no-scroll');
+        }
+
+        // ========================================
+        // LANGUAGE TOGGLE
+        // ========================================
+        function setLang(lang) {
+            document.documentElement.setAttribute('data-lang', lang);
+            
+            // Update all lang toggle buttons
+            document.querySelectorAll('[onclick="setLang(\'en\')"]').forEach(btn => {
+                btn.classList.toggle('active', lang === 'en');
+            });
+            document.querySelectorAll('[onclick="setLang(\'es\')"]').forEach(btn => {
+                btn.classList.toggle('active', lang === 'es');
+            });
+
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+        }
+
+        // ========================================
+        // HEADER SCROLL EFFECT
+        // ========================================
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // ========================================
+        // MOBILE MENU
+        // ========================================
+        function toggleMobileMenu() {
+            const btn = document.getElementById('menuBtn');
+            const nav = document.getElementById('mobileNav');
+            btn.classList.toggle('active');
+            nav.classList.toggle('open');
+            document.body.classList.toggle('no-scroll');
+        }
+
+        function closeMobileMenu() {
+            const btn = document.getElementById('menuBtn');
+            const nav = document.getElementById('mobileNav');
+            btn.classList.remove('active');
+            nav.classList.remove('open');
+            document.body.classList.remove('no-scroll');
+        }
+
+        // ========================================
+        // SCROLL ANIMATIONS
+        // ========================================
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ========================================
+        // FORM HANDLERS (placeholders)
+        // ========================================
+        function handleSubmit(e) {
+            e.preventDefault();
+            // reemplazar con integración real: envío a backend/API
+            alert('Thank you for your inquiry. We will contact you within 24 hours.');
+            e.target.reset();
+        }
+
+        function handleNewsletter(e) {
+            e.preventDefault();
+            // reemplazar con integración real: servicio de email marketing
+            alert('Thank you for subscribing to our newsletter.');
+            e.target.reset();
+        }
+
+        // ========================================
+        // SMOOTH SCROLL FOR ANCHOR LINKS
+        // ========================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
