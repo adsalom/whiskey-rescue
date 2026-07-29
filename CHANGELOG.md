@@ -40,7 +40,9 @@ Material del cliente recibido (carpeta `Identidad`): brand guide oficial, 6 logo
   - **Guild of Professional Actors** (fuente del logotipo, licencia uso libre): titular del hero y títulos Ultra Bespoke — solo textos verificados sin acentos (la fuente no incluye charset español)
   - **Centaur MT** (archivo del cliente, woff2 33 KB): serif editorial para títulos de sección, citas, numerales romanos y precios
   - **Barlow** (Google Fonts, línea gráfica KOM): sans funcional para cuerpo, navegación, etiquetas, botones y formularios
-- Logo oficial apilado en age gate, header y footer (`logo-stacked.png`: el PNG original del cliente con el lienzo transparente vacío recortado — el arte no se tocó). Favicons actualizados a ícono dorado sobre fondo color crema para mejorar visibilidad y accesibilidad.
+- Logo oficial apilado en age gate, header y footer (`logo-stacked.png`: el PNG original del cliente con el lienzo transparente vacío recortado — el arte no se tocó). Favicons actualizados a ícono blanco sobre fondo color negro de la marca (`#1D1D1B`) para alta visibilidad. (Anteriormente: ícono dorado sobre fondo crema)
+- Título de la pestaña (`<title>`) acortado a "Whisky Rescue - Experiences" para evitar truncamiento en el navegador.
+- Eliminada la marca de agua con el ícono del logo en el fondo del age gate para evitar la percepción de "logo sobre logo".
 - Ícono-estrella como marca de agua en secciones (recurso permitido por la guía)
 - Fotografías reales optimizadas (15 imágenes, ~2 MB total, JPEG progresivo) — todas verificadas sin hielo (restricción explícita del cliente)
 - Fotos del equipo incluidas sin nombres (decisión del cliente)
