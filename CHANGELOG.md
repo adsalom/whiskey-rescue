@@ -8,19 +8,63 @@
 
 | Elemento | Estado |
 |----------|--------|
-| Landing page (HTML/CSS/JS) | En desarrollo |
+| Landing page (HTML/CSS/JS) | Remodelada con identidad oficial |
 | Bilingüismo EN/ES | Implementado |
-| Age Gate | Implementado |
-| Formulario de contacto | Placeholder (pendiente integración) |
-| Contenido final (copy) | Pendiente del cliente |
-| Fotografías / assets visuales | Pendientes (usando placeholders) |
+| Age Gate | Implementado (con logo oficial) |
+| Identidad visual (paleta brand guide) | Aplicada (#B69759 · #593930 · #5C5C5B · #1D1D1B) |
+| Tipografías oficiales | Centaur MT + Guild of Professional Actors (local) + Barlow |
+| Logos oficiales | Integrados (age gate, header, footer, favicon, marca de agua) |
+| Fotografías del cliente | Integradas y optimizadas (verificadas sin hielo) |
+| Nombres de las 6 experiencias | Placeholders I–VI (pendiente del cliente) |
+| Formulario de contacto | Placeholder (pendiente integración + email destino) |
+| WhatsApp oficial | Placeholder marcado `wa.me/000000000000` |
 | Dominio personalizado | Pendiente |
 | Analytics (GA4, Meta, TikTok) | Placeholders configurados |
+| Textos legales (privacidad/cookies/aviso) | Enlaces "Próximamente" |
 | Deploy Cloudflare Pages | Activo |
 
 ---
 
 ## Registro
+
+### 2026-07-29 — Remodelación con identidad oficial de marca
+
+**Tipo:** Diseño / Desarrollo  
+**Estado:** Completado
+
+Material del cliente recibido (carpeta `Identidad`): brand guide oficial, 6 logos PNG, fuente Centaur MT, 13 fotografías de degustaciones + 2 fotos del equipo, documento de estrategia KOM.
+
+**Identidad aplicada (brand guide):**
+- Paleta oficial: `#B69759` (dorado), `#593930` (marrón), `#5C5C5B` (gris), `#1D1D1B` (negro)
+- Sistema tipográfico por roles:
+  - **Guild of Professional Actors** (fuente del logotipo, licencia uso libre): titular del hero y títulos Ultra Bespoke — solo textos verificados sin acentos (la fuente no incluye charset español)
+  - **Centaur MT** (archivo del cliente, woff2 33 KB): serif editorial para títulos de sección, citas, numerales romanos y precios
+  - **Barlow** (Google Fonts, línea gráfica KOM): sans funcional para cuerpo, navegación, etiquetas, botones y formularios
+- Logo oficial apilado en age gate, header y footer (`logo-stacked.png`: el PNG original del cliente con el lienzo transparente vacío recortado — el arte no se tocó), favicon
+- Ícono-estrella como marca de agua en secciones (recurso permitido por la guía)
+- Fotografías reales optimizadas (15 imágenes, ~2 MB total, JPEG progresivo) — todas verificadas sin hielo (restricción explícita del cliente)
+- Fotos del equipo incluidas sin nombres (decisión del cliente)
+
+**Correcciones sobre la versión anterior:**
+- Bug `lang-se` → `lang-es` (el título de Experiencias nunca se mostraba en español)
+- "Tailored Curaduría" → "Tailored Curation" (spanglish en texto EN)
+- Precios por experiencia unificados al rango oficial €100–€350/persona (la versión anterior asignaba precios escalonados no aprobados)
+- Opciones del select de experiencias ahora sí son bilingües (data-en/data-es + swap en `setLang`)
+- Alertas de formularios bilingües
+- Año del footer dinámico
+- `prefers-reduced-motion` respetado
+- Meta OG, JSON-LD de organización y preload de fuentes añadidos
+
+**Assets generados:**
+```
+assets/
+├── fonts/   centaur-mt-regular.woff2 · guild-of-professional-actors.woff2
+├── logos/   logo-stacked.png (original recortado de márgenes) · logo-gold.png
+│            logo-white.png · icon-gold.png · icon-dark.png · favicon-64.png · favicon-512.png
+└── img/     15 fotografías optimizadas (hero, experiencias, historia, equipo)
+```
+
+---
 
 ### 2025-07-28 — Deploy inicial a Cloudflare Pages
 
@@ -60,16 +104,17 @@
 
 > Estos elementos están esperando respuesta o aprobación del cliente.
 
-1. Nombre definitivo o provisional de las 6 experiencias
-2. Fotografías profesionales o uso de stock
-3. Destino del formulario de contacto (email específico)
+1. Nombre definitivo y descripción de las 6 experiencias (hoy: placeholders I–VI)
+2. Número oficial de WhatsApp (hoy: `wa.me/000000000000`)
+3. Email de contacto y destino del formulario
 4. Integración con CRM o solo email
-5. Verificación de edad: por sesión o con cookie
-6. Uso de cookies para analytics (RGPD)
-7. Contenido adicional (prensa, colaboraciones)
+5. IDs reales de analytics (GA4, Meta Pixel, TikTok Pixel, Meta CAPI)
+6. Textos legales: política de privacidad, aviso legal, política de cookies (RGPD)
+7. Testimonios reales (hoy: genéricos sin nombres)
 8. Tagline / propuesta de valor definitiva
-9. Brandbook con tipografías y colores exactos
-10. Dominio personalizado
+9. Dominio personalizado (whiskyrescue.com ya registrado)
+
+**Resueltos el 2026-07-29:** brandbook (paleta + tipografías), logos, fotografías reales, verificación de edad por sesión.
 
 ---
 

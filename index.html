@@ -6,44 +6,79 @@
     <title>Whisky Rescue — The Art of Whisky, Rescued</title>
     <meta name="description" content="Whisky Rescue offers exclusive whisky experiences, curated tastings, and bespoke events worldwide. Discover the art of whisky, rescued.">
 
-    <!-- reemplazar con tipografías reales del brandbook cuando estén disponibles -->
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Whisky Rescue — Exclusive Whisky Experiences">
+    <meta property="og:description" content="Curated whisky experiences and academic sessions. Global reach. Rescatamos el arte de tomar whisky.">
+    <meta property="og:image" content="assets/img/hero-pour.jpg">
+    <meta property="og:url" content="https://whiskyrescue.com">
+
+    <!-- Favicon (ícono oficial de la marca) -->
+    <link rel="icon" type="image/png" sizes="64x64" href="assets/logos/favicon-64.png">
+    <link rel="apple-touch-icon" href="assets/logos/favicon-512.png">
+
+    <!-- Tipografías oficiales de marca (brand guide) -->
+    <link rel="preload" href="assets/fonts/centaur-mt-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/guild-of-professional-actors.woff2" as="font" type="font/woff2" crossorigin>
+    <style>
+        /* Centaur MT — serif editorial oficial (archivo entregado por el cliente) */
+        @font-face {
+            font-family: 'Centaur MT';
+            src: url('assets/fonts/centaur-mt-regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        /* Guild of Professional Actors — la fuente del logotipo (Divide by Zero, uso libre).
+           Sin acentos en su charset: SOLO se aplica a textos verificados sin acentos. */
+        @font-face {
+            font-family: 'Guild of Professional Actors';
+            src: url('assets/fonts/guild-of-professional-actors.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+    </style>
+
+    <!-- Barlow: sans-serif de apoyo (línea gráfica KOM) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <!-- 
-        reemplazar con colores HEX exactos del brandbook:
-        --color-black: #0A0A0A;
-        --color-gold: #C8A96E;
-        --color-gold-light: #D4B87A;
-        --color-amber: #8B6914;
-        --color-cream: #F5F0E8;
-        --color-bone: #EDE6D8;
-        --color-charcoal: #1A1A1A;
-        --color-dark-brown: #2C1810;
-    -->
     <style>
         /* ========================================
-           CSS CUSTOM PROPERTIES
-           reemplazar con valores del brandbook
+           IDENTIDAD OFICIAL — BRAND GUIDE WHISKY RESCUE
+           Paleta:   #B69759 (dorado) · #593930 (marrón)
+                     #5C5C5B (gris)   · #1D1D1B (negro)
+
+           SISTEMA TIPOGRÁFICO (cada fuente con su rol):
+           · Guild of Professional Actors → voz de marca:
+             la fuente del logotipo. Solo titular del hero y
+             títulos Ultra Bespoke (textos sin acentos en EN/ES).
+           · Centaur MT → serif editorial: títulos de sección,
+             citas, numerales romanos, precios (soporta acentos).
+           · Barlow → sans funcional: cuerpo, navegación,
+             etiquetas, botones y formularios (soporta ñ/acentos).
+
+           Palabras clave: minimalista, elegante, moderno,
+           masculino, estilo, innovador
         ======================================== */
         :root {
-            --color-black: #0A0A0A;
-            --color-charcoal: #1A1A1A;
-            --color-dark-brown: #2C1810;
-            --color-gold: #C8A96E;
-            --color-gold-light: #D4B87A;
-            --color-gold-dark: #8B6914;
-            --color-amber: #A67C52;
-            --color-cream: #F5F0E8;
-            --color-bone: #EDE6D8;
-            --color-white: #FEFCF9;
-            --color-text: #E8E0D4;
-            --color-text-muted: #9B9080;
-            --color-text-dark: #2C2420;
+            --black: #1D1D1B;
+            --black-deep: #141413;
+            --gold: #B69759;
+            --gold-soft: #C9AC77;   /* tinte derivado del dorado oficial */
+            --gold-dim: rgba(182, 151, 89, 0.35);
+            --brown: #593930;
+            --brown-deep: #3A2620;  /* derivado oscuro del marrón oficial */
+            --gray: #5C5C5B;
+            --cream: #F2EDE3;       /* neutro claro para texto (logo negativo) */
+            --text: rgba(242, 237, 227, 0.88);
+            --text-muted: rgba(242, 237, 227, 0.55);
 
-            --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
-            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-brand: 'Guild of Professional Actors', 'Centaur MT', Georgia, serif;
+            --font-display: 'Centaur MT', 'Centaur', Georgia, 'Times New Roman', serif;
+            --font-body: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
             --space-xs: 0.5rem;
             --space-sm: 1rem;
@@ -53,9 +88,10 @@
             --space-2xl: 6rem;
             --space-3xl: 8rem;
 
-            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --max-width: 1200px;
-            --header-height: 80px;
+            --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            --max-width: 1240px;
+            --header-height: 100px;
+            --hairline: 1px solid var(--gold-dim);
         }
 
         /* ========================================
@@ -73,23 +109,18 @@
         }
 
         body {
-            font-family: var(--font-sans);
-            background-color: var(--color-black);
-            color: var(--color-text);
+            font-family: var(--font-body);
+            font-weight: 300;
+            background-color: var(--black);
+            color: var(--text);
             line-height: 1.7;
-            overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
-        body.no-scroll {
-            overflow: hidden;
-        }
+        body.no-scroll { overflow: hidden; }
 
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
+        img { display: block; max-width: 100%; }
 
         a {
             color: inherit;
@@ -97,56 +128,26 @@
             transition: var(--transition);
         }
 
-        button {
+        button, input, select, textarea {
             font-family: inherit;
-            cursor: pointer;
-            border: none;
-            background: none;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-display);
+            font-weight: 400;
+            color: var(--cream);
+            line-height: 1.15;
+        }
+
+        ::selection {
+            background: var(--gold);
+            color: var(--black);
         }
 
         /* ========================================
-           TYPOGRAPHY
-        ======================================== */
-        h1, h2, h3, h4, h5 {
-            font-family: var(--font-serif);
-            font-weight: 500;
-            line-height: 1.2;
-        }
-
-        h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); }
-        h2 { font-size: clamp(2rem, 4vw, 3rem); }
-        h3 { font-size: clamp(1.4rem, 2.5vw, 1.8rem); }
-        h4 { font-size: clamp(1.1rem, 2vw, 1.3rem); }
-
-        .section-label {
-            font-family: var(--font-sans);
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--color-gold);
-            margin-bottom: var(--space-sm);
-            display: block;
-        }
-
-        .section-title {
-            margin-bottom: var(--space-md);
-        }
-
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--color-text-muted);
-            max-width: 600px;
-        }
-
-        .gold-text { color: var(--color-gold); }
-        .cream-text { color: var(--color-cream); }
-
-        /* ========================================
-           LAYOUT UTILITIES
+           UTILIDADES
         ======================================== */
         .container {
-            width: 100%;
             max-width: var(--max-width);
             margin: 0 auto;
             padding: 0 var(--space-md);
@@ -159,65 +160,142 @@
         .text-center { text-align: center; }
         .mx-auto { margin-left: auto; margin-right: auto; }
 
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 0.72rem;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: var(--space-md);
+        }
+
+        .section-label::before,
+        .section-label::after {
+            content: '';
+            width: 34px;
+            height: 1px;
+            background: var(--gold-dim);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: var(--space-md);
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 620px;
+        }
+
+        /* Marca de agua: ícono de la marca (guía permite logo de fondo) */
+        .watermark {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.05;
+            user-select: none;
+        }
+
+        /* ========================================
+           BOTONES
+        ======================================== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            padding: 1.05rem 2.4rem;
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 0.8rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: var(--transition);
+            background: none;
+        }
+
+        .btn--primary {
+            background: var(--gold);
+            color: var(--black);
+            border-color: var(--gold);
+        }
+
+        .btn--primary:hover {
+            background: var(--gold-soft);
+            border-color: var(--gold-soft);
+            transform: translateY(-2px);
+        }
+
+        .btn--outline {
+            border-color: var(--gold-dim);
+            color: var(--gold);
+        }
+
+        .btn--outline:hover {
+            border-color: var(--gold);
+            background: rgba(182, 151, 89, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .btn--ghost {
+            color: var(--text-muted);
+            border-color: rgba(242, 237, 227, 0.15);
+        }
+
+        .btn--ghost:hover {
+            color: var(--cream);
+            border-color: rgba(242, 237, 227, 0.4);
+        }
+
+        .btn--whatsapp {
+            border-color: var(--gold-dim);
+            color: var(--cream);
+        }
+
+        .btn--whatsapp:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
         /* ========================================
            AGE GATE
         ======================================== */
         .age-gate {
             position: fixed;
             inset: 0;
-            z-index: 10000;
-            background: var(--color-black);
+            z-index: 2000;
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 1;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
         }
 
         .age-gate.hidden {
             opacity: 0;
+            visibility: hidden;
             pointer-events: none;
         }
 
         .age-gate__backdrop {
             position: absolute;
             inset: 0;
-            /* reemplazar con imagen de textura de madera oscura profesional */
-            background: 
-                radial-gradient(ellipse at center, rgba(44, 24, 16, 0.4) 0%, rgba(10, 10, 10, 0.95) 70%),
-                linear-gradient(135deg, var(--color-dark-brown) 0%, var(--color-black) 100%);
+            background:
+                linear-gradient(rgba(20, 20, 19, 0.92), rgba(20, 20, 19, 0.96)),
+                url('assets/img/hero-pour.jpg') center/cover no-repeat;
         }
 
-        .age-gate__content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            padding: var(--space-xl);
-            max-width: 480px;
-        }
-
-        .age-gate__logo {
-            font-family: var(--font-serif);
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            color: var(--color-gold);
-            margin-bottom: var(--space-lg);
-            letter-spacing: 0.05em;
-        }
-
-        .age-gate__question {
-            font-family: var(--font-serif);
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            color: var(--color-cream);
-            margin-bottom: var(--space-lg);
-            line-height: 1.6;
-            font-style: italic;
-        }
-
-        .age-gate__buttons {
-            display: flex;
-            gap: var(--space-sm);
-            justify-content: center;
-            flex-wrap: wrap;
+        .age-gate__backdrop::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('assets/logos/icon-gold.png') center/420px no-repeat;
+            opacity: 0.05;
         }
 
         .age-gate__lang {
@@ -225,95 +303,69 @@
             top: var(--space-md);
             right: var(--space-md);
             display: flex;
-            gap: var(--space-xs);
+            gap: 0.4rem;
             z-index: 2;
         }
 
-        .age-gate__lang button {
-            font-size: 0.8rem;
-            color: var(--color-text-muted);
-            padding: 0.3rem 0.6rem;
-            border: 1px solid transparent;
-            border-radius: 2px;
-            transition: var(--transition);
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
+        .age-gate__content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: var(--space-md);
+            max-width: 480px;
         }
 
-        .age-gate__lang button.active,
-        .age-gate__lang button:hover {
-            color: var(--color-gold);
-            border-color: var(--color-gold);
+        .age-gate__logo img {
+            width: min(240px, 60vw);
+            margin: 0 auto var(--space-lg);
+        }
+
+        .age-gate__question {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--cream);
+            margin-bottom: var(--space-lg);
+        }
+
+        .age-gate__buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-lg);
+        }
+
+        .age-gate__buttons .btn {
+            width: 100%;
+            max-width: 300px;
         }
 
         .age-gate__disclaimer {
-            margin-top: var(--space-lg);
-            font-size: 0.75rem;
-            color: var(--color-text-muted);
-            line-height: 1.5;
+            font-size: 0.78rem;
+            color: var(--text-muted);
         }
 
-        /* ========================================
-           BUTTONS
-        ======================================== */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.9rem 2.2rem;
-            font-family: var(--font-sans);
-            font-size: 0.8rem;
+        /* Selector de idioma (age gate, header, menú móvil) */
+        .lang-switch { display: flex; gap: 0.35rem; }
+
+        .lang-btn {
+            background: none;
+            border: var(--hairline);
+            color: var(--text-muted);
+            font-size: 0.7rem;
             font-weight: 500;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            border-radius: 2px;
+            letter-spacing: 0.14em;
+            padding: 0.35rem 0.7rem;
+            cursor: pointer;
             transition: var(--transition);
-            position: relative;
-            overflow: hidden;
         }
 
-        .btn--primary {
-            background: var(--color-gold);
-            color: var(--color-black);
-        }
+        .lang-btn:hover { color: var(--cream); }
 
-        .btn--primary:hover {
-            background: var(--color-gold-light);
-            transform: translateY(-1px);
-        }
-
-        .btn--outline {
-            background: transparent;
-            color: var(--color-gold);
-            border: 1px solid var(--color-gold);
-        }
-
-        .btn--outline:hover {
-            background: var(--color-gold);
-            color: var(--color-black);
-        }
-
-        .btn--ghost {
-            background: transparent;
-            color: var(--color-cream);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .btn--ghost:hover {
-            border-color: var(--color-gold);
-            color: var(--color-gold);
-        }
-
-        .btn--whatsapp {
-            background: #25D366;
-            color: #fff;
-            border: none;
-        }
-
-        .btn--whatsapp:hover {
-            background: #20BA5A;
-            transform: translateY(-1px);
+        .lang-btn.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--black);
         }
 
         /* ========================================
@@ -325,37 +377,38 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            height: var(--header-height);
-            display: flex;
-            align-items: center;
-            transition: var(--transition);
-            background: transparent;
+            transition: transform var(--transition), background var(--transition), backdrop-filter var(--transition);
+        }
+
+        .header--hidden {
+            transform: translateY(-100%);
         }
 
         .header.scrolled {
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 1px 0 rgba(200, 169, 110, 0.1);
+            background: rgba(29, 29, 27, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: var(--hairline);
         }
 
         .header__inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
             max-width: var(--max-width);
             margin: 0 auto;
             padding: 0 var(--space-md);
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .header__logo {
-            font-family: var(--font-serif);
-            font-size: 1.4rem;
-            color: var(--color-gold);
-            letter-spacing: 0.05em;
-            font-weight: 500;
-            /* reemplazar con SVG del logo cuando esté disponible */
+            display: flex;
+            align-items: center;
+        }
+
+        .header__logo img {
+            height: 78px;
+            width: auto;
         }
 
         .header__nav {
@@ -365,134 +418,81 @@
         }
 
         .header__nav a {
-            font-size: 0.8rem;
+            font-size: 0.76rem;
             font-weight: 500;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.24em;
             text-transform: uppercase;
-            color: var(--color-text);
+            color: var(--text);
             position: relative;
+            padding: 0.3rem 0;
         }
 
         .header__nav a::after {
             content: '';
             position: absolute;
-            bottom: -4px;
             left: 0;
+            bottom: 0;
             width: 0;
             height: 1px;
-            background: var(--color-gold);
+            background: var(--gold);
             transition: var(--transition);
         }
 
-        .header__nav a:hover::after,
-        .header__nav a.active::after {
-            width: 100%;
-        }
+        .header__nav a:hover { color: var(--gold); }
+        .header__nav a:hover::after { width: 100%; }
 
-        .header__nav a:hover {
-            color: var(--color-gold);
-        }
-
-        .header__lang-toggle {
-            display: flex;
-            gap: 0.3rem;
-            padding-left: var(--space-md);
-            border-left: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .header__lang-toggle button {
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--color-text-muted);
-            padding: 0.3rem 0.5rem;
-            transition: var(--transition);
-        }
-
-        .header__lang-toggle button.active {
-            color: var(--color-gold);
-        }
-
-        .header__lang-toggle button:hover {
-            color: var(--color-cream);
-        }
-
-        /* Mobile menu */
         .header__menu-btn {
             display: none;
             flex-direction: column;
-            gap: 5px;
-            padding: 8px;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
         }
 
         .header__menu-btn span {
-            width: 24px;
+            display: block;
+            width: 26px;
             height: 1.5px;
-            background: var(--color-cream);
+            background: var(--cream);
             transition: var(--transition);
         }
 
-        .header__menu-btn.active span:nth-child(1) {
-            transform: rotate(45deg) translate(4px, 5px);
-        }
-        .header__menu-btn.active span:nth-child(2) {
-            opacity: 0;
-        }
-        .header__menu-btn.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(4px, -5px);
-        }
+        .header__menu-btn.active span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+        .header__menu-btn.active span:nth-child(2) { opacity: 0; }
+        .header__menu-btn.active span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
 
+        /* Menú móvil */
         .mobile-nav {
             position: fixed;
             inset: 0;
-            z-index: 999;
-            background: rgba(10, 10, 10, 0.98);
+            z-index: 900;
+            background: rgba(20, 20, 19, 0.98);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: var(--space-lg);
             opacity: 0;
-            pointer-events: none;
+            visibility: hidden;
             transition: var(--transition);
         }
 
         .mobile-nav.open {
             opacity: 1;
-            pointer-events: all;
+            visibility: visible;
         }
 
         .mobile-nav a {
-            font-family: var(--font-serif);
-            font-size: 1.8rem;
-            color: var(--color-cream);
-            letter-spacing: 0.05em;
+            font-family: var(--font-display);
+            font-size: 1.9rem;
+            color: var(--cream);
         }
 
-        .mobile-nav a:hover {
-            color: var(--color-gold);
-        }
+        .mobile-nav a:hover { color: var(--gold); }
 
-        .mobile-nav__lang {
-            display: flex;
-            gap: var(--space-sm);
-            margin-top: var(--space-md);
-        }
-
-        .mobile-nav__lang button {
-            font-size: 0.8rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--color-text-muted);
-            padding: 0.5rem 1rem;
-            border: 1px solid rgba(255,255,255,0.15);
-        }
-
-        .mobile-nav__lang button.active {
-            color: var(--color-gold);
-            border-color: var(--color-gold);
-        }
+        .mobile-nav__lang { margin-top: var(--space-md); }
 
         /* ========================================
            HERO
@@ -500,80 +500,90 @@
         .hero {
             position: relative;
             min-height: 100vh;
+            min-height: 100svh;
             display: flex;
             align-items: center;
             justify-content: center;
+            text-align: center;
             overflow: hidden;
         }
 
         .hero__bg {
             position: absolute;
             inset: 0;
-            /* reemplazar con fotografía profesional de atmósfera de whisky — sin hielo */
-            background: 
-                linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.6) 50%, var(--color-black) 100%),
-                linear-gradient(135deg, var(--color-dark-brown) 0%, var(--color-charcoal) 50%, var(--color-black) 100%);
-            background-size: cover;
-            background-position: center;
+        }
+
+        .hero__bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .hero__overlay {
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse at 30% 50%, rgba(200, 169, 110, 0.06) 0%, transparent 60%);
+            background: linear-gradient(
+                to bottom,
+                rgba(29, 29, 27, 0.72) 0%,
+                rgba(29, 29, 27, 0.45) 45%,
+                rgba(29, 29, 27, 0.92) 100%
+            );
         }
 
         .hero__content {
             position: relative;
             z-index: 1;
-            text-align: center;
-            max-width: 800px;
-            padding: var(--space-xl) var(--space-md);
+            padding: var(--space-md);
+            max-width: 860px;
         }
 
         .hero__badge {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.25em;
+            gap: var(--space-sm);
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.34em;
             text-transform: uppercase;
-            color: var(--color-gold);
+            color: var(--gold);
             margin-bottom: var(--space-lg);
-            padding: 0.5rem 1.2rem;
-            border: 1px solid rgba(200, 169, 110, 0.3);
         }
 
+        .hero__badge::before,
+        .hero__badge::after {
+            content: '';
+            width: 44px;
+            height: 1px;
+            background: var(--gold-dim);
+        }
+
+        /* Titular del hero: la fuente del logotipo (textos EN/ES sin acentos) */
         .hero__title {
-            font-size: clamp(3rem, 7vw, 6rem);
-            font-weight: 400;
-            color: var(--color-cream);
+            font-family: var(--font-brand);
+            font-size: clamp(2.7rem, 7.2vw, 5rem);
+            line-height: 1.08;
+            letter-spacing: 0.015em;
             margin-bottom: var(--space-md);
-            line-height: 1.05;
+            text-shadow: 0 2px 34px rgba(0, 0, 0, 0.5);
         }
 
         .hero__title em {
-            font-style: italic;
-            color: var(--color-gold);
+            font-style: normal;
+            color: var(--gold);
         }
 
         .hero__subtitle {
-            font-family: var(--font-serif);
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            color: var(--color-text-muted);
-            margin-bottom: var(--space-xl);
-            font-style: italic;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: 1.1rem;
+            color: var(--text);
+            max-width: 560px;
+            margin: 0 auto var(--space-xl);
         }
 
         .hero__cta {
             display: flex;
+            flex-wrap: wrap;
             gap: var(--space-sm);
             justify-content: center;
-            flex-wrap: wrap;
         }
 
         .hero__scroll {
@@ -581,195 +591,173 @@
             bottom: var(--space-lg);
             left: 50%;
             transform: translateX(-50%);
+            z-index: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
-            color: var(--color-text-muted);
+            gap: 0.6rem;
             font-size: 0.65rem;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.3em;
             text-transform: uppercase;
-            animation: float 3s ease-in-out infinite;
+            color: var(--text-muted);
         }
 
         .hero__scroll-line {
             width: 1px;
-            height: 40px;
-            background: linear-gradient(to bottom, var(--color-gold), transparent);
+            height: 48px;
+            background: var(--gold-dim);
+            animation: scrollPulse 2.2s ease-in-out infinite;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(8px); }
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.35; transform: scaleY(1); }
+            50% { opacity: 1; transform: scaleY(1.15); }
         }
 
         /* ========================================
-           INTRO SECTION
+           INTRO
         ======================================== */
         .intro {
             position: relative;
-            background: var(--color-black);
         }
 
         .intro__grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-3xl);
+            grid-template-columns: 1fr 1.1fr;
+            gap: var(--space-2xl);
             align-items: center;
         }
 
-        .intro__image {
+        /* Marco dorado desplazado — recurso elegante de la línea gráfica */
+        .framed {
             position: relative;
-            aspect-ratio: 4/5;
-            overflow: hidden;
-            /* reemplazar con fotografía profesional */
-            background: linear-gradient(135deg, var(--color-dark-brown) 0%, var(--color-charcoal) 100%);
         }
 
-        .intro__image::after {
+        .framed::after {
             content: '';
             position: absolute;
             inset: 0;
-            border: 1px solid rgba(200, 169, 110, 0.15);
+            transform: translate(18px, 18px);
+            border: var(--hairline);
+            pointer-events: none;
         }
 
-        .intro__content {
-            padding: var(--space-xl) 0;
+        .framed img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            aspect-ratio: 4 / 5;
         }
 
         .intro__text {
-            font-size: 1.05rem;
-            color: var(--color-text);
             margin-bottom: var(--space-md);
-            line-height: 1.8;
+            color: var(--text);
         }
 
         .intro__divider {
-            width: 60px;
+            width: 64px;
             height: 1px;
-            background: var(--color-gold);
+            background: var(--gold);
             margin: var(--space-lg) 0;
         }
 
         .intro__stats {
             display: flex;
             gap: var(--space-xl);
-            margin-top: var(--space-lg);
         }
 
         .intro__stat-number {
-            font-family: var(--font-serif);
-            font-size: 2.5rem;
-            color: var(--color-gold);
+            font-family: var(--font-display);
+            font-size: 2.6rem;
+            color: var(--gold);
             line-height: 1;
         }
 
         .intro__stat-label {
-            font-size: 0.75rem;
-            color: var(--color-text-muted);
+            font-size: 0.72rem;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-top: 0.3rem;
+            color: var(--text-muted);
+            margin-top: 0.4rem;
         }
 
         /* ========================================
-           ULTRA BESPOKE
+           ULTRA BESPOKE (destaque premium)
         ======================================== */
         .ultra {
             position: relative;
-            background: var(--color-charcoal);
+            background:
+                linear-gradient(rgba(20, 20, 19, 0.9), rgba(29, 29, 27, 0.94)),
+                url('assets/img/pour-wood-dark.jpg') center/cover fixed;
             overflow: hidden;
         }
 
-        .ultra__bg-pattern {
-            position: absolute;
-            inset: 0;
-            opacity: 0.03;
-            /* reemplazar con textura sutil de madera o patrón geométrico */
-            background-image: 
-                repeating-linear-gradient(
-                    45deg,
-                    var(--color-gold) 0px,
-                    var(--color-gold) 1px,
-                    transparent 1px,
-                    transparent 40px
-                );
+        .ultra__watermark {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 640px;
         }
 
         .ultra__border {
             position: relative;
-            border: 1px solid rgba(200, 169, 110, 0.2);
-            padding: var(--space-3xl);
+            border: 1px solid var(--gold-dim);
+            outline: 1px solid rgba(182, 151, 89, 0.12);
+            outline-offset: 10px;
+            padding: var(--space-2xl) var(--space-xl);
             text-align: center;
+            background: rgba(20, 20, 19, 0.55);
         }
 
-        .ultra__icon {
-            width: 60px;
-            height: 60px;
+        .ultra__icon img {
+            width: 74px;
             margin: 0 auto var(--space-md);
-            border: 1px solid var(--color-gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-serif);
-            font-size: 1.5rem;
-            color: var(--color-gold);
         }
 
         .ultra__title {
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            color: var(--color-cream);
+            font-family: var(--font-brand); /* "Ultra Bespoke Experience" — sin acentos */
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            letter-spacing: 0.02em;
+            color: var(--gold);
             margin-bottom: var(--space-md);
         }
 
         .ultra__description {
-            font-size: 1.1rem;
-            color: var(--color-text);
-            max-width: 700px;
-            margin: 0 auto var(--space-md);
-            line-height: 1.8;
+            max-width: 680px;
+            margin: 0 auto var(--space-xl);
+            color: var(--text);
         }
 
         .ultra__features {
-            display: flex;
-            justify-content: center;
-            gap: var(--space-xl);
-            flex-wrap: wrap;
-            margin: var(--space-lg) 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
         }
 
         .ultra__feature {
-            text-align: center;
-            max-width: 200px;
+            padding-top: var(--space-md);
+            border-top: var(--hairline);
         }
 
         .ultra__feature-title {
-            font-family: var(--font-serif);
-            font-size: 1rem;
-            color: var(--color-gold);
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--cream);
             margin-bottom: 0.3rem;
         }
 
         .ultra__feature-text {
             font-size: 0.85rem;
-            color: var(--color-text-muted);
-        }
-
-        .ultra__cta {
-            margin-top: var(--space-lg);
+            color: var(--text-muted);
         }
 
         /* ========================================
            EXPERIENCES PREVIEW
         ======================================== */
-        .experiences-preview {
-            background: var(--color-black);
-        }
-
         .experiences-preview__header {
             text-align: center;
-            margin-bottom: var(--space-3xl);
+            margin-bottom: var(--space-2xl);
         }
 
         .experiences-grid {
@@ -780,89 +768,91 @@
 
         .experience-card {
             position: relative;
-            aspect-ratio: 3/4;
             overflow: hidden;
-            cursor: pointer;
-            group: true;
+            aspect-ratio: 4 / 5;
+            display: flex;
+            align-items: flex-end;
+            border: 1px solid transparent;
+            transition: var(--transition);
+        }
+
+        .experience-card:hover {
+            border-color: var(--gold-dim);
         }
 
         .experience-card__image {
             position: absolute;
             inset: 0;
-            /* reemplazar con fotografías profesionales de cada experiencia — sin hielo */
-            background: linear-gradient(135deg, var(--color-dark-brown) 0%, var(--color-charcoal) 100%);
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .experience-card:hover .experience-card__image {
-            transform: scale(1.05);
+        .experience-card__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .experience-card:hover .experience-card__image img {
+            transform: scale(1.06);
         }
 
         .experience-card__overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.2) 50%, transparent 100%);
-            transition: var(--transition);
-        }
-
-        .experience-card:hover .experience-card__overlay {
-            background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.4) 60%, rgba(10,10,10,0.2) 100%);
+            background: linear-gradient(
+                to top,
+                rgba(20, 20, 19, 0.95) 0%,
+                rgba(20, 20, 19, 0.55) 45%,
+                rgba(20, 20, 19, 0.1) 100%
+            );
         }
 
         .experience-card__content {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            position: relative;
             padding: var(--space-lg);
-            transform: translateY(20px);
-            transition: var(--transition);
-        }
-
-        .experience-card:hover .experience-card__content {
-            transform: translateY(0);
+            width: 100%;
         }
 
         .experience-card__number {
-            font-family: var(--font-serif);
-            font-size: 0.8rem;
-            color: var(--color-gold);
-            margin-bottom: 0.3rem;
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 0.4rem;
         }
 
         .experience-card__title {
-            font-family: var(--font-serif);
-            font-size: 1.3rem;
-            color: var(--color-cream);
-            margin-bottom: 0.5rem;
+            font-size: 1.55rem;
+            margin-bottom: 0.4rem;
         }
 
         .experience-card__desc {
-            font-size: 0.85rem;
-            color: var(--color-text-muted);
-            line-height: 1.5;
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .experience-card:hover .experience-card__desc {
-            opacity: 1;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: var(--space-sm);
         }
 
         .experience-card__price {
-            font-size: 0.75rem;
-            color: var(--color-gold);
-            margin-top: 0.8rem;
+            font-size: 0.7rem;
             font-weight: 500;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
         }
 
         /* ========================================
-           TESTIMONIALS
+           TESTIMONIOS
         ======================================== */
         .testimonials {
-            background: var(--color-charcoal);
+            background: var(--black-deep);
             position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials__watermark {
+            top: -120px;
+            right: -120px;
+            width: 420px;
         }
 
         .testimonials__grid {
@@ -872,331 +862,289 @@
         }
 
         .testimonial {
-            padding: var(--space-lg);
-            border: 1px solid rgba(200, 169, 110, 0.1);
-            position: relative;
+            border-top: var(--hairline);
+            padding-top: var(--space-lg);
         }
 
-        .testimonial__quote {
-            font-family: var(--font-serif);
-            font-size: 1.05rem;
-            font-style: italic;
-            color: var(--color-cream);
-            line-height: 1.7;
+        .testimonial__mark {
+            font-family: var(--font-display);
+            font-size: 3.4rem;
+            line-height: 0.6;
+            color: var(--gold);
+            display: block;
             margin-bottom: var(--space-md);
         }
 
-        .testimonial__quote::before {
-            content: '\201C';
-            font-size: 3rem;
-            color: var(--color-gold);
-            line-height: 0;
-            position: relative;
-            top: 0.5rem;
-            margin-right: 0.3rem;
+        .testimonial__quote {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            color: var(--cream);
+            margin-bottom: var(--space-md);
         }
 
         .testimonial__author {
-            font-size: 0.8rem;
-            color: var(--color-text-muted);
-            letter-spacing: 0.05em;
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-muted);
         }
 
         .testimonial__author strong {
-            color: var(--color-gold);
+            color: var(--gold);
             font-weight: 500;
         }
 
         /* ========================================
-           ABOUT / HISTORY
+           ABOUT / HISTORIA
         ======================================== */
-        .about {
-            background: var(--color-black);
-            position: relative;
-        }
-
         .about__hero {
             text-align: center;
-            max-width: 800px;
-            margin: 0 auto var(--space-3xl);
+            max-width: 780px;
+            margin: 0 auto var(--space-2xl);
         }
 
         .about__hero-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            color: var(--color-cream);
+            font-size: clamp(2.2rem, 5vw, 3.4rem);
             margin-bottom: var(--space-md);
         }
 
         .about__hero-text {
-            font-size: 1.1rem;
-            color: var(--color-text);
-            line-height: 1.8;
+            color: var(--text-muted);
+            font-size: 1.05rem;
         }
 
         .about__story {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: var(--space-3xl);
-            align-items: start;
+            gap: var(--space-xl) var(--space-2xl);
+            margin-bottom: var(--space-2xl);
         }
 
         .about__story-block {
-            padding: var(--space-lg) 0;
-        }
-
-        .about__story-block + .about__story-block {
-            border-top: 1px solid rgba(200, 169, 110, 0.1);
+            border-top: var(--hairline);
+            padding-top: var(--space-md);
         }
 
         .about__story-title {
-            font-size: 1.5rem;
-            color: var(--color-gold);
+            font-size: 1.6rem;
+            color: var(--gold);
             margin-bottom: var(--space-sm);
         }
 
         .about__story-text {
-            font-size: 1rem;
-            color: var(--color-text);
-            line-height: 1.8;
+            color: var(--text);
+            font-size: 0.98rem;
+        }
+
+        .about__gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .about__gallery figure {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about__gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            aspect-ratio: 3 / 4;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .about__gallery figure:hover img {
+            transform: scale(1.05);
+        }
+
+        .about__gallery figcaption {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: var(--space-md);
+            background: linear-gradient(to top, rgba(20,20,19,0.9), transparent);
+            font-size: 0.72rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--cream);
         }
 
         .about__values {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: var(--space-lg);
-            margin-top: var(--space-3xl);
         }
 
         .about__value {
             text-align: center;
-            padding: var(--space-lg);
-            border: 1px solid rgba(200, 169, 110, 0.1);
+            padding: var(--space-xl) var(--space-md);
+            border: 1px solid rgba(182, 151, 89, 0.16);
+            transition: var(--transition);
+        }
+
+        .about__value:hover {
+            border-color: var(--gold-dim);
+            background: rgba(182, 151, 89, 0.04);
         }
 
         .about__value-icon {
-            width: 50px;
-            height: 50px;
-            margin: 0 auto var(--space-sm);
-            border: 1px solid var(--color-gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-serif);
-            font-size: 1.2rem;
-            color: var(--color-gold);
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: var(--space-sm);
         }
 
         .about__value-title {
-            font-family: var(--font-serif);
-            font-size: 1.1rem;
-            color: var(--color-cream);
-            margin-bottom: 0.5rem;
+            font-size: 1.35rem;
+            margin-bottom: var(--space-sm);
         }
 
         .about__value-text {
             font-size: 0.9rem;
-            color: var(--color-text-muted);
-            line-height: 1.6;
+            color: var(--text-muted);
         }
 
         /* ========================================
            EXPERIENCES FULL
         ======================================== */
         .experiences-full {
-            background: var(--color-charcoal);
+            background: var(--black-deep);
         }
 
         .experience-row {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-3xl);
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: var(--space-2xl);
             align-items: center;
-            padding: var(--space-3xl) 0;
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid rgba(182, 151, 89, 0.12);
         }
 
-        .experience-row + .experience-row {
-            border-top: 1px solid rgba(200, 169, 110, 0.08);
-        }
+        .experience-row:last-of-type { border-bottom: none; }
 
-        .experience-row:nth-child(even) .experience-row__image {
-            order: 2;
-        }
-
-        .experience-row:nth-child(even) .experience-row__content {
-            order: 1;
-        }
+        .experience-row:nth-child(even) .experience-row__image { order: 2; }
+        .experience-row:nth-child(even) .experience-row__content { order: 1; }
 
         .experience-row__image {
-            aspect-ratio: 4/3;
-            overflow: hidden;
-            /* reemplazar con fotografía profesional por experiencia */
-            background: linear-gradient(135deg, var(--color-dark-brown) 0%, var(--color-black) 100%);
             position: relative;
+            overflow: hidden;
         }
 
-        .experience-row__image::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border: 1px solid rgba(200, 169, 110, 0.1);
+        .experience-row__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            aspect-ratio: 4 / 3;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .experience-row__image:hover img {
+            transform: scale(1.05);
         }
 
         .experience-row__number {
-            font-family: var(--font-serif);
-            font-size: 4rem;
-            color: rgba(200, 169, 110, 0.1);
-            line-height: 1;
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--gold);
             margin-bottom: var(--space-sm);
         }
 
+        .experience-row__number::after {
+            content: '';
+            width: 48px;
+            height: 1px;
+            background: var(--gold-dim);
+        }
+
         .experience-row__title {
-            font-size: 1.8rem;
-            color: var(--color-cream);
+            font-size: 2rem;
             margin-bottom: var(--space-sm);
         }
 
         .experience-row__text {
-            font-size: 1rem;
-            color: var(--color-text);
-            line-height: 1.8;
-            margin-bottom: var(--space-md);
+            color: var(--text);
+            margin-bottom: var(--space-sm);
         }
 
         .experience-row__includes {
-            font-size: 0.85rem;
-            color: var(--color-text-muted);
-            font-style: italic;
+            font-size: 0.8rem;
+            letter-spacing: 0.06em;
+            color: var(--text-muted);
             margin-bottom: var(--space-md);
         }
 
         .experience-row__price {
-            font-family: var(--font-serif);
-            font-size: 1.1rem;
-            color: var(--color-gold);
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            color: var(--gold);
             margin-bottom: var(--space-md);
         }
 
-        /* Ultra Bespoke - Final section */
-        .ultra-detail {
-            background: var(--color-black);
-            text-align: center;
+        /* Ultra Bespoke — detalle */
+        .ultra-detail__inner {
             position: relative;
+            text-align: center;
+            border: 1px solid var(--gold-dim);
+            outline: 1px solid rgba(182, 151, 89, 0.12);
+            outline-offset: 10px;
+            padding: var(--space-2xl) var(--space-xl);
+            background:
+                linear-gradient(rgba(20, 20, 19, 0.88), rgba(58, 38, 32, 0.55)),
+                url('assets/img/pour-wood-dark.jpg') center/cover;
             overflow: hidden;
         }
 
-        .ultra-detail__inner {
-            position: relative;
-            border: 1px solid rgba(200, 169, 110, 0.15);
-            padding: var(--space-3xl);
-            max-width: 900px;
-            margin: 0 auto;
+        .ultra-detail__watermark {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 520px;
         }
 
-        .ultra-detail__crown {
-            font-size: 2rem;
-            color: var(--color-gold);
-            margin-bottom: var(--space-md);
+        .ultra-detail__icon img {
+            width: 64px;
+            margin: 0 auto var(--space-md);
         }
 
         .ultra-detail__title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            color: var(--color-cream);
+            font-family: var(--font-brand); /* "Ultra Bespoke Experience" — sin acentos */
+            font-size: clamp(2rem, 4.5vw, 3.2rem);
+            letter-spacing: 0.02em;
+            color: var(--gold);
             margin-bottom: var(--space-md);
+            position: relative;
         }
 
         .ultra-detail__text {
-            font-size: 1.05rem;
-            color: var(--color-text);
-            max-width: 650px;
+            max-width: 700px;
             margin: 0 auto var(--space-md);
-            line-height: 1.8;
+            color: var(--text);
+            position: relative;
         }
 
         .ultra-detail__note {
-            font-family: var(--font-serif);
-            font-style: italic;
-            color: var(--color-gold);
-            font-size: 1.1rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--text-muted);
             margin-bottom: var(--space-lg);
+            position: relative;
         }
 
         /* ========================================
-           CONTACT
+           CONTACTO
         ======================================== */
-        .contact {
-            background: var(--color-black);
-        }
-
         .contact__grid {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
-            gap: var(--space-3xl);
-        }
-
-        .contact__form {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-md);
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-        }
-
-        .form-group label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--color-text-muted);
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            font-family: var(--font-sans);
-            font-size: 0.95rem;
-            padding: 0.9rem 1rem;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(200, 169, 110, 0.15);
-            color: var(--color-cream);
-            transition: var(--transition);
-            border-radius: 2px;
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: var(--color-text-muted);
-            opacity: 0.5;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--color-gold);
-            background: rgba(200, 169, 110, 0.03);
-        }
-
-        .form-group select {
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23C8A96E' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 1rem center;
-            padding-right: 2.5rem;
-        }
-
-        .form-group select option {
-            background: var(--color-charcoal);
-            color: var(--color-cream);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
+            gap: var(--space-2xl);
         }
 
         .form-row {
@@ -1205,29 +1153,78 @@
             gap: var(--space-md);
         }
 
-        .contact__info {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-lg);
-            padding-top: var(--space-md);
+        .form-group {
+            margin-bottom: var(--space-md);
         }
 
-        .contact__info-block {
-            padding: var(--space-md);
-            border: 1px solid rgba(200, 169, 110, 0.1);
-        }
-
-        .contact__info-title {
-            font-family: var(--font-serif);
-            font-size: 1rem;
-            color: var(--color-gold);
+        .form-group label {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
             margin-bottom: 0.5rem;
         }
 
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.95rem 1.1rem;
+            background: rgba(242, 237, 227, 0.03);
+            border: 1px solid rgba(242, 237, 227, 0.14);
+            color: var(--cream);
+            font-size: 0.95rem;
+            font-weight: 300;
+            transition: var(--transition);
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23B69759' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            cursor: pointer;
+        }
+
+        .form-group select option {
+            background: var(--black);
+            color: var(--cream);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(182, 151, 89, 0.05);
+        }
+
+        .form-group textarea { resize: vertical; }
+
+        .contact__info-block {
+            border-top: var(--hairline);
+            padding: var(--space-lg) 0;
+        }
+
+        .contact__info-title {
+            font-size: 1.4rem;
+            color: var(--cream);
+            margin-bottom: var(--space-xs);
+        }
+
         .contact__info-text {
-            font-size: 0.9rem;
-            color: var(--color-text-muted);
-            line-height: 1.6;
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin-bottom: var(--space-sm);
+        }
+
+        .contact__info-note {
+            font-size: 0.72rem;
+            color: var(--gray);
+            letter-spacing: 0.08em;
+            margin-top: 0.6rem;
         }
 
         .contact__social {
@@ -1236,290 +1233,161 @@
         }
 
         .contact__social a {
-            width: 44px;
-            height: 44px;
-            border: 1px solid rgba(200, 169, 110, 0.2);
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            color: var(--color-text-muted);
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
+            width: 52px;
+            height: 52px;
+            border: var(--hairline);
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: var(--gold);
             transition: var(--transition);
         }
 
         .contact__social a:hover {
-            border-color: var(--color-gold);
-            color: var(--color-gold);
+            background: var(--gold);
+            color: var(--black);
+            border-color: var(--gold);
         }
 
         /* ========================================
            FOOTER
         ======================================== */
         .footer {
-            background: var(--color-charcoal);
-            border-top: 1px solid rgba(200, 169, 110, 0.08);
+            background: var(--black-deep);
+            border-top: var(--hairline);
+            padding: var(--space-2xl) 0 var(--space-lg);
         }
 
         .footer__main {
             display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+            grid-template-columns: 1.4fr 1fr 1fr 1.3fr;
             gap: var(--space-xl);
-            padding: var(--space-3xl) 0;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .footer__logo img {
+            height: 96px;
+            width: auto;
+            margin-bottom: var(--space-sm);
         }
 
         .footer__brand-desc {
             font-size: 0.9rem;
-            color: var(--color-text-muted);
-            line-height: 1.7;
-            margin-top: var(--space-sm);
+            color: var(--text-muted);
             max-width: 280px;
         }
 
         .footer__heading {
-            font-family: var(--font-serif);
-            font-size: 0.9rem;
-            color: var(--color-gold);
+            font-family: var(--font-body);
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.26em;
+            text-transform: uppercase;
+            color: var(--gold);
             margin-bottom: var(--space-md);
-            letter-spacing: 0.05em;
         }
 
         .footer__links {
             list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
         }
+
+        .footer__links li { margin-bottom: 0.6rem; }
 
         .footer__links a {
-            font-size: 0.85rem;
-            color: var(--color-text-muted);
-            transition: var(--transition);
+            font-size: 0.9rem;
+            color: var(--text-muted);
         }
 
-        .footer__links a:hover {
-            color: var(--color-gold);
-        }
+        .footer__links a:hover { color: var(--gold); }
 
         .footer__newsletter-text {
-            font-size: 0.85rem;
-            color: var(--color-text-muted);
+            font-size: 0.88rem;
+            color: var(--text-muted);
             margin-bottom: var(--space-sm);
-            line-height: 1.6;
         }
 
         .footer__newsletter-form {
             display: flex;
-            gap: 0;
+            border: 1px solid rgba(242, 237, 227, 0.14);
         }
 
         .footer__newsletter-form input {
             flex: 1;
-            font-family: var(--font-sans);
-            font-size: 0.85rem;
-            padding: 0.7rem 1rem;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(200, 169, 110, 0.15);
-            border-right: none;
-            color: var(--color-cream);
+            min-width: 0;
+            padding: 0.85rem 1rem;
+            background: transparent;
+            border: none;
+            color: var(--cream);
+            font-size: 0.9rem;
         }
 
-        .footer__newsletter-form input::placeholder {
-            color: var(--color-text-muted);
-            opacity: 0.5;
-        }
-
-        .footer__newsletter-form input:focus {
-            outline: none;
-            border-color: var(--color-gold);
-        }
+        .footer__newsletter-form input:focus { outline: none; }
 
         .footer__newsletter-form button {
-            font-family: var(--font-sans);
+            padding: 0.85rem 1.3rem;
+            background: var(--gold);
+            border: none;
+            color: var(--black);
             font-size: 0.7rem;
             font-weight: 600;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
-            padding: 0.7rem 1.2rem;
-            background: var(--color-gold);
-            color: var(--color-black);
-            border: 1px solid var(--color-gold);
+            cursor: pointer;
             transition: var(--transition);
         }
 
         .footer__newsletter-form button:hover {
-            background: var(--color-gold-light);
+            background: var(--gold-soft);
         }
 
         .footer__bottom {
-            border-top: 1px solid rgba(200, 169, 110, 0.08);
-            padding: var(--space-md) 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: var(--space-sm);
+            border-top: 1px solid rgba(182, 151, 89, 0.12);
+            padding-top: var(--space-lg);
+            text-align: center;
         }
 
         .footer__copyright {
-            font-size: 0.75rem;
-            color: var(--color-text-muted);
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: var(--space-sm);
         }
 
         .footer__legal {
             display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: var(--space-md);
+            margin-bottom: var(--space-sm);
         }
 
         .footer__legal a {
-            font-size: 0.7rem;
-            color: var(--color-text-muted);
-            letter-spacing: 0.05em;
+            font-size: 0.78rem;
+            color: var(--text-muted);
         }
 
-        .footer__legal a:hover {
-            color: var(--color-gold);
+        .footer__legal a:hover { color: var(--gold); }
+
+        .footer__legal .soon {
+            opacity: 0.45;
+            font-size: 0.66rem;
         }
 
         .footer__age-note {
-            width: 100%;
-            text-align: center;
-            font-size: 0.7rem;
-            color: var(--color-text-muted);
-            opacity: 0.6;
-            margin-top: var(--space-sm);
-            padding-top: var(--space-sm);
-            border-top: 1px solid rgba(200, 169, 110, 0.05);
+            font-size: 0.72rem;
+            color: var(--gray);
+            max-width: 560px;
+            margin: 0 auto;
         }
 
         /* ========================================
-           RESPONSIVE
-        ======================================== */
-        @media (max-width: 1024px) {
-            .experiences-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .testimonials__grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer__main {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .header__nav {
-                display: none;
-            }
-
-            .header__menu-btn {
-                display: flex;
-            }
-
-            .intro__grid {
-                grid-template-columns: 1fr;
-                gap: var(--space-xl);
-            }
-
-            .intro__image {
-                aspect-ratio: 16/9;
-            }
-
-            .intro__stats {
-                gap: var(--space-lg);
-            }
-
-            .ultra__border {
-                padding: var(--space-xl) var(--space-md);
-            }
-
-            .ultra__features {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .experiences-grid {
-                grid-template-columns: 1fr;
-                max-width: 400px;
-                margin: 0 auto;
-            }
-
-            .testimonials__grid {
-                grid-template-columns: 1fr;
-            }
-
-            .about__story {
-                grid-template-columns: 1fr;
-            }
-
-            .about__values {
-                grid-template-columns: 1fr;
-            }
-
-            .experience-row {
-                grid-template-columns: 1fr;
-                gap: var(--space-xl);
-            }
-
-            .experience-row:nth-child(even) .experience-row__image,
-            .experience-row:nth-child(even) .experience-row__content {
-                order: unset;
-            }
-
-            .contact__grid {
-                grid-template-columns: 1fr;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .footer__main {
-                grid-template-columns: 1fr;
-                gap: var(--space-lg);
-            }
-
-            .footer__bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .footer__legal {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero__cta {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 280px;
-            }
-
-            .intro__stats {
-                flex-direction: column;
-                gap: var(--space-md);
-            }
-
-            .ultra-detail__inner {
-                padding: var(--space-xl) var(--space-md);
-            }
-        }
-
-        /* ========================================
-           ANIMATIONS
+           ANIMACIONES DE SCROLL
         ======================================== */
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(28px);
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
@@ -1528,16 +1396,67 @@
             transform: translateY(0);
         }
 
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in { opacity: 1; transform: none; transition: none; }
+            html { scroll-behavior: auto; }
+        }
+
         /* ========================================
-           LANGUAGE SYSTEM
+           SISTEMA DE IDIOMAS
         ======================================== */
         [data-lang="es"] .lang-en { display: none !important; }
         [data-lang="en"] .lang-es { display: none !important; }
+
+        /* ========================================
+           RESPONSIVE
+        ======================================== */
+        @media (max-width: 1024px) {
+            .experiences-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonials__grid { grid-template-columns: 1fr; gap: var(--space-xl); }
+            .about__values { grid-template-columns: 1fr; gap: var(--space-md); }
+            .footer__main { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            :root { --header-height: 80px; }
+
+            .header__nav { display: none; }
+            .header__menu-btn { display: flex; }
+            .header__logo img { height: 58px; }
+
+            .intro__grid,
+            .experience-row,
+            .contact__grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-xl);
+            }
+
+            .experience-row:nth-child(even) .experience-row__image { order: 0; }
+            .experience-row:nth-child(even) .experience-row__content { order: 1; }
+
+            .about__story { grid-template-columns: 1fr; gap: var(--space-lg); }
+            .about__gallery { grid-template-columns: 1fr; }
+            .ultra__features { grid-template-columns: 1fr; gap: var(--space-md); }
+            .form-row { grid-template-columns: 1fr; }
+
+            .ultra__border,
+            .ultra-detail__inner {
+                padding: var(--space-xl) var(--space-md);
+            }
+
+            .intro__stats { gap: var(--space-lg); flex-wrap: wrap; }
+        }
+
+        @media (max-width: 560px) {
+            .experiences-grid { grid-template-columns: 1fr; }
+            .footer__main { grid-template-columns: 1fr; gap: var(--space-lg); }
+            .hero__cta .btn { width: 100%; }
+        }
     </style>
 
-    <!-- 
+    <!--
         ANALYTICS PLACEHOLDERS
-        reemplazar los IDs con los valores reales del cliente
+        TODO: reemplazar los IDs con los valores reales del cliente
     -->
     <!-- Google Analytics (GA4) -->
     <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
@@ -1565,15 +1484,29 @@
     <!-- TikTok Pixel -->
     <!-- <script>
         !function (w, d, t) {
-            w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e+""]=+new Date,ttq._o=ttq._o||{},ttq._o[e+""]=n||{};var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=r+"?sdkid="+e+"&lib="+t;var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(a,s)};
+            w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return t},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e+""]=+new Date,ttq._o=ttq._o||{},ttq._o[e+""]=n||{};var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=r+"?sdkid="+e+"&lib="+t;var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(a,s)};
             ttq.load('TIKTOK_PIXEL_ID');
             ttq.page();
         }(window, document, 'ttq');
     </script> -->
 
     <!-- Meta Conversions API -->
-    <!-- Reemplazar con el token real del servidor -->
-    <!-- Server-side tracking configurado en el backend -->
+    <!-- TODO: token de servidor — server-side tracking se configura en el backend -->
+
+    <!-- JSON-LD: datos de la organización -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Whisky Rescue",
+        "url": "https://whiskyrescue.com",
+        "logo": "https://whiskyrescue.com/assets/logos/logo-gold.png",
+        "sameAs": [
+            "https://instagram.com/whiskyrescue",
+            "https://tiktok.com/@whisky.rescue"
+        ]
+    }
+    </script>
 </head>
 <body>
     <!-- ==========================================
@@ -1582,13 +1515,14 @@
     <div class="age-gate" id="ageGate">
         <div class="age-gate__backdrop"></div>
         <div class="age-gate__lang">
-            <button class="active" onclick="setLang('en')">EN</button>
-            <button onclick="setLang('es')">ES</button>
+            <div class="lang-switch">
+                <button class="lang-btn active" data-set-lang="en">EN</button>
+                <button class="lang-btn" data-set-lang="es">ES</button>
+            </div>
         </div>
         <div class="age-gate__content">
             <div class="age-gate__logo">
-                <!-- reemplazar con logo SVG del brandbook -->
-                Whisky Rescue
+                <img src="assets/logos/logo-stacked.png" alt="Whisky Rescue">
             </div>
             <p class="age-gate__question">
                 <span class="lang-en">Please confirm you are of legal drinking age in your country to access this site.</span>
@@ -1616,9 +1550,8 @@
     =========================================== -->
     <header class="header" id="header">
         <div class="header__inner">
-            <a href="#" class="header__logo">
-                <!-- reemplazar con SVG del logo cuando el cliente lo entregue -->
-                Whisky Rescue
+            <a href="#" class="header__logo" aria-label="Whisky Rescue">
+                <img src="assets/logos/logo-stacked.png" alt="Whisky Rescue">
             </a>
             <nav class="header__nav">
                 <a href="#experiences">
@@ -1633,12 +1566,12 @@
                     <span class="lang-en">Contact</span>
                     <span class="lang-es">Contacto</span>
                 </a>
-                <div class="header__lang-toggle">
-                    <button class="active" onclick="setLang('en')">EN</button>
-                    <button onclick="setLang('es')">ES</button>
+                <div class="lang-switch">
+                    <button class="lang-btn active" data-set-lang="en">EN</button>
+                    <button class="lang-btn" data-set-lang="es">ES</button>
                 </div>
             </nav>
-            <button class="header__menu-btn" id="menuBtn" onclick="toggleMobileMenu()">
+            <button class="header__menu-btn" id="menuBtn" onclick="toggleMobileMenu()" aria-label="Menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -1646,7 +1579,7 @@
         </div>
     </header>
 
-    <!-- Mobile Nav -->
+    <!-- Menú móvil -->
     <nav class="mobile-nav" id="mobileNav">
         <a href="#experiences" onclick="closeMobileMenu()">
             <span class="lang-en">Experiences</span>
@@ -1661,8 +1594,10 @@
             <span class="lang-es">Contacto</span>
         </a>
         <div class="mobile-nav__lang">
-            <button class="active" onclick="setLang('en')">EN</button>
-            <button onclick="setLang('es')">ES</button>
+            <div class="lang-switch">
+                <button class="lang-btn active" data-set-lang="en">EN</button>
+                <button class="lang-btn" data-set-lang="es">ES</button>
+            </div>
         </div>
     </nav>
 
@@ -1672,7 +1607,7 @@
         =========================================== -->
         <section class="hero">
             <div class="hero__bg">
-                <!-- reemplazar con fotografía profesional de atmósfera de whisky — sin hielo en ninguna imagen -->
+                <img src="assets/img/hero-pour.jpg" alt="Whisky being poured into a glass" fetchpriority="high">
             </div>
             <div class="hero__overlay"></div>
             <div class="hero__content">
@@ -1712,8 +1647,8 @@
         <section class="intro section-padding">
             <div class="container">
                 <div class="intro__grid">
-                    <div class="intro__image fade-in">
-                        <!-- reemplazar con fotografía profesional — ambiente de bar/madera/accesorios de whisky, sin hielo -->
+                    <div class="framed fade-in">
+                        <img src="assets/img/glasses-trio.jpg" alt="Three whisky tasting glasses" loading="lazy">
                     </div>
                     <div class="intro__content fade-in">
                         <span class="section-label">
@@ -1762,13 +1697,15 @@
         </section>
 
         <!-- ==========================================
-             ULTRA BESPOKE EXPERIENCE (Destaque)
+             ULTRA BESPOKE EXPERIENCE (destaque)
         =========================================== -->
         <section class="ultra section-padding">
-            <div class="ultra__bg-pattern"></div>
+            <img class="watermark ultra__watermark" src="assets/logos/icon-gold.png" alt="" aria-hidden="true">
             <div class="container">
                 <div class="ultra__border fade-in">
-                    <div class="ultra__icon">UB</div>
+                    <div class="ultra__icon">
+                        <img src="assets/logos/icon-gold.png" alt="" aria-hidden="true">
+                    </div>
                     <span class="section-label">
                         <span class="lang-en">Flagship Service</span>
                         <span class="lang-es">Servicio Insignia</span>
@@ -1801,7 +1738,7 @@
                         </div>
                         <div class="ultra__feature">
                             <div class="ultra__feature-title">
-                                <span class="lang-en">Tailored Curaduría</span>
+                                <span class="lang-en">Tailored Curation</span>
                                 <span class="lang-es">Curaduría a Medida</span>
                             </div>
                             <div class="ultra__feature-text">
@@ -1822,6 +1759,8 @@
 
         <!-- ==========================================
              EXPERIENCES PREVIEW
+             TODO: reemplazar nombres provisionales (I–VI) cuando
+             el cliente defina los nombres reales de las 6 experiencias
         =========================================== -->
         <section class="experiences-preview section-padding" id="experiences-preview">
             <div class="container">
@@ -1832,7 +1771,7 @@
                     </span>
                     <h2 class="section-title">
                         <span class="lang-en">Six Curated Paths, Infinite Expressions</span>
-                        <span class="lang-se">Seis Caminos Curados, Expresiones Infinitas</span>
+                        <span class="lang-es">Seis Caminos Curados, Expresiones Infinitas</span>
                     </h2>
                     <p class="section-subtitle mx-auto">
                         <span class="lang-en">Each experience is a unique journey through the world of whisky. No two are ever the same.</span>
@@ -1840,10 +1779,9 @@
                     </p>
                 </div>
                 <div class="experiences-grid">
-                    <!-- reemplazar con nombres reales de las 6 experiencias cuando el cliente los defina -->
                     <div class="experience-card fade-in">
                         <div class="experience-card__image">
-                            <!-- reemplazar con fotografía profesional -->
+                            <img src="assets/img/card-glencairn-pair.jpg" alt="Whisky tasting glasses" loading="lazy">
                         </div>
                         <div class="experience-card__overlay"></div>
                         <div class="experience-card__content">
@@ -1857,13 +1795,15 @@
                                 <span class="lang-es">Tu primer paso en el mundo del whisky, guiado con cuidado.</span>
                             </p>
                             <div class="experience-card__price">
-                                <span class="lang-en">From €100 per person</span>
-                                <span class="lang-es">Desde €100 por persona</span>
+                                <span class="lang-en">€100–€350 per person</span>
+                                <span class="lang-es">€100–€350 por persona</span>
                             </div>
                         </div>
                     </div>
                     <div class="experience-card fade-in">
-                        <div class="experience-card__image"></div>
+                        <div class="experience-card__image">
+                            <img src="assets/img/card-pour-flight.jpg" alt="Pouring whisky samples into tasting glasses" loading="lazy">
+                        </div>
                         <div class="experience-card__overlay"></div>
                         <div class="experience-card__content">
                             <div class="experience-card__number">II</div>
@@ -1876,13 +1816,15 @@
                                 <span class="lang-es">Explora la diversidad de regiones y perfiles de sabor.</span>
                             </p>
                             <div class="experience-card__price">
-                                <span class="lang-en">From €150 per person</span>
-                                <span class="lang-es">Desde €150 por persona</span>
+                                <span class="lang-en">€100–€350 per person</span>
+                                <span class="lang-es">€100–€350 por persona</span>
                             </div>
                         </div>
                     </div>
                     <div class="experience-card fade-in">
-                        <div class="experience-card__image"></div>
+                        <div class="experience-card__image">
+                            <img src="assets/img/card-pour-jigger.jpg" alt="Measuring a whisky pour" loading="lazy">
+                        </div>
                         <div class="experience-card__overlay"></div>
                         <div class="experience-card__content">
                             <div class="experience-card__number">III</div>
@@ -1895,13 +1837,15 @@
                                 <span class="lang-es">Para quienes quieren ir más allá de lo básico.</span>
                             </p>
                             <div class="experience-card__price">
-                                <span class="lang-en">From €200 per person</span>
-                                <span class="lang-es">Desde €200 por persona</span>
+                                <span class="lang-en">€100–€350 per person</span>
+                                <span class="lang-es">€100–€350 por persona</span>
                             </div>
                         </div>
                     </div>
                     <div class="experience-card fade-in">
-                        <div class="experience-card__image"></div>
+                        <div class="experience-card__image">
+                            <img src="assets/img/card-two-glasses.jpg" alt="Two whisky glasses on wood" loading="lazy">
+                        </div>
                         <div class="experience-card__overlay"></div>
                         <div class="experience-card__content">
                             <div class="experience-card__number">IV</div>
@@ -1914,13 +1858,15 @@
                                 <span class="lang-es">Descubre expresiones raras y excepcionales.</span>
                             </p>
                             <div class="experience-card__price">
-                                <span class="lang-en">From €250 per person</span>
-                                <span class="lang-es">Desde €250 por persona</span>
+                                <span class="lang-en">€100–€350 per person</span>
+                                <span class="lang-es">€100–€350 por persona</span>
                             </div>
                         </div>
                     </div>
                     <div class="experience-card fade-in">
-                        <div class="experience-card__image"></div>
+                        <div class="experience-card__image">
+                            <img src="assets/img/card-hand-glass.jpg" alt="Hand holding a whisky tasting glass" loading="lazy">
+                        </div>
                         <div class="experience-card__overlay"></div>
                         <div class="experience-card__content">
                             <div class="experience-card__number">V</div>
@@ -1933,13 +1879,15 @@
                                 <span class="lang-es">Sesiones académicas con especialistas reconocidos.</span>
                             </p>
                             <div class="experience-card__price">
-                                <span class="lang-en">From €300 per person</span>
-                                <span class="lang-es">Desde €300 por persona</span>
+                                <span class="lang-en">€100–€350 per person</span>
+                                <span class="lang-es">€100–€350 por persona</span>
                             </div>
                         </div>
                     </div>
                     <div class="experience-card fade-in">
-                        <div class="experience-card__image"></div>
+                        <div class="experience-card__image">
+                            <img src="assets/img/card-flight-pour.jpg" alt="Pouring a flight of whisky tastings" loading="lazy">
+                        </div>
                         <div class="experience-card__overlay"></div>
                         <div class="experience-card__content">
                             <div class="experience-card__number">VI</div>
@@ -1952,8 +1900,8 @@
                                 <span class="lang-es">Eventos exclusivos para momentos especiales.</span>
                             </p>
                             <div class="experience-card__price">
-                                <span class="lang-en">From €350 per person</span>
-                                <span class="lang-es">Desde €350 por persona</span>
+                                <span class="lang-en">€100–€350 per person</span>
+                                <span class="lang-es">€100–€350 por persona</span>
                             </div>
                         </div>
                     </div>
@@ -1962,11 +1910,12 @@
         </section>
 
         <!-- ==========================================
-             TESTIMONIALS
+             TESTIMONIOS (genéricos — sin nombres reales)
         =========================================== -->
         <section class="testimonials section-padding">
+            <img class="watermark testimonials__watermark" src="assets/logos/icon-gold.png" alt="" aria-hidden="true">
             <div class="container">
-                <div class="text-center fade-in" style="margin-bottom: var(--space-3xl);">
+                <div class="text-center fade-in" style="margin-bottom: var(--space-2xl);">
                     <span class="section-label">
                         <span class="lang-en">What Our Guests Say</span>
                         <span class="lang-es">Lo Que Dicen Quienes Nos Eligen</span>
@@ -1978,6 +1927,7 @@
                 </div>
                 <div class="testimonials__grid">
                     <div class="testimonial fade-in">
+                        <span class="testimonial__mark">&ldquo;</span>
                         <p class="testimonial__quote">
                             <span class="lang-en">An experience that transformed our team meeting. The level of curation and attention to detail was outstanding.</span>
                             <span class="lang-es">Una experiencia que transformó nuestra reunión de equipo. El nivel de curaduría y atención al detalle fue excepcional.</span>
@@ -1988,6 +1938,7 @@
                         </div>
                     </div>
                     <div class="testimonial fade-in">
+                        <span class="testimonial__mark">&ldquo;</span>
                         <p class="testimonial__quote">
                             <span class="lang-en">Without a doubt the best whisky tasting I have ever attended. Every expression was chosen with purpose.</span>
                             <span class="lang-es">Sin duda la mejor degustación de whisky a la que he asistido. Cada expresión fue elegida con propósito.</span>
@@ -1998,6 +1949,7 @@
                         </div>
                     </div>
                     <div class="testimonial fade-in">
+                        <span class="testimonial__mark">&ldquo;</span>
                         <p class="testimonial__quote">
                             <span class="lang-en">The Ultra Bespoke Experience exceeded every expectation. They brought the entire world of whisky to our venue.</span>
                             <span class="lang-es">La Ultra Bespoke Experience superó todas las expectativas. Trajeron todo el mundo del whisky a nuestro espacio.</span>
@@ -2012,7 +1964,7 @@
         </section>
 
         <!-- ==========================================
-             ABOUT / HISTORY
+             ABOUT / HISTORIA
         =========================================== -->
         <section class="about section-padding" id="about">
             <div class="container">
@@ -2074,6 +2026,31 @@
                     </div>
                 </div>
 
+                <!-- Galería: equipo y ambiente (proyecto familiar — sin nombres por ahora) -->
+                <div class="about__gallery">
+                    <figure class="fade-in">
+                        <img src="assets/img/team-portrait.jpg" alt="Whisky Rescue team member" loading="lazy">
+                        <figcaption>
+                            <span class="lang-en">A Family Project</span>
+                            <span class="lang-es">Un Proyecto Familiar</span>
+                        </figcaption>
+                    </figure>
+                    <figure class="fade-in">
+                        <img src="assets/img/about-samples.jpg" alt="Numbered whisky samples at an academic session" loading="lazy">
+                        <figcaption>
+                            <span class="lang-en">Academic Sessions</span>
+                            <span class="lang-es">Sesiones Académicas</span>
+                        </figcaption>
+                    </figure>
+                    <figure class="fade-in">
+                        <img src="assets/img/event-wine-wall.jpg" alt="Whisky Rescue at a private event" loading="lazy">
+                        <figcaption>
+                            <span class="lang-en">Private Events</span>
+                            <span class="lang-es">Eventos Privados</span>
+                        </figcaption>
+                    </figure>
+                </div>
+
                 <div class="about__values">
                     <div class="about__value fade-in">
                         <div class="about__value-icon">M</div>
@@ -2114,10 +2091,11 @@
 
         <!-- ==========================================
              EXPERIENCES FULL
+             TODO: nombres provisionales (I–VI) — pendientes del cliente
         =========================================== -->
         <section class="experiences-full section-padding" id="experiences">
             <div class="container">
-                <div class="text-center fade-in" style="margin-bottom: var(--space-3xl);">
+                <div class="text-center fade-in" style="margin-bottom: var(--space-2xl);">
                     <span class="section-label">
                         <span class="lang-en">Full Collection</span>
                         <span class="lang-es">Colección Completa</span>
@@ -2132,12 +2110,10 @@
                     </p>
                 </div>
 
-                <!-- 
-                    reemplazar con los nombres, descripciones e imágenes reales de las 6 experiencias
-                    cuando el cliente los defina. Los nombres actuales son provisionales.
-                -->
                 <div class="experience-row fade-in">
-                    <div class="experience-row__image"></div>
+                    <div class="experience-row__image">
+                        <img src="assets/img/card-glencairn-pair.jpg" alt="Whisky tasting glasses" loading="lazy">
+                    </div>
                     <div class="experience-row__content">
                         <div class="experience-row__number">I</div>
                         <h3 class="experience-row__title">
@@ -2153,8 +2129,8 @@
                             <span class="lang-es">Incluye: 4–6 expresiones curadas · Sesión guiada · Notas de degustación</span>
                         </p>
                         <div class="experience-row__price">
-                            <span class="lang-en">From €100 per person</span>
-                            <span class="lang-es">Desde €100 por persona</span>
+                            <span class="lang-en">€100–€350 per person</span>
+                            <span class="lang-es">€100–€350 por persona</span>
                         </div>
                         <a href="#contact" class="btn btn--outline">
                             <span class="lang-en">Request This Experience</span>
@@ -2164,7 +2140,9 @@
                 </div>
 
                 <div class="experience-row fade-in">
-                    <div class="experience-row__image"></div>
+                    <div class="experience-row__image">
+                        <img src="assets/img/card-pour-flight.jpg" alt="Pouring whisky samples" loading="lazy">
+                    </div>
                     <div class="experience-row__content">
                         <div class="experience-row__number">II</div>
                         <h3 class="experience-row__title">
@@ -2180,8 +2158,8 @@
                             <span class="lang-es">Incluye: 5–7 expresiones de diferentes regiones · Recorrido geográfico de sabores · Guía experta</span>
                         </p>
                         <div class="experience-row__price">
-                            <span class="lang-en">From €150 per person</span>
-                            <span class="lang-es">Desde €150 por persona</span>
+                            <span class="lang-en">€100–€350 per person</span>
+                            <span class="lang-es">€100–€350 por persona</span>
                         </div>
                         <a href="#contact" class="btn btn--outline">
                             <span class="lang-en">Request This Experience</span>
@@ -2191,7 +2169,9 @@
                 </div>
 
                 <div class="experience-row fade-in">
-                    <div class="experience-row__image"></div>
+                    <div class="experience-row__image">
+                        <img src="assets/img/card-pour-jigger.jpg" alt="Measuring a whisky pour" loading="lazy">
+                    </div>
                     <div class="experience-row__content">
                         <div class="experience-row__number">III</div>
                         <h3 class="experience-row__title">
@@ -2207,8 +2187,8 @@
                             <span class="lang-es">Incluye: 6–8 expresiones · Charla profunda · Degustación comparativa · Notas para llevar</span>
                         </p>
                         <div class="experience-row__price">
-                            <span class="lang-en">From €200 per person</span>
-                            <span class="lang-es">Desde €200 por persona</span>
+                            <span class="lang-en">€100–€350 per person</span>
+                            <span class="lang-es">€100–€350 por persona</span>
                         </div>
                         <a href="#contact" class="btn btn--outline">
                             <span class="lang-en">Request This Experience</span>
@@ -2218,7 +2198,9 @@
                 </div>
 
                 <div class="experience-row fade-in">
-                    <div class="experience-row__image"></div>
+                    <div class="experience-row__image">
+                        <img src="assets/img/card-two-glasses.jpg" alt="Two whisky glasses" loading="lazy">
+                    </div>
                     <div class="experience-row__content">
                         <div class="experience-row__number">IV</div>
                         <h3 class="experience-row__title">
@@ -2234,8 +2216,8 @@
                             <span class="lang-es">Incluye: 5–7 expresiones raras · Acceso exclusivo · Información detallada de cada expresión</span>
                         </p>
                         <div class="experience-row__price">
-                            <span class="lang-en">From €250 per person</span>
-                            <span class="lang-es">Desde €250 por persona</span>
+                            <span class="lang-en">€100–€350 per person</span>
+                            <span class="lang-es">€100–€350 por persona</span>
                         </div>
                         <a href="#contact" class="btn btn--outline">
                             <span class="lang-en">Request This Experience</span>
@@ -2245,7 +2227,9 @@
                 </div>
 
                 <div class="experience-row fade-in">
-                    <div class="experience-row__image"></div>
+                    <div class="experience-row__image">
+                        <img src="assets/img/card-hand-glass.jpg" alt="Hand holding a whisky glass" loading="lazy">
+                    </div>
                     <div class="experience-row__content">
                         <div class="experience-row__number">V</div>
                         <h3 class="experience-row__title">
@@ -2261,8 +2245,8 @@
                             <span class="lang-es">Incluye: 7–10 expresiones · Sesión con especialista · Material académico · Certificado</span>
                         </p>
                         <div class="experience-row__price">
-                            <span class="lang-en">From €300 per person</span>
-                            <span class="lang-es">Desde €300 por persona</span>
+                            <span class="lang-en">€100–€350 per person</span>
+                            <span class="lang-es">€100–€350 por persona</span>
                         </div>
                         <a href="#contact" class="btn btn--outline">
                             <span class="lang-en">Request This Experience</span>
@@ -2272,7 +2256,9 @@
                 </div>
 
                 <div class="experience-row fade-in">
-                    <div class="experience-row__image"></div>
+                    <div class="experience-row__image">
+                        <img src="assets/img/card-flight-pour.jpg" alt="Pouring a whisky flight" loading="lazy">
+                    </div>
                     <div class="experience-row__content">
                         <div class="experience-row__number">VI</div>
                         <h3 class="experience-row__title">
@@ -2288,8 +2274,8 @@
                             <span class="lang-es">Incluye: Selección de expresiones a medida · Curaduría completa del evento · Coordinación en el lugar</span>
                         </p>
                         <div class="experience-row__price">
-                            <span class="lang-en">From €350 per person</span>
-                            <span class="lang-es">Desde €350 por persona</span>
+                            <span class="lang-en">€100–€350 per person</span>
+                            <span class="lang-es">€100–€350 por persona</span>
                         </div>
                         <a href="#contact" class="btn btn--outline">
                             <span class="lang-en">Request This Experience</span>
@@ -2298,10 +2284,13 @@
                     </div>
                 </div>
 
-                <!-- Ultra Bespoke Detail -->
-                <div class="ultra-detail fade-in" style="margin-top: var(--space-3xl);">
+                <!-- Ultra Bespoke — detalle -->
+                <div class="ultra-detail fade-in" style="margin-top: var(--space-2xl);">
                     <div class="ultra-detail__inner">
-                        <div class="ultra-detail__crown">★</div>
+                        <img class="watermark ultra-detail__watermark" src="assets/logos/icon-gold.png" alt="" aria-hidden="true">
+                        <div class="ultra-detail__icon">
+                            <img src="assets/logos/icon-gold.png" alt="" aria-hidden="true">
+                        </div>
                         <span class="section-label">
                             <span class="lang-en">Flagship Service</span>
                             <span class="lang-es">Servicio Insignia</span>
@@ -2325,11 +2314,12 @@
         </section>
 
         <!-- ==========================================
-             CONTACT
+             CONTACTO
+             TODO: número de WhatsApp y email reales — pendientes del cliente
         =========================================== -->
         <section class="contact section-padding" id="contact">
             <div class="container">
-                <div class="text-center fade-in" style="margin-bottom: var(--space-3xl);">
+                <div class="text-center fade-in" style="margin-bottom: var(--space-2xl);">
                     <span class="section-label">
                         <span class="lang-en">Get in Touch</span>
                         <span class="lang-es">Contáctanos</span>
@@ -2373,21 +2363,17 @@
                                     <span class="lang-es">Experiencia de Interés</span>
                                 </label>
                                 <select id="experience" name="experience" required>
-                                    <option value="" disabled selected>
-                                        <span class="lang-en">Select an experience</span>
-                                        <span class="lang-es">Selecciona una experiencia</span>
-                                    </option>
-                                    <option value="introduction">I — The Introduction</option>
-                                    <option value="journey">II — The Journey</option>
-                                    <option value="deep-dive">III — The Deep Dive</option>
-                                    <option value="collection">IV — The Collection</option>
-                                    <option value="masterclass">V — The Masterclass</option>
-                                    <option value="celebration">VI — The Celebration</option>
+                                    <option value="" disabled selected
+                                        data-en="Select an experience"
+                                        data-es="Selecciona una experiencia">Select an experience</option>
+                                    <option value="introduction" data-en="I — The Introduction" data-es="I — La Introducción">I — The Introduction</option>
+                                    <option value="journey" data-en="II — The Journey" data-es="II — El Viaje">II — The Journey</option>
+                                    <option value="deep-dive" data-en="III — The Deep Dive" data-es="III — La Inmersión">III — The Deep Dive</option>
+                                    <option value="collection" data-en="IV — The Collection" data-es="IV — La Colección">IV — The Collection</option>
+                                    <option value="masterclass" data-en="V — The Masterclass" data-es="V — La Magistral">V — The Masterclass</option>
+                                    <option value="celebration" data-en="VI — The Celebration" data-es="VI — La Celebración">VI — The Celebration</option>
                                     <option value="ultra-bespoke">Ultra Bespoke Experience</option>
-                                    <option value="other">
-                                        <span class="lang-en">Other / Not sure yet</span>
-                                        <span class="lang-es">Otro / Aún no decidido</span>
-                                    </option>
+                                    <option value="other" data-en="Other / Not sure yet" data-es="Otro / Aún no decidido">Other / Not sure yet</option>
                                 </select>
                             </div>
                         </div>
@@ -2416,10 +2402,15 @@
                                 <span class="lang-en">Skip the form and message us directly. We respond within 24 hours.</span>
                                 <span class="lang-es">Olvídate del formulario y escríbenos directamente. Respondemos en menos de 24 horas.</span>
                             </p>
-                            <a href="https://wa.me/XXXXXXXXXXX" target="_blank" class="btn btn--whatsapp" style="margin-top: var(--space-sm);">
+                            <!-- TODO: reemplazar 000000000000 con el número oficial de WhatsApp -->
+                            <a href="https://wa.me/000000000000" target="_blank" rel="noopener" class="btn btn--whatsapp" style="margin-top: var(--space-xs);">
                                 <span class="lang-en">Chat on WhatsApp</span>
                                 <span class="lang-es">Escribir por WhatsApp</span>
                             </a>
+                            <p class="contact__info-note">
+                                <span class="lang-en">Official number coming soon</span>
+                                <span class="lang-es">Número oficial próximamente</span>
+                            </p>
                         </div>
 
                         <div class="contact__info-block">
@@ -2428,8 +2419,8 @@
                                 <span class="lang-es">Síguenos</span>
                             </h4>
                             <div class="contact__social">
-                                <a href="https://instagram.com/whiskyrescue" target="_blank" rel="noopener">IG</a>
-                                <a href="https://tiktok.com/@whisky.rescue" target="_blank" rel="noopener">TT</a>
+                                <a href="https://instagram.com/whiskyrescue" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+                                <a href="https://tiktok.com/@whisky.rescue" target="_blank" rel="noopener" aria-label="TikTok">TT</a>
                             </div>
                         </div>
 
@@ -2456,9 +2447,8 @@
         <div class="container">
             <div class="footer__main">
                 <div>
-                    <div class="header__logo" style="font-size: 1.2rem; margin-bottom: var(--space-sm);">
-                        <!-- reemplazar con SVG del logo -->
-                        Whisky Rescue
+                    <div class="footer__logo">
+                        <img src="assets/logos/logo-stacked.png" alt="Whisky Rescue">
                     </div>
                     <p class="footer__brand-desc">
                         <span class="lang-en">Exclusive whisky experiences. Curated with intention, delivered with passion.</span>
@@ -2467,10 +2457,10 @@
                 </div>
 
                 <div>
-                        <h4 class="footer__heading">
-                            <span class="lang-en">Navigate</span>
-                            <span class="lang-es">Menú</span>
-                        </h4>
+                    <h4 class="footer__heading">
+                        <span class="lang-en">Navigate</span>
+                        <span class="lang-es">Menú</span>
+                    </h4>
                     <ul class="footer__links">
                         <li><a href="#experiences">
                             <span class="lang-en">Experiences</span>
@@ -2488,28 +2478,27 @@
                 </div>
 
                 <div>
-                        <h4 class="footer__heading">
-                            <span class="lang-en">Connect</span>
-                            <span class="lang-es">Síguenos</span>
-                        </h4>
+                    <h4 class="footer__heading">
+                        <span class="lang-en">Connect</span>
+                        <span class="lang-es">Síguenos</span>
+                    </h4>
                     <ul class="footer__links">
                         <li><a href="https://instagram.com/whiskyrescue" target="_blank" rel="noopener">Instagram</a></li>
                         <li><a href="https://tiktok.com/@whisky.rescue" target="_blank" rel="noopener">TikTok</a></li>
-                        <li><a href="https://wa.me/XXXXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a></li>
+                        <!-- TODO: número oficial de WhatsApp pendiente -->
+                        <li><a href="https://wa.me/000000000000" target="_blank" rel="noopener">WhatsApp</a></li>
                     </ul>
                 </div>
 
                 <div>
-                        <h4 class="footer__heading">
-                            <span class="lang-en">Newsletter</span>
-                            <span class="lang-es">Newsletter</span>
-                        </h4>
+                    <h4 class="footer__heading">Newsletter</h4>
                     <p class="footer__newsletter-text">
                         <span class="lang-en">Receive updates on new experiences and exclusive events.</span>
                         <span class="lang-es">Entérate de nuevas experiencias y eventos exclusivos.</span>
                     </p>
+                    <!-- TODO: integrar con servicio de email marketing cuando el cliente lo defina -->
                     <form class="footer__newsletter-form" onsubmit="handleNewsletter(event)">
-                        <input type="email" placeholder="Email" required>
+                        <input type="email" placeholder="Email" required aria-label="Email">
                         <button type="submit">
                             <span class="lang-en">Subscribe</span>
                             <span class="lang-es">Suscribir</span>
@@ -2520,26 +2509,26 @@
 
             <div class="footer__bottom">
                 <div class="footer__copyright">
-                    © 2024 Whisky Rescue. 
+                    © <span id="year">2026</span> Whisky Rescue.
                     <span class="lang-en">All rights reserved.</span>
                     <span class="lang-es">Todos los derechos reservados.</span>
                 </div>
                 <div class="footer__legal">
-                    <!-- reemplazar con enlaces reales cuando las políticas estén creadas -->
+                    <!-- TODO: enlazar a páginas legales reales cuando estén redactadas (RGPD) -->
                     <a href="#">
                         <span class="lang-en">Privacy Policy</span>
                         <span class="lang-es">Política de Privacidad</span>
-                        <span style="opacity: 0.5; font-size: 0.6rem;"> (Coming soon)</span>
+                        <span class="soon">(<span class="lang-en">Coming soon</span><span class="lang-es">Próximamente</span>)</span>
                     </a>
                     <a href="#">
                         <span class="lang-en">Legal Notice</span>
                         <span class="lang-es">Aviso Legal</span>
-                        <span style="opacity: 0.5; font-size: 0.6rem;"> (Coming soon)</span>
+                        <span class="soon">(<span class="lang-en">Coming soon</span><span class="lang-es">Próximamente</span>)</span>
                     </a>
                     <a href="#">
                         <span class="lang-en">Cookie Policy</span>
                         <span class="lang-es">Política de Cookies</span>
-                        <span style="opacity: 0.5; font-size: 0.6rem;"> (Coming soon)</span>
+                        <span class="soon">(<span class="lang-en">Coming soon</span><span class="lang-es">Próximamente</span>)</span>
                     </a>
                 </div>
                 <div class="footer__age-note">
@@ -2555,7 +2544,7 @@
     =========================================== -->
     <script>
         // ========================================
-        // AGE GATE
+        // AGE GATE (validación por sesión)
         // ========================================
         function confirmAge() {
             const gate = document.getElementById('ageGate');
@@ -2570,7 +2559,6 @@
             window.location.href = 'https://www.google.com';
         }
 
-        // Check if already verified this session
         if (sessionStorage.getItem('ageVerified') === 'true') {
             document.getElementById('ageGate').style.display = 'none';
             document.getElementById('mainContent').style.opacity = '1';
@@ -2579,109 +2567,119 @@
         }
 
         // ========================================
-        // LANGUAGE TOGGLE
+        // IDIOMA (EN por defecto / ES)
         // ========================================
         function setLang(lang) {
             document.documentElement.setAttribute('data-lang', lang);
-            
-            // Update all lang toggle buttons
-            document.querySelectorAll('[onclick="setLang(\'en\')"]').forEach(btn => {
-                btn.classList.toggle('active', lang === 'en');
-            });
-            document.querySelectorAll('[onclick="setLang(\'es\')"]').forEach(btn => {
-                btn.classList.toggle('active', lang === 'es');
+            document.documentElement.lang = lang;
+
+            // Estado activo de los botones de idioma
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.setLang === lang);
             });
 
-            // Update HTML lang attribute
-            document.documentElement.lang = lang;
+            // Opciones del select (bilingües vía data-*)
+            document.querySelectorAll('option[data-en]').forEach(opt => {
+                opt.textContent = opt.dataset[lang === 'es' ? 'es' : 'en'];
+            });
         }
 
-        // ========================================
-        // HEADER SCROLL EFFECT
-        // ========================================
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => setLang(btn.dataset.setLang));
         });
 
         // ========================================
-        // MOBILE MENU
+        // HEADER — efecto al hacer scroll (ocultar/mostrar)
+        // ========================================
+        const header = document.getElementById('header');
+        let lastScrollY = 0; // Para detectar la dirección del scroll
+        const headerHeight = header.offsetHeight; // Altura inicial del header
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+
+            // Transición de fondo del header (se mantiene)
+            header.classList.toggle('scrolled', currentScrollY > 50);
+
+            // Lógica de ocultar/mostrar el header
+            if (currentScrollY > lastScrollY && currentScrollY > headerHeight + 50) {
+                // Scrolling down y ha pasado el header, ocultar
+                header.classList.add('header--hidden');
+            } else if (currentScrollY < lastScrollY || currentScrollY <= 0) {
+                // Scrolling up o en la parte superior, mostrar
+                header.classList.remove('header--hidden');
+            }
+            lastScrollY = currentScrollY;
+        }, { passive: true });
+
+        // ========================================
+        // MENÚ MÓVIL
         // ========================================
         function toggleMobileMenu() {
-            const btn = document.getElementById('menuBtn');
-            const nav = document.getElementById('mobileNav');
-            btn.classList.toggle('active');
-            nav.classList.toggle('open');
+            document.getElementById('menuBtn').classList.toggle('active');
+            document.getElementById('mobileNav').classList.toggle('open');
             document.body.classList.toggle('no-scroll');
         }
 
         function closeMobileMenu() {
-            const btn = document.getElementById('menuBtn');
-            const nav = document.getElementById('mobileNav');
-            btn.classList.remove('active');
-            nav.classList.remove('open');
+            document.getElementById('menuBtn').classList.remove('active');
+            document.getElementById('mobileNav').classList.remove('open');
             document.body.classList.remove('no-scroll');
         }
 
         // ========================================
-        // SCROLL ANIMATIONS
+        // ANIMACIONES DE SCROLL
         // ========================================
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
         // ========================================
-        // FORM HANDLERS (placeholders)
+        // FORMULARIOS (placeholders — pendiente integración real)
+        // TODO: conectar con backend / servicio de email del cliente
         // ========================================
         function handleSubmit(e) {
             e.preventDefault();
-            // reemplazar con integración real: envío a backend/API
-            alert('Thank you for your inquiry. We will contact you within 24 hours.');
+            const isEs = document.documentElement.getAttribute('data-lang') === 'es';
+            alert(isEs
+                ? 'Gracias por tu solicitud. Te contactaremos en menos de 24 horas.'
+                : 'Thank you for your inquiry. We will contact you within 24 hours.');
             e.target.reset();
         }
 
         function handleNewsletter(e) {
             e.preventDefault();
-            // reemplazar con integración real: servicio de email marketing
-            alert('Thank you for subscribing to our newsletter.');
+            const isEs = document.documentElement.getAttribute('data-lang') === 'es';
+            alert(isEs
+                ? 'Gracias por suscribirte a nuestro newsletter.'
+                : 'Thank you for subscribing to our newsletter.');
             e.target.reset();
         }
 
         // ========================================
-        // SMOOTH SCROLL FOR ANCHOR LINKS
+        // SMOOTH SCROLL con offset del header
         // ========================================
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
-                const target = document.querySelector(this.getAttribute('href'));
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                const target = document.querySelector(href);
                 if (target) {
                     e.preventDefault();
-                    const headerOffset = 80;
-                    const elementPosition = target.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
+                    const offsetPosition = target.getBoundingClientRect().top + window.pageYOffset - 80;
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
                 }
             });
         });
+
+        // Año dinámico en el footer
+        document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
