@@ -11,6 +11,7 @@ Thumbs.db
 
 # Dependencies
 node_modules/
+.wrangler/
 
 # Environment files
 .env

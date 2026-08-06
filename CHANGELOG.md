@@ -15,9 +15,9 @@
 | Tipografías oficiales | Centaur MT + Guild of Professional Actors (local) + Barlow |
 | Logos oficiales | Integrados (age gate, header, footer, favicon, marca de agua) |
 | Fotografías del cliente | Integradas y optimizadas (verificadas sin hielo) |
-| Nombres de las 6 experiencias | Placeholders I–VI (pendiente del cliente) |
+| Experiencias de autor | Cuatro experiencias oficiales integradas; dos adicionales pendientes de definición |
 | Formulario de contacto | Placeholder (pendiente integración + email destino) |
-| WhatsApp oficial | Placeholder marcado `wa.me/000000000000` |
+| WhatsApp oficial | Integrado: `wa.me/34649158386` |
 | Dominio personalizado | Pendiente |
 | Analytics (GA4, Meta, TikTok) | Placeholders configurados |
 | Textos legales (privacidad/cookies/aviso) | Enlaces "Próximamente" |
@@ -26,6 +26,18 @@
 ---
 
 ## Registro
+
+### 2026-08-05 — Integración de experiencias oficiales y Ultra Bespoke
+
+**Tipo:** Contenido / Desarrollo
+**Estado:** Completado parcialmente (pendientes dos experiencias adicionales)
+
+- Integradas en la landing las cuatro experiencias definidas en `WR experiencias de autor.docx`: **Un momento, un whisky a la vez**, **The Genesis Experience**, **The Circle** y **The Fusion Series W&W**.
+- Retirados los nombres provisionales I–VI que no tenían respaldo documental.
+- Actualizado `Ultra Bespoke Experience` con el alcance global, máximo de tres expresiones, honorarios del especialista de `€2.500`, transporte, hospedaje y acuerdo de confidencialidad, según `WR Ultra bespoke.docx` y ambos brochures.
+- Integrados el teléfono `+34 649 158 386`, el enlace de WhatsApp y `whiskyrescuebog@gmail.com` desde el brochure oficial.
+- Alineados el hero, la introducción y el tono del sitio con el manifiesto oficial.
+- El brief declara seis experiencias, pero los documentos específicos entregados solo definen cuatro; las dos restantes quedan pendientes para no inventar contenido.
 
 ### 2026-07-29 — Remodelación con identidad oficial de marca
 
@@ -106,15 +118,14 @@ assets/
 
 > Estos elementos están esperando respuesta o aprobación del cliente.
 
-1. Nombre definitivo y descripción de las 6 experiencias (hoy: placeholders I–VI)
-2. Número oficial de WhatsApp (hoy: `wa.me/000000000000`)
-3. Email de contacto y destino del formulario
-4. Integración con CRM o solo email
-5. IDs reales de analytics (GA4, Meta Pixel, TikTok Pixel, Meta CAPI)
-6. Textos legales: política de privacidad, aviso legal, política de cookies (RGPD)
-7. Testimonios reales (hoy: genéricos sin nombres)
-8. Tagline / propuesta de valor definitiva
-9. Dominio personalizado (whiskyrescue.com ya registrado)
+1. Definición de las dos experiencias adicionales mencionadas en el brief
+2. Email de destino del formulario
+3. Integración con CRM o solo email
+4. IDs reales de analytics (GA4, Meta Pixel, TikTok Pixel, Meta CAPI)
+5. Textos legales: política de privacidad, aviso legal, política de cookies (RGPD)
+6. Testimonios reales (hoy: genéricos sin nombres)
+7. Tagline / propuesta de valor definitiva
+8. Dominio personalizado (whiskyrescue.com ya registrado)
 
 **Resueltos el 2026-07-29:** brandbook (paleta + tipografías), logos, fotografías reales, verificación de edad por sesión.
 
@@ -124,7 +135,7 @@ assets/
 
 ### Stack actual
 - HTML5 + CSS3 + JavaScript vanilla
-- Google Fonts (Playfair Display + Inter)
+- Google Fonts (Barlow)
 - Sin frameworks — diseño estático
 - CSS custom properties para theming
 - Deploy: Cloudflare Pages

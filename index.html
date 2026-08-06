@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Whisky Rescue - Experiences</title>
-    <meta name="description" content="Whisky Rescue offers exclusive whisky experiences, curated tastings, and bespoke events worldwide. Discover the art of whisky, rescued.">
+    <meta name="description" content="Whisky Rescue designs exclusive whisky experiences, author pairings, and bespoke events worldwide. We rescue the narrative behind every expression.">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Whisky Rescue — Exclusive Whisky Experiences">
-    <meta property="og:description" content="Curated whisky experiences and academic sessions. Global reach. Rescatamos el arte de tomar whisky.">
+    <meta property="og:description" content="Author whisky experiences, pairings, and bespoke events worldwide. Rescatamos el arte de tomar whisky.">
     <meta property="og:image" content="assets/img/hero-pour.jpg">
     <meta property="og:url" content="https://whiskyrescue.com">
 
@@ -62,6 +62,14 @@
 
            Palabras clave: minimalista, elegante, moderno,
            masculino, estilo, innovador
+
+           ESCALA TIPOGRÁFICA
+           · Cuerpo: 1rem / 1.7
+           · Cuerpo destacado: 1.1rem / 1.7
+           · Cuerpo grande: 1.25rem / 1.75
+           · Texto auxiliar: 0.9rem
+           · Etiquetas: 0.72rem / 0.32em tracking
+           · Botones: 0.8rem / 0.22em tracking
         ======================================== */
         :root {
             --black: #1D1D1B;
@@ -79,6 +87,16 @@
             --font-brand: 'Guild of Professional Actors', 'Centaur MT', Georgia, serif;
             --font-display: 'Centaur MT', 'Centaur', Georgia, 'Times New Roman', serif;
             --font-body: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+            --type-body: 1rem;
+            --type-body-lg: 1.1rem;
+            --type-body-xl: 1.25rem;
+            --type-small: 0.9rem;
+            --type-label: 0.72rem;
+            --type-button: 0.8rem;
+            --leading-body: 1.7;
+            --leading-heading: 1.15;
+            --leading-display: 1.08;
 
             --space-xs: 0.5rem;
             --space-sm: 1rem;
@@ -111,9 +129,10 @@
         body {
             font-family: var(--font-body);
             font-weight: 300;
+            font-size: var(--type-body);
             background-color: var(--black);
             color: var(--text);
-            line-height: 1.7;
+            line-height: var(--leading-body);
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
@@ -136,7 +155,7 @@
             font-family: var(--font-display);
             font-weight: 400;
             color: var(--cream);
-            line-height: 1.15;
+            line-height: var(--leading-heading);
         }
 
         ::selection {
@@ -166,7 +185,7 @@
             gap: var(--space-sm);
             font-family: var(--font-body);
             font-weight: 500;
-            font-size: 0.72rem;
+            font-size: var(--type-label);
             letter-spacing: 0.32em;
             text-transform: uppercase;
             color: var(--gold);
@@ -187,7 +206,7 @@
         }
 
         .section-subtitle {
-            font-size: 1.05rem;
+            font-size: var(--type-body-lg);
             color: var(--text-muted);
             max-width: 620px;
         }
@@ -211,7 +230,7 @@
             padding: 1.05rem 2.4rem;
             font-family: var(--font-body);
             font-weight: 500;
-            font-size: 0.8rem;
+            font-size: var(--type-button);
             letter-spacing: 0.22em;
             text-transform: uppercase;
             border: 1px solid transparent;
@@ -344,7 +363,7 @@
             background: none;
             border: var(--hairline);
             color: var(--text-muted);
-            font-size: 0.7rem;
+            font-size: 0.66rem;
             font-weight: 500;
             letter-spacing: 0.14em;
             padding: 0.35rem 0.7rem;
@@ -533,7 +552,7 @@
             display: inline-flex;
             align-items: center;
             gap: var(--space-sm);
-            font-size: 0.72rem;
+            font-size: var(--type-label);
             font-weight: 500;
             letter-spacing: 0.34em;
             text-transform: uppercase;
@@ -553,7 +572,7 @@
         .hero__title {
             font-family: var(--font-brand);
             font-size: clamp(2.7rem, 7.2vw, 5rem);
-            line-height: 1.08;
+            line-height: var(--leading-display);
             letter-spacing: 0.015em;
             margin-bottom: var(--space-md);
             text-shadow: 0 2px 34px rgba(0, 0, 0, 0.5);
@@ -565,7 +584,7 @@
         }
 
         .hero__subtitle {
-            font-size: 1.1rem;
+            font-size: var(--type-body-lg);
             color: var(--text);
             max-width: 560px;
             margin: 0 auto var(--space-xl);
@@ -644,6 +663,8 @@
         .intro__text {
             margin-bottom: var(--space-md);
             color: var(--text);
+            font-size: var(--type-body-xl);
+            line-height: 1.75;
         }
 
         .intro__divider {
@@ -666,7 +687,7 @@
         }
 
         .intro__stat-label {
-            font-size: 0.72rem;
+            font-size: var(--type-label);
             letter-spacing: 0.18em;
             text-transform: uppercase;
             color: var(--text-muted);
@@ -740,7 +761,7 @@
         }
 
         .ultra__feature-text {
-            font-size: 0.85rem;
+            font-size: var(--type-small);
             color: var(--text-muted);
         }
 
@@ -754,71 +775,79 @@
 
         .experiences-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: var(--space-md);
         }
 
         .experience-card {
             position: relative;
-            overflow: hidden;
-            aspect-ratio: 4 / 5;
             display: flex;
-            align-items: flex-end;
-            border: 1px solid transparent;
-            transition: var(--transition);
+            flex-direction: column;
+            min-width: 0;
+            overflow: hidden;
+            background: var(--black-deep);
+            border: 1px solid rgba(182, 151, 89, 0.18);
+            transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), border-color var(--transition), box-shadow var(--transition);
         }
 
         .experience-card:hover {
+            transform: translateY(-6px);
             border-color: var(--gold-dim);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
         }
 
         .experience-card__image {
-            position: absolute;
-            inset: 0;
+            position: relative;
+            height: 270px;
+            overflow: hidden;
+            background: var(--brown-deep);
         }
 
         .experience-card__image img {
-            width: 100%;
-            height: 100%;
+            --parallax-x: 0px;
+            --parallax-y: 0px;
+            width: calc(100% + 40px);
+            max-width: none;
+            height: calc(100% + 40px);
+            margin: -20px;
             object-fit: cover;
-            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .experience-card:hover .experience-card__image img {
-            transform: scale(1.06);
+            transform: translate3d(var(--parallax-x), var(--parallax-y), 0) scale(1.04);
+            transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform;
         }
 
         .experience-card__overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(
-                to top,
-                rgba(20, 20, 19, 0.95) 0%,
-                rgba(20, 20, 19, 0.55) 45%,
-                rgba(20, 20, 19, 0.1) 100%
-            );
+            background: linear-gradient(180deg, rgba(20, 20, 19, 0.05), rgba(20, 20, 19, 0.68));
+            pointer-events: none;
         }
 
         .experience-card__content {
-            position: relative;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
             padding: var(--space-lg);
-            width: 100%;
+            background: linear-gradient(145deg, rgba(89, 57, 48, 0.48), rgba(20, 20, 19, 0.96));
         }
 
         .experience-card__number {
             font-family: var(--font-display);
-            font-size: 2rem;
+            font-size: 1.5rem;
             color: var(--gold);
             line-height: 1;
-            margin-bottom: 0.4rem;
+            margin-bottom: var(--space-sm);
         }
 
         .experience-card__title {
-            font-size: 1.55rem;
-            margin-bottom: 0.4rem;
+            min-height: 2.35em;
+            font-size: 1.35rem;
+            line-height: 1.15;
+            margin-bottom: var(--space-sm);
         }
 
         .experience-card__desc {
+            flex: 1;
             font-size: 0.88rem;
             color: var(--text-muted);
             margin-bottom: var(--space-sm);
@@ -830,6 +859,35 @@
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--gold);
+        }
+
+        .experience-card__cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            align-self: flex-start;
+            margin-top: var(--space-md);
+            padding-bottom: 0.35rem;
+            border-bottom: 1px solid var(--gold-dim);
+            color: var(--gold);
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .experience-card__cta::after {
+            content: '\2192';
+            transition: transform var(--transition);
+        }
+
+        .experience-card__cta:hover {
+            color: var(--gold-soft);
+            border-color: var(--gold);
+        }
+
+        .experience-card__cta:hover::after {
+            transform: translateX(4px);
         }
 
         /* ========================================
@@ -902,7 +960,7 @@
 
         .about__hero-text {
             color: var(--text-muted);
-            font-size: 1.05rem;
+            font-size: var(--type-body-lg);
         }
 
         .about__story {
@@ -959,7 +1017,7 @@
             bottom: 0;
             padding: var(--space-md);
             background: linear-gradient(to top, rgba(20,20,19,0.9), transparent);
-            font-size: 0.72rem;
+            font-size: var(--type-label);
             letter-spacing: 0.18em;
             text-transform: uppercase;
             color: var(--cream);
@@ -1004,6 +1062,7 @@
            EXPERIENCES FULL
         ======================================== */
         .experiences-full {
+            display: none;
             background: var(--black-deep);
         }
 
@@ -1151,7 +1210,7 @@
 
         .form-group label {
             display: block;
-            font-size: 0.72rem;
+            font-size: var(--type-label);
             font-weight: 500;
             letter-spacing: 0.2em;
             text-transform: uppercase;
@@ -1167,7 +1226,7 @@
             background: rgba(242, 237, 227, 0.03);
             border: 1px solid rgba(242, 237, 227, 0.14);
             color: var(--cream);
-            font-size: 0.95rem;
+            font-size: var(--type-small);
             font-weight: 300;
             transition: var(--transition);
         }
@@ -1213,7 +1272,7 @@
         }
 
         .contact__info-note {
-            font-size: 0.72rem;
+            font-size: var(--type-label);
             color: var(--gray);
             letter-spacing: 0.08em;
             margin-top: 0.6rem;
@@ -1231,7 +1290,7 @@
             width: 52px;
             height: 52px;
             border: var(--hairline);
-            font-size: 0.72rem;
+            font-size: var(--type-label);
             font-weight: 500;
             letter-spacing: 0.1em;
             color: var(--gold);
@@ -1274,7 +1333,7 @@
 
         .footer__heading {
             font-family: var(--font-body);
-            font-size: 0.72rem;
+            font-size: var(--type-label);
             font-weight: 500;
             letter-spacing: 0.26em;
             text-transform: uppercase;
@@ -1390,6 +1449,8 @@
 
         @media (prefers-reduced-motion: reduce) {
             .fade-in { opacity: 1; transform: none; transition: none; }
+            .experience-card,
+            .experience-card__image img { transition: none; }
             html { scroll-behavior: auto; }
         }
 
@@ -1403,7 +1464,7 @@
            RESPONSIVE
         ======================================== */
         @media (max-width: 1024px) {
-            .experiences-grid { grid-template-columns: repeat(2, 1fr); }
+            .experiences-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .testimonials__grid { grid-template-columns: 1fr; gap: var(--space-xl); }
             .about__values { grid-template-columns: 1fr; gap: var(--space-md); }
             .footer__main { grid-template-columns: 1fr 1fr; }
@@ -1423,6 +1484,12 @@
                 gap: var(--space-xl);
             }
 
+            .experiences-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+            .experience-card__image { height: 230px; }
+
+            .experience-card__content { padding: var(--space-md); }
+
             .experience-row:nth-child(even) .experience-row__image { order: 0; }
             .experience-row:nth-child(even) .experience-row__content { order: 1; }
 
@@ -1441,6 +1508,14 @@
 
         @media (max-width: 560px) {
             .experiences-grid { grid-template-columns: 1fr; }
+            .experience-card__image { height: 230px; }
+            .experience-card__content { padding: var(--space-lg); }
+
+            .experience-card__title { font-size: 1.25rem; }
+            .experience-card__number { font-size: 1.25rem; }
+            .experience-card__desc { font-size: 0.82rem; line-height: 1.45; }
+            .experience-card__price { font-size: 0.58rem; letter-spacing: 0.12em; white-space: normal; }
+
             .footer__main { grid-template-columns: 1fr; gap: var(--space-lg); }
             .hero__cta .btn { width: 100%; }
         }
@@ -1546,7 +1621,7 @@
                 <img src="assets/logos/logo-stacked.png" alt="Whisky Rescue">
             </a>
             <nav class="header__nav">
-                <a href="#experiences">
+                <a href="#experiences-preview">
                     <span class="lang-en">Experiences</span>
                     <span class="lang-es">Experiencias</span>
                 </a>
@@ -1573,7 +1648,7 @@
 
     <!-- Menú móvil -->
     <nav class="mobile-nav" id="mobileNav">
-        <a href="#experiences" onclick="closeMobileMenu()">
+        <a href="#experiences-preview" onclick="closeMobileMenu()">
             <span class="lang-en">Experiences</span>
             <span class="lang-es">Experiencias</span>
         </a>
@@ -1604,7 +1679,7 @@
             <div class="hero__overlay"></div>
             <div class="hero__content">
                 <div class="hero__badge">
-                    <span class="lang-en">Exclusive Whisky Experiences Worldwide</span>
+                        <span class="lang-en">Author Whisky Experiences Worldwide</span>
                     <span class="lang-es">Experiencias exclusivas de whisky</span>
                 </div>
                 <h1 class="hero__title">
@@ -1612,8 +1687,8 @@
                     <span class="lang-es">El whisky, como nunca<br><em>lo probaste</em></span>
                 </h1>
                 <p class="hero__subtitle">
-                    <span class="lang-en">Curated experiences that transform how you discover and enjoy whisky.</span>
-                    <span class="lang-es">Experiencias únicas que transforman la forma en que descubres y disfrutas del whisky.</span>
+                        <span class="lang-en">We rescue the narrative, the art of pairing, and the pleasure of impeccable service wherever you may be.</span>
+                        <span class="lang-es">Rescatamos la narrativa, el arte del maridaje y el placer de un servicio impecable allá donde te encuentres.</span>
                 </p>
                 <div class="hero__cta">
                     <a href="#contact" class="btn btn--primary">
@@ -1649,23 +1724,23 @@
                         </span>
                         <h2 class="section-title">
                             <span class="lang-en">Rescuing the Art of Taking Whisky</span>
-                            <span class="lang-es">Rescatando el Arte de Tomar Whisky</span>
+                            <span class="lang-es">Rescatando el arte de tomar whisky</span>
                         </h2>
                         <p class="intro__text">
-                            <span class="lang-en">Born during the pandemic as a whisky gift box experience, Whisky Rescue evolved into Bogotá's first exclusive fixed whisky bar, and today offers curated experiences and academic sessions with world-renowned specialists.</span>
-                            <span class="lang-es">Nacida durante la pandemia como una propuesta de cajas de regalo con whisky, Whisky Rescue evolucionó hasta convertirse en la primera barra fija exclusiva de whisky en Bogotá, y hoy ofrece experiencias curadas y sesiones académicas con especialistas reconocidos a nivel mundial.</span>
+                            <span class="lang-en">Born when the world stood still, Whisky Rescue evolved from a specialised whisky bar into a consultancy for liquid experiences. We rescue the narrative behind every spirit, the art of pairing, and the pleasure of impeccable service.</span>
+                            <span class="lang-es">Nacida cuando el mundo se detuvo, Whisky Rescue evolucionó de una barra especializada a una consultoría de experiencias líquidas. Rescatamos la narrativa detrás de cada destilado, el arte del maridaje y el placer de un servicio impecable.</span>
                         </p>
                         <p class="intro__text">
-                            <span class="lang-en">We respect the liquid. Every expression we serve has a story, and every experience we create is designed to deepen your connection with the world of whisky.</span>
-                            <span class="lang-es">Respetamos el líquido. Cada expresión que servimos tiene una historia, y cada experiencia que creamos está diseñada para profundizar tu conexión con el mundo del whisky.</span>
+                            <span class="lang-en">We respect the liquid. Every expression has a story, and every experience is written around the moment, the people, and the whisky at its centre.</span>
+                            <span class="lang-es">Respetamos el líquido. Cada expresión tiene una historia, y cada experiencia se escribe alrededor del momento, las personas y el whisky que la protagoniza.</span>
                         </p>
                         <div class="intro__divider"></div>
                         <div class="intro__stats">
                             <div>
-                                <div class="intro__stat-number">6</div>
+                                <div class="intro__stat-number">4</div>
                                 <div class="intro__stat-label">
-                                    <span class="lang-en">Unique Experiences</span>
-                                    <span class="lang-es">Experiencias Únicas</span>
+                                    <span class="lang-en">Author Experiences</span>
+                                    <span class="lang-es">Experiencias de autor</span>
                                 </div>
                             </div>
                             <div>
@@ -1704,38 +1779,38 @@
                     </span>
                     <h2 class="ultra__title">Ultra Bespoke Experience</h2>
                     <p class="ultra__description">
-                        <span class="lang-en">Our pinnacle offering. A fully personalized whisky experience designed exclusively for you — wherever in the world you desire. From private collections to rare expressions, every detail is curated to your vision.</span>
-                        <span class="lang-es">Nuestra oferta más exclusiva. Una experiencia de whisky totalmente personalizada diseñada exclusivamente para ti — dondequiera que lo desees en el mundo. Desde colecciones privadas hasta expresiones raras, cada detalle está curado a tu medida.</span>
+                        <span class="lang-en">Our most exclusive credential. We bring our presence and expertise to any corner of the globe, managing the curation, secure transport, and service around your moment.</span>
+                        <span class="lang-es">Nuestra credencial más exclusiva. Llevamos nuestra presencia y expertise a cualquier rincón del mundo, gestionando la curaduría, el traslado seguro y el servicio alrededor de tu momento.</span>
                     </p>
                     <div class="ultra__features">
                         <div class="ultra__feature">
                             <div class="ultra__feature-title">
-                                <span class="lang-en">Global Reach</span>
-                                <span class="lang-es">Alcance Global</span>
+                                <span class="lang-en">Your Destination</span>
+                                <span class="lang-es">Tu destino</span>
                             </div>
                             <div class="ultra__feature-text">
-                                <span class="lang-en">We travel to you.</span>
-                                <span class="lang-es">Llegamos a ti.</span>
+                                <span class="lang-en">You provide the coordinates.</span>
+                                <span class="lang-es">Tú pones las coordenadas.</span>
                             </div>
                         </div>
                         <div class="ultra__feature">
                             <div class="ultra__feature-title">
-                                <span class="lang-en">Rare Expressions</span>
-                                <span class="lang-es">Expresiones Raras</span>
+                                <span class="lang-en">The Curation</span>
+                                <span class="lang-es">La curaduría</span>
                             </div>
                             <div class="ultra__feature-text">
-                                <span class="lang-en">Access to exclusive bottles.</span>
-                                <span class="lang-es">Acceso a botellas exclusivas.</span>
+                                <span class="lang-en">Selection and secure transport of expressions.</span>
+                                <span class="lang-es">Selección y traslado seguro de expresiones.</span>
                             </div>
                         </div>
                         <div class="ultra__feature">
                             <div class="ultra__feature-title">
-                                <span class="lang-en">Tailored Curation</span>
-                                <span class="lang-es">Curaduría a Medida</span>
+                                <span class="lang-en">Pact of Discretion</span>
+                                <span class="lang-es">Pacto de discreción</span>
                             </div>
                             <div class="ultra__feature-text">
-                                <span class="lang-en">Every detail, yours to decide.</span>
-                                <span class="lang-es">Cada detalle, tuyo para decidir.</span>
+                                <span class="lang-en">A strict confidentiality agreement.</span>
+                                <span class="lang-es">Un acuerdo de estricta confidencialidad.</span>
                             </div>
                         </div>
                     </div>
@@ -1751,8 +1826,9 @@
 
         <!-- ==========================================
              EXPERIENCES PREVIEW
-             TODO: reemplazar nombres provisionales (I–VI) cuando
-             el cliente defina los nombres reales de las 6 experiencias
+             Fuente oficial: documentos "Experiencias de autor" y
+             "Ultra bespoke". El brief menciona seis experiencias,
+             pero solo cuatro están definidas en la documentación entregada.
         =========================================== -->
         <section class="experiences-preview section-padding" id="experiences-preview">
             <div class="container">
@@ -1762,141 +1838,115 @@
                         <span class="lang-es">Nuestras Experiencias</span>
                     </span>
                     <h2 class="section-title">
-                        <span class="lang-en">Six Curated Paths, Infinite Expressions</span>
-                        <span class="lang-es">Seis Caminos Curados, Expresiones Infinitas</span>
+                        <span class="lang-en">Four Author Experiences, Infinite Expressions</span>
+                        <span class="lang-es">Cuatro experiencias de autor, expresiones infinitas</span>
                     </h2>
                     <p class="section-subtitle mx-auto">
-                        <span class="lang-en">Each experience is a unique journey through the world of whisky. No two are ever the same.</span>
-                        <span class="lang-es">Cada experiencia es un viaje único por el mundo del whisky. Ninguna se repite igual.</span>
+                        <span class="lang-en">Each experience is written around a moment, a pairing, and the expressions that give it meaning.</span>
+                        <span class="lang-es">Cada experiencia se escribe alrededor de un momento, un maridaje y las expresiones que le dan sentido.</span>
                     </p>
                 </div>
                 <div class="experiences-grid">
-                    <div class="experience-card fade-in">
+                    <article class="experience-card fade-in">
                         <div class="experience-card__image">
                             <img src="assets/img/card-glencairn-pair.jpg" alt="Whisky tasting glasses" loading="lazy">
+                            <span class="experience-card__overlay"></span>
                         </div>
-                        <div class="experience-card__overlay"></div>
                         <div class="experience-card__content">
                             <div class="experience-card__number">I</div>
                             <h3 class="experience-card__title">
-                                <span class="lang-en">The Introduction</span>
-                                <span class="lang-es">La Introducción</span>
+                                <span class="lang-en">One Moment, One Whisky at a Time</span>
+                                <span class="lang-es">Un momento, un whisky a la vez</span>
                             </h3>
                             <p class="experience-card__desc">
-                                <span class="lang-en">Your first step into the world of whisky, guided with care.</span>
-                                <span class="lang-es">Tu primer paso en el mundo del whisky, guiado con cuidado.</span>
+                                <span class="lang-en">One expression, a three-course pairing, and a moment designed for ten guests to deepen their appreciation without a script.</span>
+                                <span class="lang-es">Una expresión, un maridaje a tres tiempos y un momento diseñado para diez personas que quieren profundizar sin libreto.</span>
                             </p>
                             <div class="experience-card__price">
-                                <span class="lang-en">€100–€350 per person</span>
-                                <span class="lang-es">€100–€350 por persona</span>
+                                <span class="lang-en">From €350 · expression agreed separately</span>
+                                <span class="lang-es">Desde €350 · expresión acordada por separado</span>
                             </div>
+                            <a class="experience-card__cta" href="#contact">
+                                <span class="lang-en">Request this experience</span>
+                                <span class="lang-es">Solicitar esta experiencia</span>
+                            </a>
                         </div>
-                    </div>
-                    <div class="experience-card fade-in">
+                    </article>
+                    <article class="experience-card fade-in">
                         <div class="experience-card__image">
                             <img src="assets/img/card-pour-flight.jpg" alt="Pouring whisky samples into tasting glasses" loading="lazy">
+                            <span class="experience-card__overlay"></span>
                         </div>
-                        <div class="experience-card__overlay"></div>
                         <div class="experience-card__content">
                             <div class="experience-card__number">II</div>
                             <h3 class="experience-card__title">
-                                <span class="lang-en">The Journey</span>
-                                <span class="lang-es">El Viaje</span>
+                                <span class="lang-en">The Genesis Experience</span>
+                                <span class="lang-es">The Genesis Experience</span>
                             </h3>
                             <p class="experience-card__desc">
-                                <span class="lang-en">Explore the diversity of regions and flavour profiles.</span>
-                                <span class="lang-es">Explora la diversidad de regiones y perfiles de sabor.</span>
+                                <span class="lang-en">A rigorous but open journey from raw material to complexity in the glass, with four whiskies and four pairings.</span>
+                                <span class="lang-es">Un viaje riguroso pero abierto, desde la materia prima hasta la complejidad en la copa, con cuatro whiskies y cuatro maridajes.</span>
                             </p>
                             <div class="experience-card__price">
-                                <span class="lang-en">€100–€350 per person</span>
-                                <span class="lang-es">€100–€350 por persona</span>
+                                <span class="lang-en">From €80 per person · 4–10 guests</span>
+                                <span class="lang-es">Desde €80 por persona · 4–10 personas</span>
                             </div>
+                            <a class="experience-card__cta" href="#contact">
+                                <span class="lang-en">Request this experience</span>
+                                <span class="lang-es">Solicitar esta experiencia</span>
+                            </a>
                         </div>
-                    </div>
-                    <div class="experience-card fade-in">
+                    </article>
+                    <article class="experience-card fade-in">
                         <div class="experience-card__image">
                             <img src="assets/img/card-pour-jigger.jpg" alt="Measuring a whisky pour" loading="lazy">
+                            <span class="experience-card__overlay"></span>
                         </div>
-                        <div class="experience-card__overlay"></div>
                         <div class="experience-card__content">
                             <div class="experience-card__number">III</div>
                             <h3 class="experience-card__title">
-                                <span class="lang-en">The Deep Dive</span>
-                                <span class="lang-es">La Inmersión</span>
+                                <span class="lang-en">The Circle</span>
+                                <span class="lang-es">The Circle</span>
                             </h3>
                             <p class="experience-card__desc">
-                                <span class="lang-en">A deeper exploration for those who want to know more.</span>
-                                <span class="lang-es">Para quienes quieren ir más allá de lo básico.</span>
+                                <span class="lang-en">A private session for connoisseurs, built around unusual and limited expressions with pairings at the same level.</span>
+                                <span class="lang-es">Una sesión privada para conocedores, construida alrededor de expresiones inusuales y limitadas, con maridajes a la misma altura.</span>
                             </p>
                             <div class="experience-card__price">
-                                <span class="lang-en">€100–€350 per person</span>
-                                <span class="lang-es">€100–€350 por persona</span>
+                                <span class="lang-en">From €1,500 · 8+ guests</span>
+                                <span class="lang-es">Desde €1.500 · 8+ personas</span>
                             </div>
+                            <a class="experience-card__cta" href="#contact">
+                                <span class="lang-en">Request this experience</span>
+                                <span class="lang-es">Solicitar esta experiencia</span>
+                            </a>
                         </div>
-                    </div>
-                    <div class="experience-card fade-in">
+                    </article>
+                    <article class="experience-card fade-in">
                         <div class="experience-card__image">
                             <img src="assets/img/card-two-glasses.jpg" alt="Two whisky glasses on wood" loading="lazy">
+                            <span class="experience-card__overlay"></span>
                         </div>
-                        <div class="experience-card__overlay"></div>
                         <div class="experience-card__content">
                             <div class="experience-card__number">IV</div>
                             <h3 class="experience-card__title">
-                                <span class="lang-en">The Collection</span>
-                                <span class="lang-es">La Colección</span>
+                                <span class="lang-en">The Fusion Series W&amp;W</span>
+                                <span class="lang-es">The Fusion Series W&amp;W</span>
                             </h3>
                             <p class="experience-card__desc">
-                                <span class="lang-en">Discover rare and exceptional expressions.</span>
-                                <span class="lang-es">Descubre expresiones raras y excepcionales.</span>
+                                <span class="lang-en">A collaboration with wine specialists exploring the points where grape and grain meet.</span>
+                                <span class="lang-es">Una colaboración con especialistas del vino para explorar los puntos de encuentro entre la uva y el grano.</span>
                             </p>
                             <div class="experience-card__price">
-                                <span class="lang-en">€100–€350 per person</span>
-                                <span class="lang-es">€100–€350 por persona</span>
+                                <span class="lang-en">From €160 per person · 6+ guests</span>
+                                <span class="lang-es">Desde €160 por persona · 6+ personas</span>
                             </div>
+                            <a class="experience-card__cta" href="#contact">
+                                <span class="lang-en">Request this experience</span>
+                                <span class="lang-es">Solicitar esta experiencia</span>
+                            </a>
                         </div>
-                    </div>
-                    <div class="experience-card fade-in">
-                        <div class="experience-card__image">
-                            <img src="assets/img/card-hand-glass.jpg" alt="Hand holding a whisky tasting glass" loading="lazy">
-                        </div>
-                        <div class="experience-card__overlay"></div>
-                        <div class="experience-card__content">
-                            <div class="experience-card__number">V</div>
-                            <h3 class="experience-card__title">
-                                <span class="lang-en">The Masterclass</span>
-                                <span class="lang-es">La Magistral</span>
-                            </h3>
-                            <p class="experience-card__desc">
-                                <span class="lang-en">Academic sessions with recognised specialists.</span>
-                                <span class="lang-es">Sesiones académicas con especialistas reconocidos.</span>
-                            </p>
-                            <div class="experience-card__price">
-                                <span class="lang-en">€100–€350 per person</span>
-                                <span class="lang-es">€100–€350 por persona</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="experience-card fade-in">
-                        <div class="experience-card__image">
-                            <img src="assets/img/card-flight-pour.jpg" alt="Pouring a flight of whisky tastings" loading="lazy">
-                        </div>
-                        <div class="experience-card__overlay"></div>
-                        <div class="experience-card__content">
-                            <div class="experience-card__number">VI</div>
-                            <h3 class="experience-card__title">
-                                <span class="lang-en">The Celebration</span>
-                                <span class="lang-es">La Celebración</span>
-                            </h3>
-                            <p class="experience-card__desc">
-                                <span class="lang-en">Exclusive events for milestone moments.</span>
-                                <span class="lang-es">Eventos exclusivos para momentos especiales.</span>
-                            </p>
-                            <div class="experience-card__price">
-                                <span class="lang-en">€100–€350 per person</span>
-                                <span class="lang-es">€100–€350 por persona</span>
-                            </div>
-                        </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -1971,7 +2021,7 @@
                     </h2>
                     <p class="about__hero-text">
                         <span class="lang-en">What started as whisky gift boxes during the pandemic became a movement — a commitment to rescuing the art of taking whisky and building a community around it.</span>
-                        <span class="lang-es">Lo que empezó como cajas de regalo con whisky durante la pandemia se convirtió en un movimiento — un compromiso de rescatar el arte de tomar whisky y construir una comunidad alrededor de él.</span>
+                        <span class="lang-es">Lo que empezó como cajas de regalo con whisky durante la pandemia se convirtió en un movimiento, un compromiso de rescatar el arte de tomar whisky y construir una comunidad alrededor de él.</span>
                     </p>
                 </div>
 
@@ -1983,7 +2033,7 @@
                         </h3>
                         <p class="about__story-text">
                             <span class="lang-en">During the pandemic, when gathering was impossible, we found a way to bring people together through carefully curated whisky gift boxes and accessories. It was our first act of rescue — keeping the ritual alive when the world stood still.</span>
-                            <span class="lang-es">Durante la pandemia, cuando no era posible encontrarnos, encontramos una manera de unir a las personas a través de cajas de regalo con whisky y accesorios cuidadosamente curados. Fue nuestro primer acto de rescate — mantener el ritual vivo cuando el mundo se detuvo.</span>
+                            <span class="lang-es">Durante la pandemia, cuando no era posible encontrarnos, creamos una manera de unir a las personas a través de cajas de regalo con whisky y accesorios cuidadosamente curados. Fue nuestro primer acto de rescate, mantener el ritual vivo cuando el mundo se detuvo.</span>
                         </p>
                     </div>
                     <div class="about__story-block fade-in">
@@ -2003,7 +2053,7 @@
                         </h3>
                         <p class="about__story-text">
                             <span class="lang-en">We rescue the art of taking whisky — not as a trend, but as a ritual worth preserving. We respect the liquid, the craft, and the centuries of tradition behind every expression.</span>
-                            <span class="lang-es">Rescatamos el arte de tomar whisky — no como una tendencia, sino como un ritual que merece ser preservado. Respetamos el líquido, el oficio y los siglos de tradición detrás de cada expresión.</span>
+                            <span class="lang-es">Rescatamos el arte de tomar whisky, no como una tendencia, sino como un ritual que merece ser preservado. Respetamos el líquido, el oficio y los siglos de tradición detrás de cada expresión.</span>
                         </p>
                     </div>
                     <div class="about__story-block fade-in">
@@ -2013,7 +2063,7 @@
                         </h3>
                         <p class="about__story-text">
                             <span class="lang-en">Whisky Rescue is more than experiences — it's a community of enthusiasts connected by a shared appreciation for exceptional whisky and the moments it creates.</span>
-                            <span class="lang-es">Whisky Rescue es más que experiencias — es una comunidad de aficionados unidos por la pasión por el whisky excepcional y los momentos que crea.</span>
+                            <span class="lang-es">Whisky Rescue es más que experiencias, es una comunidad de aficionados unidos por la pasión por el whisky excepcional y los momentos que crea.</span>
                         </p>
                     </div>
                 </div>
@@ -2083,7 +2133,9 @@
 
         <!-- ==========================================
              EXPERIENCES FULL
-             TODO: nombres provisionales (I–VI) — pendientes del cliente
+             Fuente oficial: documento "Experiencias de autor".
+             El brief menciona seis experiencias, pero solo cuatro
+             están definidas en la documentación entregada.
         =========================================== -->
         <section class="experiences-full section-padding" id="experiences">
             <div class="container">
@@ -2093,12 +2145,12 @@
                         <span class="lang-es">Colección Completa</span>
                     </span>
                     <h2 class="section-title">
-                        <span class="lang-en">Our Six Experiences</span>
-                        <span class="lang-es">Nuestras Seis Experiencias</span>
+                        <span class="lang-en">Our Author Experiences</span>
+                        <span class="lang-es">Nuestras experiencias de autor</span>
                     </h2>
                     <p class="section-subtitle mx-auto">
-                        <span class="lang-en">Each one is a carefully curated journey. Select the one that speaks to you.</span>
-                        <span class="lang-es">Cada una es un viaje cuidadosamente curado. Selecciona la que más te atraiga.</span>
+                        <span class="lang-en">Choose the moment. We will design the whisky, the pairing, and the details around it.</span>
+                        <span class="lang-es">Tú eliges el momento. Nosotros diseñamos el whisky, el maridaje y cada detalle alrededor de él.</span>
                     </p>
                 </div>
 
@@ -2109,20 +2161,20 @@
                     <div class="experience-row__content">
                         <div class="experience-row__number">I</div>
                         <h3 class="experience-row__title">
-                            <span class="lang-en">The Introduction</span>
-                            <span class="lang-es">La Introducción</span>
+                            <span class="lang-en">One Moment, One Whisky at a Time</span>
+                            <span class="lang-es">Un momento, un whisky a la vez</span>
                         </h3>
                         <p class="experience-row__text">
-                            <span class="lang-en">Your gateway into the world of whisky. A guided tasting of carefully selected expressions, designed to open your palate and your curiosity. No prior knowledge needed — just an open mind.</span>
-                            <span class="lang-es">Tu primer acercamiento al mundo del whisky. Una degustación guiada de expresiones cuidadosamente seleccionadas, diseñada para abrir tu paladar y tu curiosidad. No necesitas saber nada previo — solo venir con mente abierta.</span>
+                            <span class="lang-en">You choose the moment and we choose the whisky. A single expression, a three-course pairing, and an author experience designed for ten guests to go deeper without a script.</span>
+                            <span class="lang-es">Tú eliges el momento y nosotros el whisky. Una única expresión, un maridaje a tres tiempos y una experiencia de autor diseñada para diez personas que quieren profundizar sin libreto.</span>
                         </p>
                         <p class="experience-row__includes">
-                            <span class="lang-en">Includes: 4–6 curated expressions · Guided session · Tasting notes</span>
-                            <span class="lang-es">Incluye: 4–6 expresiones curadas · Sesión guiada · Notas de degustación</span>
+                            <span class="lang-en">Includes: 1 expression · Three-course pairing · Guided experience</span>
+                            <span class="lang-es">Incluye: 1 expresión · Maridaje a tres tiempos · Experiencia guiada</span>
                         </p>
                         <div class="experience-row__price">
-                            <span class="lang-en">€100–€350 per person</span>
-                            <span class="lang-es">€100–€350 por persona</span>
+                            <span class="lang-en">From €350 · expression agreed separately</span>
+                            <span class="lang-es">Desde €350 · expresión acordada por separado</span>
                         </div>
                         <a href="#contact" class="btn btn--outline">
                             <span class="lang-en">Request This Experience</span>
@@ -2138,20 +2190,20 @@
                     <div class="experience-row__content">
                         <div class="experience-row__number">II</div>
                         <h3 class="experience-row__title">
-                            <span class="lang-en">The Journey</span>
-                            <span class="lang-es">El Viaje</span>
+                            <span class="lang-en">The Genesis Experience</span>
+                            <span class="lang-es">The Genesis Experience</span>
                         </h3>
                         <p class="experience-row__text">
-                            <span class="lang-en">Travel through the whisky regions of the world without leaving the room. From the Scottish Highlands to Japanese distilleries, each expression tells the story of its origin.</span>
-                            <span class="lang-es">Viaja por las regiones productoras de whisky del mundo sin salir de la sala. Desde las Tierras Altas de Escocia hasta las destilerías japonesas, cada expresión cuenta la historia de su origen.</span>
+                            <span class="lang-en">A sensory journey from the foundations of the raw material to the complexity in the glass. Rigorous learning without a script, with four whiskies and four pairings.</span>
+                            <span class="lang-es">Un viaje sensorial desde las bases de la materia prima hasta la complejidad en la copa. Aprendizaje riguroso sin guion, con cuatro whiskies y cuatro maridajes.</span>
                         </p>
                         <p class="experience-row__includes">
-                            <span class="lang-en">Includes: 5–7 expressions from different regions · Geographic tasting map · Expert guidance</span>
-                            <span class="lang-es">Incluye: 5–7 expresiones de diferentes regiones · Recorrido geográfico de sabores · Guía experta</span>
+                            <span class="lang-en">Includes: 4 whiskies · 4 pairings · Guided learning</span>
+                            <span class="lang-es">Incluye: 4 whiskies · 4 maridajes · Aprendizaje guiado</span>
                         </p>
                         <div class="experience-row__price">
-                            <span class="lang-en">€100–€350 per person</span>
-                            <span class="lang-es">€100–€350 por persona</span>
+                            <span class="lang-en">From €80 per person · 4–10 guests</span>
+                            <span class="lang-es">Desde €80 por persona · 4–10 personas</span>
                         </div>
                         <a href="#contact" class="btn btn--outline">
                             <span class="lang-en">Request This Experience</span>
@@ -2167,20 +2219,20 @@
                     <div class="experience-row__content">
                         <div class="experience-row__number">III</div>
                         <h3 class="experience-row__title">
-                            <span class="lang-en">The Deep Dive</span>
-                            <span class="lang-es">La Inmersión</span>
+                            <span class="lang-en">The Circle</span>
+                            <span class="lang-es">The Circle</span>
                         </h3>
                         <p class="experience-row__text">
-                            <span class="lang-en">For those who want to understand whisky beyond the glass. An immersive session exploring distillation, maturation, and the art behind every bottle.</span>
-                            <span class="lang-es">Para quienes quieren entender el whisky a fondo. Una sesión inmersiva que explora la destilación, la maduración y el arte detrás de cada botella.</span>
+                            <span class="lang-en">A private session for connoisseurs, built around unusual, limited, and perhaps long-resting expressions. No more than three expressions keep every detail in focus.</span>
+                            <span class="lang-es">Una sesión privada para conocedores, construida alrededor de expresiones inusuales, limitadas y quizás empolvadas. Un máximo de tres expresiones mantiene cada detalle en foco.</span>
                         </p>
                         <p class="experience-row__includes">
-                            <span class="lang-en">Includes: 6–8 expressions · Deep-dive presentation · Comparative tasting · Takeaway notes</span>
-                            <span class="lang-es">Incluye: 6–8 expresiones · Charla profunda · Degustación comparativa · Notas para llevar</span>
+                            <span class="lang-en">Includes: Up to 3 expressions · Private pairing · Specialist-led session</span>
+                            <span class="lang-es">Incluye: Hasta 3 expresiones · Maridaje privado · Sesión con especialista</span>
                         </p>
                         <div class="experience-row__price">
-                            <span class="lang-en">€100–€350 per person</span>
-                            <span class="lang-es">€100–€350 por persona</span>
+                            <span class="lang-en">From €1,500 · 8+ guests</span>
+                            <span class="lang-es">Desde €1.500 · 8+ personas</span>
                         </div>
                         <a href="#contact" class="btn btn--outline">
                             <span class="lang-en">Request This Experience</span>
@@ -2196,78 +2248,20 @@
                     <div class="experience-row__content">
                         <div class="experience-row__number">IV</div>
                         <h3 class="experience-row__title">
-                            <span class="lang-en">The Collection</span>
-                            <span class="lang-es">La Colección</span>
+                            <span class="lang-en">The Fusion Series W&amp;W</span>
+                            <span class="lang-es">The Fusion Series W&amp;W</span>
                         </h3>
                         <p class="experience-row__text">
-                            <span class="lang-en">A curated selection of rare and exceptional expressions. For the collector, the connoisseur, and the curious who seek something extraordinary.</span>
-                            <span class="lang-es">Una selección pensada de expresiones raras y excepcionales. Para el coleccionista, el conocedor y el curioso que busca algo extraordinario.</span>
+                            <span class="lang-en">Created with wine specialists, this series explores the meeting point between grape and grain: a dance of flavours for palates that refuse to choose.</span>
+                            <span class="lang-es">Creada con especialistas del vino, esta serie explora el punto de encuentro entre la uva y el grano: una danza de sabores para paladares que no quieren elegir.</span>
                         </p>
                         <p class="experience-row__includes">
-                            <span class="lang-en">Includes: 5–7 rare expressions · Exclusive access · Detailed provenance notes</span>
-                            <span class="lang-es">Incluye: 5–7 expresiones raras · Acceso exclusivo · Información detallada de cada expresión</span>
+                            <span class="lang-en">Includes: 2 whiskies · 2 wines · Pairings designed for both spirits</span>
+                            <span class="lang-es">Incluye: 2 whiskies · 2 vinos · Maridaje para ambos destilados</span>
                         </p>
                         <div class="experience-row__price">
-                            <span class="lang-en">€100–€350 per person</span>
-                            <span class="lang-es">€100–€350 por persona</span>
-                        </div>
-                        <a href="#contact" class="btn btn--outline">
-                            <span class="lang-en">Request This Experience</span>
-                            <span class="lang-es">Solicitar Esta Experiencia</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="experience-row fade-in">
-                    <div class="experience-row__image">
-                        <img src="assets/img/card-hand-glass.jpg" alt="Hand holding a whisky glass" loading="lazy">
-                    </div>
-                    <div class="experience-row__content">
-                        <div class="experience-row__number">V</div>
-                        <h3 class="experience-row__title">
-                            <span class="lang-en">The Masterclass</span>
-                            <span class="lang-es">La Magistral</span>
-                        </h3>
-                        <p class="experience-row__text">
-                            <span class="lang-en">Academic sessions led by recognised whisky specialists. A deep, structured exploration of themes that matter — from cask types to the future of single malts.</span>
-                            <span class="lang-es">Sesiones académicas lideradas por expertos de whisky reconocidos. Una exploración profunda y estructurada de temas que importan — desde tipos de barril hasta el futuro de los single malts.</span>
-                        </p>
-                        <p class="experience-row__includes">
-                            <span class="lang-en">Includes: 7–10 expressions · Specialist-led session · Academic materials · Certificate</span>
-                            <span class="lang-es">Incluye: 7–10 expresiones · Sesión con especialista · Material académico · Certificado</span>
-                        </p>
-                        <div class="experience-row__price">
-                            <span class="lang-en">€100–€350 per person</span>
-                            <span class="lang-es">€100–€350 por persona</span>
-                        </div>
-                        <a href="#contact" class="btn btn--outline">
-                            <span class="lang-en">Request This Experience</span>
-                            <span class="lang-es">Solicitar Esta Experiencia</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="experience-row fade-in">
-                    <div class="experience-row__image">
-                        <img src="assets/img/card-flight-pour.jpg" alt="Pouring a whisky flight" loading="lazy">
-                    </div>
-                    <div class="experience-row__content">
-                        <div class="experience-row__number">VI</div>
-                        <h3 class="experience-row__title">
-                            <span class="lang-en">The Celebration</span>
-                            <span class="lang-es">La Celebración</span>
-                        </h3>
-                        <p class="experience-row__text">
-                            <span class="lang-en">Exclusive whisky events for milestone moments — corporate gatherings, private celebrations, and gatherings that deserve something extraordinary.</span>
-                            <span class="lang-es">Eventos exclusivos de whisky para ocasiones especiales — reuniones corporativas, celebraciones privadas y reuniones que merecen algo extraordinario.</span>
-                        </p>
-                        <p class="experience-row__includes">
-                            <span class="lang-en">Includes: Custom expression selection · Full event curation · On-site coordination</span>
-                            <span class="lang-es">Incluye: Selección de expresiones a medida · Curaduría completa del evento · Coordinación en el lugar</span>
-                        </p>
-                        <div class="experience-row__price">
-                            <span class="lang-en">€100–€350 per person</span>
-                            <span class="lang-es">€100–€350 por persona</span>
+                            <span class="lang-en">From €160 per person · 6+ guests</span>
+                            <span class="lang-es">Desde €160 por persona · 6+ personas</span>
                         </div>
                         <a href="#contact" class="btn btn--outline">
                             <span class="lang-en">Request This Experience</span>
@@ -2289,12 +2283,12 @@
                         </span>
                         <h2 class="ultra-detail__title">Ultra Bespoke Experience</h2>
                         <p class="ultra-detail__text">
-                            <span class="lang-en">Our most exclusive offering. A completely customised whisky experience designed from scratch for your occasion, your guests, and your vision. We travel anywhere in the world to bring this to life. Access to private collections, rare expressions, and a level of curation that knows no limits.</span>
-                            <span class="lang-es">Nuestra oferta más exclusiva. Una experiencia de whisky completamente personalizada, pensada desde cero para tu ocasión, tus huéspedes y tu visión. Llegamos a cualquier lugar del mundo para hacerlo realidad. Acceso a colecciones privadas, expresiones raras y un nivel de curaduría sin límites.</span>
+                            <span class="lang-en">We bring our presence and expertise to any corner of the globe, from a private yacht in Monaco to a living room in Seoul. We manage the selection and secure transport of expressions, together with an impeccable service tailored to the moment.</span>
+                            <span class="lang-es">Llevamos nuestra presencia y expertise a cualquier rincón del mundo, desde un yate privado en Mónaco hasta un living room en Seúl. Gestionamos la selección y el traslado seguro de expresiones, junto con un servicio impecable a la altura del momento.</span>
                         </p>
                         <p class="ultra-detail__note">
-                            <span class="lang-en">Price upon consultation · High-value service</span>
-                            <span class="lang-es">Precio a consultar · Servicio de alto valor</span>
+                            <span class="lang-en">€2,500 specialist honorarium + selected expressions (maximum 3) + travel and lodging</span>
+                            <span class="lang-es">2.500 € de honorarios + expresiones seleccionadas (máximo 3) + transporte y hospedaje</span>
                         </p>
                         <a href="#contact" class="btn btn--primary">
                             <span class="lang-en">Inquire Now</span>
@@ -2307,7 +2301,7 @@
 
         <!-- ==========================================
              CONTACTO
-             TODO: número de WhatsApp y email reales — pendientes del cliente
+             Contacto oficial según brochure de Ultra Bespoke
         =========================================== -->
         <section class="contact section-padding" id="contact">
             <div class="container">
@@ -2347,7 +2341,7 @@
                                     <span class="lang-en">Phone / WhatsApp</span>
                                     <span class="lang-es">Teléfono / WhatsApp</span>
                                 </label>
-                                <input type="tel" id="phone" name="phone">
+                                <input type="tel" id="phone" name="phone" required>
                             </div>
                             <div class="form-group">
                                 <label for="experience">
@@ -2358,12 +2352,10 @@
                                     <option value="" disabled selected
                                         data-en="Select an experience"
                                         data-es="Selecciona una experiencia">Select an experience</option>
-                                    <option value="introduction" data-en="I — The Introduction" data-es="I — La Introducción">I — The Introduction</option>
-                                    <option value="journey" data-en="II — The Journey" data-es="II — El Viaje">II — The Journey</option>
-                                    <option value="deep-dive" data-en="III — The Deep Dive" data-es="III — La Inmersión">III — The Deep Dive</option>
-                                    <option value="collection" data-en="IV — The Collection" data-es="IV — La Colección">IV — The Collection</option>
-                                    <option value="masterclass" data-en="V — The Masterclass" data-es="V — La Magistral">V — The Masterclass</option>
-                                    <option value="celebration" data-en="VI — The Celebration" data-es="VI — La Celebración">VI — The Celebration</option>
+                                     <option value="one-moment" data-en="One Moment, One Whisky at a Time" data-es="Un momento, un whisky a la vez">One Moment, One Whisky at a Time</option>
+                                     <option value="genesis" data-en="The Genesis Experience" data-es="The Genesis Experience">The Genesis Experience</option>
+                                     <option value="circle" data-en="The Circle" data-es="The Circle">The Circle</option>
+                                     <option value="fusion" data-en="The Fusion Series W&amp;W" data-es="The Fusion Series W&amp;W">The Fusion Series W&amp;W</option>
                                     <option value="ultra-bespoke">Ultra Bespoke Experience</option>
                                     <option value="other" data-en="Other / Not sure yet" data-es="Otro / Aún no decidido">Other / Not sure yet</option>
                                 </select>
@@ -2374,7 +2366,7 @@
                                 <span class="lang-en">Message / Tell Us About Your Event</span>
                                 <span class="lang-es">Mensaje / Cuéntanos qué tienes en mente</span>
                             </label>
-                            <textarea id="message" name="message" rows="5"></textarea>
+                            <textarea id="message" name="message" rows="5" required></textarea>
                         </div>
                         <div>
                             <button type="submit" class="btn btn--primary">
@@ -2394,14 +2386,13 @@
                                 <span class="lang-en">Skip the form and message us directly. We respond within 24 hours.</span>
                                 <span class="lang-es">Olvídate del formulario y escríbenos directamente. Respondemos en menos de 24 horas.</span>
                             </p>
-                            <!-- TODO: reemplazar 000000000000 con el número oficial de WhatsApp -->
-                            <a href="https://wa.me/000000000000" target="_blank" rel="noopener" class="btn btn--whatsapp" style="margin-top: var(--space-xs);">
+                            <a href="https://wa.me/34649158386" target="_blank" rel="noopener" class="btn btn--whatsapp" style="margin-top: var(--space-xs);">
                                 <span class="lang-en">Chat on WhatsApp</span>
                                 <span class="lang-es">Escribir por WhatsApp</span>
                             </a>
                             <p class="contact__info-note">
-                                <span class="lang-en">Official number coming soon</span>
-                                <span class="lang-es">Número oficial próximamente</span>
+                                <span class="lang-en">+34 649 158 386</span>
+                                <span class="lang-es">+34 649 158 386</span>
                             </p>
                         </div>
 
@@ -2418,12 +2409,19 @@
 
                         <div class="contact__info-block">
                             <h4 class="contact__info-title">
-                                <span class="lang-en">Global Reach</span>
-                                <span class="lang-es">Alcance Global</span>
+                                <span class="lang-en">Location</span>
+                                <span class="lang-es">Ubicación</span>
                             </h4>
                             <p class="contact__info-text">
-                                <span class="lang-en">We travel wherever the experience requires. Bogotá, Monaco, Seoul, or anywhere in between.</span>
-                                <span class="lang-es">Llegamos donde la experiencia lo pida. Bogotá, Mónaco, Seúl, o cualquier lugar del mundo.</span>
+                                <span class="lang-en">Based in Granada, Spain · 18002</span>
+                                <span class="lang-es">Granada, España · 18002</span>
+                            </p>
+                        </div>
+
+                        <div class="contact__info-block">
+                            <h4 class="contact__info-title">Email</h4>
+                            <p class="contact__info-text">
+                                <a href="mailto:whiskyrescuebog@gmail.com">whiskyrescuebog@gmail.com</a>
                             </p>
                         </div>
                     </div>
@@ -2454,7 +2452,7 @@
                         <span class="lang-es">Menú</span>
                     </h4>
                     <ul class="footer__links">
-                        <li><a href="#experiences">
+                        <li><a href="#experiences-preview">
                             <span class="lang-en">Experiences</span>
                             <span class="lang-es">Experiencias</span>
                         </a></li>
@@ -2477,8 +2475,7 @@
                     <ul class="footer__links">
                         <li><a href="https://instagram.com/whiskyrescue" target="_blank" rel="noopener">Instagram</a></li>
                         <li><a href="https://tiktok.com/@whisky.rescue" target="_blank" rel="noopener">TikTok</a></li>
-                        <!-- TODO: número oficial de WhatsApp pendiente -->
-                        <li><a href="https://wa.me/000000000000" target="_blank" rel="noopener">WhatsApp</a></li>
+                        <li><a href="https://wa.me/34649158386" target="_blank" rel="noopener">WhatsApp</a></li>
                     </ul>
                 </div>
 
@@ -2519,7 +2516,7 @@
                     </a>
                     <a href="#">
                         <span class="lang-en">Cookie Policy</span>
-                        <span class="lang-es">Política de Cookies</span>
+                        <span class="lang-es">Política de cookies</span>
                         <span class="soon">(<span class="lang-en">Coming soon</span><span class="lang-es">Próximamente</span>)</span>
                     </a>
                 </div>
@@ -2579,6 +2576,52 @@
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.addEventListener('click', () => setLang(btn.dataset.setLang));
         });
+
+        // ========================================
+        // EXPERIENCES — parallax interno de las imágenes
+        // ========================================
+        const experienceImages = [...document.querySelectorAll('.experience-card__image img')];
+        const reduceExperienceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        let parallaxFrame;
+
+        function updateExperienceParallax() {
+            if (reduceExperienceMotion) return;
+
+            const viewportCenter = window.innerHeight / 2;
+            experienceImages.forEach(image => {
+                const frame = image.closest('.experience-card__image');
+                const rect = frame.getBoundingClientRect();
+                if (rect.bottom < -40 || rect.top > window.innerHeight + 40) return;
+
+                const distance = viewportCenter - (rect.top + rect.height / 2);
+                const offset = Math.max(-10, Math.min(10, distance / viewportCenter * 10));
+                image.style.setProperty('--parallax-y', `${offset.toFixed(2)}px`);
+            });
+
+            parallaxFrame = null;
+        }
+
+        function requestExperienceParallax() {
+            if (!parallaxFrame) parallaxFrame = requestAnimationFrame(updateExperienceParallax);
+        }
+
+        if (!reduceExperienceMotion) {
+            window.addEventListener('scroll', requestExperienceParallax, { passive: true });
+            window.addEventListener('resize', requestExperienceParallax);
+            updateExperienceParallax();
+
+            document.querySelectorAll('.experience-card__image').forEach(frame => {
+                frame.addEventListener('pointermove', event => {
+                    const rect = frame.getBoundingClientRect();
+                    const offset = ((event.clientX - rect.left) / rect.width - 0.5) * -10;
+                    frame.querySelector('img').style.setProperty('--parallax-x', `${offset.toFixed(2)}px`);
+                });
+
+                frame.addEventListener('pointerleave', () => {
+                    frame.querySelector('img').style.setProperty('--parallax-x', '0px');
+                });
+            });
+        }
 
         // ========================================
         // HEADER — efecto al hacer scroll (ocultar/mostrar)
