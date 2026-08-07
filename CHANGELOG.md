@@ -21,11 +21,28 @@
 | Dominio personalizado | Pendiente |
 | Analytics (GA4, Meta, TikTok) | Placeholders configurados |
 | Textos legales (privacidad/cookies/aviso) | Enlaces "Próximamente" |
-| Deploy Cloudflare Pages | Activo |
+| Deploy Cloudflare Worker | Activo en cuenta del cliente |
 
 ---
 
 ## Registro
+
+### 2026-08-07 — Migración a Cloudflare Worker del cliente
+
+**Tipo:** Infraestructura
+**Estado:** Completado
+
+- Creado el Worker `whisky-rescue` en la cuenta del cliente (`88d4e09e6dba74f003bda0659a789530`).
+- Publicados los assets estáticos y conectado el Custom Domain `https://whisky-rescue.com`.
+- La versión anterior de Cloudflare Pages en Adsalom se conserva temporalmente para facilitar la validación y el rollback.
+
+### 2026-08-06 — Consolidación de documentación de Identidad de Marca
+
+**Tipo:** Documentación / Estrategia
+**Estado:** Completado
+
+- Analizados todos los recursos de la carpeta oficial `/Identidad`: brandbook (`brand guide whisky.pdf`), estrategia KOM (`WR-estrategias.pdf`), especificaciones de experiencias (`WR experiencias de autor.docx` y `WR Ultra bespoke.docx`), brochures oficial bilingües (`Brochure español 2.pdf` y `Brochure Inglés 2.pdf`) y brief inicial.
+- Creada la documentación interna centralizada [IDENTITY.md](file:///Volumes/EXTERNO/Desarrollo%20Web/whiskey-rescue/IDENTITY.md), detallando manifiesto, filosofía, paleta Pantone/CMYK/HEX, tipografías con sus normas de uso, terminología clave (DOs & DON'Ts), catálogo oficial de experiencias y datos de contacto verificados.
 
 ### 2026-08-05 — Integración de experiencias oficiales y Ultra Bespoke
 
