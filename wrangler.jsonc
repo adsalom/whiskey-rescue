@@ -5,7 +5,7 @@
   "account_id": "88d4e09e6dba74f003bda0659a789530",
   "compatibility_date": "2026-08-07",
   "assets": {
-    "directory": "./public",
+    "directory": ".",
     "binding": "ASSETS"
   },
   "routes": [
